@@ -1,0 +1,18 @@
+{
+  "repo": "discoverarchitecture/ig-queue",
+  "siteBase": "https://findgreatarchitecture.com/ig-queue",
+  "githubUser": "akshatpagariya909-svg",
+  "igUserId": "17841422330371444",
+  "apiVersion": "v23.0",
+  "timezone": "America/New_York",
+  "slots": ["12:00", "19:00"],
+  "batchDays": 3,
+  "anchor": "2026-10-14T12:30:00Z",
+  "maxQueued": 18,
+  "publishGraceHours": 6,
+  "remindAfterHours": 20,
+  "thumbOffsetMs": 1000,
+  "inboxEveryHours": 2,
+  "analyticsEveryHours": 24,
+  "tokenRefreshEveryDays": 7
+}

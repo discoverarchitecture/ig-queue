@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Instagram Queue</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --ink: #1b1a17; --muted: #6d6a63; --line: #e3e0d9;
+    --accent: #d8432f; --ok: #2f7d4f; --warn: #b7791f; --chip: #efede7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #121211; --card: #1c1b19; --ink: #f1efe9; --muted: #a29e95; --line: #2e2c29;
+      --accent: #ff6a52; --ok: #5cc48a; --warn: #e3a948; --chip: #2a2926; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 16px 0; }
+  .brand { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .brand h1 { margin: 0; font-size: 17px; letter-spacing: .02em; text-transform: uppercase; }
+  .brand h1 span { color: var(--accent); }
+  .brand small { color: var(--muted); }
+  nav { display: flex; gap: 4px; margin-top: 10px; overflow-x: auto; }
+  nav button { border: 0; background: none; color: var(--muted); padding: 8px 12px; font: inherit; font-weight: 600; border-bottom: 2px solid transparent; cursor: pointer; }
+  nav button.on { color: var(--ink); border-color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .row { display: flex; gap: 12px; align-items: flex-start; }
+  .thumb { width: 84px; aspect-ratio: 9/16; border-radius: 8px; background: var(--chip) center/cover no-repeat; flex: none; }
+  .grow { flex: 1; min-width: 0; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .chip { display: inline-block; padding: 2px 8px; border-radius: 99px; background: var(--chip); font-size: 12px; font-weight: 600; }
+  .chip.approved, .chip.published { color: var(--ok); } .chip.failed { color: var(--accent); } .chip.scheduled { color: var(--warn); }
+  textarea { width: 100%; min-height: 110px; margin-top: 8px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  button.b { border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 8px 14px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.b.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  button.b:disabled { opacity: .5; cursor: default; }
+  h2 { font-size: 15px; margin: 22px 0 10px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  video { width: 100%; max-height: 70vh; border-radius: 8px; margin-top: 10px; background: #000; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; white-space: normal; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .stat b { display: block; font-size: 22px; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; }
+  input[type=password], input[type=text] { width: 100%; padding: 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
+  a { color: var(--accent); }
+  .toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 99px; font-weight: 600; display: none; z-index: 10; }
+  .msg { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><h1>Find Great <span>Architecture</span></h1><small id="updated"></small></div>
+  <nav>
+    <button data-tab="queue" class="on">Queue</button>
+    <button data-tab="analytics">Analytics</button>
+    <button data-tab="inbox">Inbox</button>
+    <button data-tab="settings">Settings</button>
+  </nav>
+</header>
+<main id="app"><p class="muted">Loading…</p></main>
+<div class="toast" id="toast"></div>
+
+<script>
+const REPO = 'discoverarchitecture/ig-queue';
+const TZ = 'America/New_York';
+const store = {
+  get(k) { try { return localStorage.getItem(k) || ''; } catch { return ''; } },
+  set(k, v) { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch {} },
+};
+let S = { tab: 'queue', queue: null, decisions: null, decisionsSha: null, analytics: null, inbox: null, err: null };
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const toast = (t) => { const el = $('#toast'); el.textContent = t; el.style.display = 'block'; clearTimeout(toast.t); toast.t = setTimeout(() => (el.style.display = 'none'), 2600); };
+const fmt = (iso, tz) => new Date(iso).toLocaleString('en-US', { timeZone: tz, weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+const slotLabel = (iso) => `${fmt(iso, TZ)} ET · ${new Date(iso).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit' })} IST`;
+const b64ToBytes = (b64) => Uint8Array.from(atob(b64.replace(/\s/g, '')), (c) => c.charCodeAt(0));
+const utf8FromB64 = (b64) => new TextDecoder().decode(b64ToBytes(b64));
+const b64FromUtf8 = (s) => { const bytes = new TextEncoder().encode(s); let bin = ''; for (const b of bytes) bin += String.fromCharCode(b); return btoa(bin); };
+
+async function api(path, opts = {}) {
+  const pat = store.get('fga_pat');
+  const res = await fetch(`https://api.github.com/repos/${REPO}/${path}`, {
+    ...opts,
+    cache: 'no-store',
+    headers: { Accept: 'application/vnd.github+json', ...(pat ? { Authorization: `Bearer ${pat}` } : {}), ...(opts.headers || {}) },
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub ${res.status}: ${(await res.json().catch(() => ({}))).message || ''}`);
+  return res.json();
+}
+async function getFile(path) {
+  const r = await api(`contents/${path}?ref=main&t=${Date.now()}`);
+  return r ? { text: utf8FromB64(r.content), sha: r.sha } : null;
+}
+async function decryptText(b64) {
+  const keyB64 = store.get('fga_key');
+  if (!keyB64) return null;
+  const key = await crypto.subtle.importKey('raw', b64ToBytes(keyB64), 'AES-GCM', false, ['decrypt']);
+  const buf = b64ToBytes(b64.trim());
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, key, buf.slice(12));
+  return new TextDecoder().decode(pt);
+}
+
+async function load() {
+  S.err = null;
+  try {
+    const [q, d] = await Promise.all([getFile('state/queue.json'), getFile('state/decisions.json')]);
+    S.queue = JSON.parse(q.text);
+    S.decisions = d ? JSON.parse(d.text) : { posts: {} };
+    S.decisionsSha = d?.sha;
+    for (const [name, file] of [['analytics', 'data/analytics.enc'], ['inbox', 'data/inbox.enc']]) {
+      try { const f = await getFile(file); S[name] = f ? JSON.parse(await decryptText(f.text)) : null; }
+      catch (e) { S[name] = { _error: store.get('fga_key') ? 'Could not decrypt — check the data key in Settings.' : null }; }
+    }
+  } catch (e) { S.err = e.message; }
+  const last = S.queue?.last || {};
+  $('#updated').textContent = last.inbox ? `synced ${new Date(last.inbox).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}` : '';
+  render();
+}
+
+async function decide(updates, label) {
+  if (!store.get('fga_pat')) { toast('Add your GitHub token in Settings first'); S.tab = 'settings'; render(); return; }
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const cur = await getFile('state/decisions.json');
+      const doc = cur ? JSON.parse(cur.text) : { posts: {} };
+      Object.assign(doc.posts, updates);
+      await api('contents/state/decisions.json', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: `dashboard: ${label}`, content: b64FromUtf8(JSON.stringify(doc, null, 2) + '\n'), sha: cur?.sha, branch: 'main' }),
+      });
+      S.decisions = doc;
+      toast(`${label} — takes effect within 30 min`);
+      render();
+      return;
+    } catch (e) { if (attempt === 2) toast(e.message); }
+  }
+}
+
+function decisionFor(id) { return S.decisions?.posts?.[id]; }
+
+function postCard(id, p, batchId) {
+  const d = decisionFor(id);
+  const pendingDecision = d && d.batch === batchId && p.status === 'scheduled';
+  const status = pendingDecision ? `${d.decision === 'approve' ? 'approved' : 'skipped'} (syncing)` : p.status;
+  const cover = p.hasCover ? `m/${encodeURIComponent(id)}/cover.jpg` : '';
+  const editable = ['scheduled', 'approved'].includes(p.status);
+  const caption = d?.caption && d.batch === batchId ? d.caption : (p.captionOverride ?? p.caption ?? '');
+  return `<div class="card" data-id="${esc(id)}">
+    <div class="row">
+      <div class="thumb" style="${cover ? `background-image:url('${cover}')` : ''}"></div>
+      <div class="grow">
+        <div><b>${esc(id)}</b></div>
+        <div class="muted">${p.slot ? esc(slotLabel(p.slot)) : ''}</div>
+        <div style="margin-top:6px"><span class="chip ${esc(p.status)}">${esc(status)}</span>
+          ${p.permalink ? ` <a href="${esc(p.permalink)}" target="_blank" rel="noopener">View on Instagram ↗</a>` : ''}</div>
+        ${p.error ? `<div class="muted" style="color:var(--accent)">${esc(p.error)}</div>` : ''}
+      </div>
+    </div>
+    ${editable ? `<textarea data-cap="${esc(id)}">${esc(caption)}</textarea>
+    <div class="btns">
+      <button class="b primary" data-act="approve">Approve</button>
+      <button class="b" data-act="skip">Skip</button>
+      <button class="b" data-act="play">▶ Preview</button>
+    </div><div class="player"></div>` : `<details style="margin-top:8px"><summary class="muted">Caption</summary><div class="msg muted">${esc(caption)}</div></details>`}
+  </div>`;
+}
+
+function renderQueue() {
+  const Q = S.queue;
+  if (!Q) return '';
+  const nowMs = Date.now();
+  const batches = [...Q.batches].reverse().filter((b) => b.slots.some((s) => s.post && Q.posts[s.post] && (Q.posts[s.post].status !== 'published' || nowMs - Date.parse(s.at) < 2 * 864e5)));
+  let html = '';
+  if (!batches.length) html += `<div class="card muted">No active batch. A new batch is planned every 3 days at 18:00 IST from the posts in your queue folder.</div>`;
+  for (const b of batches) {
+    const ids = b.slots.filter((s) => s.post && Q.posts[s.post]).map((s) => s.post);
+    const undecided = ids.filter((id) => Q.posts[id].status === 'scheduled' && !(decisionFor(id)?.batch === b.id));
+    html += `<h2><span>Batch ${esc(b.id)} <span class="muted">· ${ids.length} post(s)</span></span>
+      ${undecided.length ? `<button class="b primary" data-approve-all="${esc(b.id)}">Approve all ${undecided.length}</button>` : ''}</h2>`;
+    for (const id of ids) html += postCard(id, Q.posts[id], b.id);
+    const empty = b.slots.filter((s) => !s.post).length;
+    if (empty) html += `<p class="muted">${empty} empty slot(s) in this batch.</p>`;
+  }
+  const pool = Q.pool || [];
+  html += `<h2><span>Up next <span class="muted">· ${pool.length} in queue</span></span></h2>`;
+  html += pool.length ? pool.map((id) => {
+    const p = Q.posts[id] || {};
+    return `<div class="card row"><div class="thumb" style="width:48px;${p.hasCover ? `background-image:url('m/${encodeURIComponent(id)}/cover.jpg')` : ''}"></div>
+      <div class="grow"><b>${esc(id)}</b><div class="muted">${esc((p.caption || '').slice(0, 120))}</div></div></div>`;
+  }).join('') : `<div class="card muted">Queue is empty. Drop folders into <code>~/FindGreatArchitecture/queue/</code>.</div>`;
+  const pub = Object.entries(Q.posts).filter(([, p]) => p.status === 'published').sort((a, b) => Date.parse(b[1].publishedAt) - Date.parse(a[1].publishedAt)).slice(0, 10);
+  if (pub.length) html += `<h2>Recently published</h2>` + pub.map(([id, p]) =>
+    `<div class="card"><b>${esc(id)}</b> <span class="muted">· ${esc(fmt(p.publishedAt, TZ))} ET</span> · <a href="${esc(p.permalink)}" target="_blank" rel="noopener">open ↗</a></div>`).join('');
+  return html;
+}
+
+function renderAnalytics() {
+  const A = S.analytics;
+  if (!store.get('fga_key')) return `<div class="card muted">Add the data key in Settings to see analytics.</div>`;
+  if (!A || A._error) return `<div class="card muted">${esc(A?._error || 'No analytics yet — the first snapshot is taken within a day of setup.')}</div>`;
+  const snaps = A.snapshots || [];
+  const last = snaps.at(-1);
+  if (!last) return `<div class="card muted">No snapshots yet.</div>`;
+  const weekAgo = snaps.find((s) => Date.parse(s.date) >= Date.parse(last.date) - 7 * 864e5) || snaps[0];
+  const recent = last.media.filter((m) => Date.parse(m.timestamp) >= Date.now() - 7 * 864e5);
+  const sum = (rows, k) => rows.reduce((a, m) => a + (Number(m.metrics?.[k]) || 0), 0);
+  const followersDelta = last.followers - (weekAgo?.followers ?? last.followers);
+  const stat = (label, v, sub = '') => `<div class="card stat"><span class="muted">${label}</span><b>${esc(v)}</b><span class="muted">${sub}</span></div>`;
+  let html = `<h2>Last 7 days <span class="muted">snapshot ${esc(last.date)}</span></h2><div class="stats">
+    ${stat('Followers', last.followers ?? '—', `${followersDelta >= 0 ? '+' : ''}${followersDelta} this week`)}
+    ${stat('Posts', recent.length, 'published this week')}
+    ${stat('Views', sum(recent, 'views').toLocaleString(), 'on this week’s posts')}
+    ${stat('Reach', sum(recent, 'reach').toLocaleString())}
+    ${stat('Saves', sum(recent, 'saved').toLocaleString())}
+    ${stat('Shares', sum(recent, 'shares').toLocaleString())}
+  </div>`;
+  const rows = [...last.media].sort((a, b) => (b.metrics?.views || 0) - (a.metrics?.views || 0));
+  html += `<h2>All recent posts</h2><div class="card" style="overflow-x:auto"><table>
+    <tr><th>Post</th><th>Views</th><th>Reach</th><th>Likes</th><th>Cmts</th><th>Saves</th><th>Shares</th><th>Avg watch</th></tr>
+    ${rows.map((m) => `<tr><td><a href="${esc(m.permalink)}" target="_blank" rel="noopener">${esc(new Date(m.timestamp).toLocaleDateString())}</a> <span class="muted">${esc(m.caption.slice(0, 40))}</span></td>
+      ${['views', 'reach', 'likes', 'comments', 'saved', 'shares'].map((k) => `<td>${m.metrics?.[k] ?? '—'}</td>`).join('')}
+      <td>${m.metrics?.ig_reels_avg_watch_time ? (m.metrics.ig_reels_avg_watch_time / 1000).toFixed(1) + 's' : '—'}</td></tr>`).join('')}
+  </table></div>`;
+  return html;
+}
+
+function renderInbox() {
+  const I = S.inbox;
+  if (!store.get('fga_key')) return `<div class="card muted">Add the data key in Settings to see comments and DMs.</div>`;
+  if (!I || I._error) return `<div class="card muted">${esc(I?._error || 'Inbox not synced yet.')}</div>`;
+  let html = `<p class="muted">Synced ${esc(new Date(I.updated).toLocaleString())}. Reply in the Instagram app — links open the right place.</p>`;
+  html += `<h2>Comments</h2>`;
+  const threads = (I.comments || []).filter((t) => t.items.length);
+  html += threads.length ? threads.map((t) => `<div class="card"><div class="muted">On <a href="${esc(t.media.permalink)}" target="_blank" rel="noopener">${esc(t.media.caption || 'post')} ↗</a></div>
+    ${t.items.map((c) => `<div style="margin-top:10px"><b>@${esc(c.username)}</b> <span class="muted">${esc(new Date(c.timestamp).toLocaleString())}</span><div class="msg">${esc(c.text)}</div>
+      ${(c.replies?.data || []).map((r) => `<div style="margin:6px 0 0 14px"><b>@${esc(r.username)}</b> <span class="msg">${esc(r.text)}</span></div>`).join('')}</div>`).join('')}</div>`).join('')
+    : `<div class="card muted">No comments yet.</div>`;
+  html += `<h2><span>Direct messages</span><a class="muted" href="https://www.instagram.com/direct/inbox/" target="_blank" rel="noopener">Open DMs ↗</a></h2>`;
+  const convs = I.conversations || [];
+  html += convs.length ? convs.map((c) => {
+    const msgs = (c.messages?.data || []).slice().reverse();
+    const who = (c.participants?.data || []).map((p) => p.username).filter((u) => u && u !== 'findgreatarchitecture').join(', ');
+    return `<div class="card"><b>${esc(who || 'Conversation')}</b> <span class="muted">${esc(new Date(c.updated_time).toLocaleString())}</span>
+      ${msgs.map((m) => `<div style="margin-top:6px"><span class="muted">${esc(m.from?.username || '')}:</span> <span class="msg">${esc(m.message || '(attachment)')}</span></div>`).join('')}</div>`;
+  }).join('') : `<div class="card muted">No conversations returned.</div>`;
+  if (I.errors?.length) html += `<details class="card"><summary class="muted">${I.errors.length} sync warning(s)</summary><div class="msg muted">${esc(I.errors.join('\n'))}</div></details>`;
+  return html;
+}
+
+function renderSettings() {
+  return `<div class="card">
+    <p class="muted">Both values stay in this browser only (local storage) and are never sent anywhere except GitHub (token) or used locally (key).</p>
+    <label for="pat">GitHub token <span class="muted">(fine-grained, ig-queue repo, Contents: read &amp; write)</span></label>
+    <input id="pat" type="password" autocomplete="off" value="${esc(store.get('fga_pat'))}">
+    <label for="key">Data key <span class="muted">(decrypts analytics + inbox)</span></label>
+    <input id="key" type="password" autocomplete="off" value="${esc(store.get('fga_key'))}">
+    <div class="btns"><button class="b primary" id="save">Save</button><button class="b" id="clear">Forget on this device</button></div>
+  </div>
+  <div class="card muted">Batches are planned every 3 days at 18:00 IST. Posts go out at 12:00 and 19:00 US Eastern once approved. Anything unapproved at its slot goes back to the queue.</div>`;
+}
+
+function render() {
+  document.querySelectorAll('nav button').forEach((b) => b.classList.toggle('on', b.dataset.tab === S.tab));
+  const views = { queue: renderQueue, analytics: renderAnalytics, inbox: renderInbox, settings: renderSettings };
+  $('#app').innerHTML = (S.err ? `<div class="card" style="color:var(--accent)">${esc(S.err)}</div>` : '') + views[S.tab]();
+}
+
+document.querySelector('nav').addEventListener('click', (e) => {
+  const t = e.target.closest('button')?.dataset.tab;
+  if (t) { S.tab = t; render(); }
+});
+$('#app').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button');
+  if (!btn) return;
+  if (btn.id === 'save') { store.set('fga_pat', $('#pat').value.trim()); store.set('fga_key', $('#key').value.trim()); toast('Saved'); load(); return; }
+  if (btn.id === 'clear') { store.set('fga_pat', ''); store.set('fga_key', ''); toast('Forgotten'); render(); return; }
+  if (btn.dataset.approveAll) {
+    const b = S.queue.batches.find((x) => x.id === btn.dataset.approveAll);
+    const at = new Date().toISOString(), updates = {};
+    for (const s of b.slots) if (s.post && S.queue.posts[s.post]?.status === 'scheduled') {
+      const ta = document.querySelector(`textarea[data-cap="${CSS.escape(s.post)}"]`);
+      updates[s.post] = { decision: 'approve', batch: b.id, caption: ta ? ta.value : undefined, at };
+    }
+    btn.disabled = true;
+    await decide(updates, `approve batch ${b.id}`);
+    return;
+  }
+  const card = btn.closest('.card[data-id]');
+  if (!card) return;
+  const id = card.dataset.id, p = S.queue.posts[id];
+  if (btn.dataset.act === 'play') {
+    const box = card.querySelector('.player');
+    box.innerHTML = box.innerHTML ? '' : `<video src="m/${encodeURIComponent(id)}/reel.mp4" controls playsinline autoplay></video>`;
+    return;
+  }
+  const caption = card.querySelector('textarea')?.value;
+  btn.disabled = true;
+  await decide({ [id]: { decision: btn.dataset.act, batch: p.batch, caption, at: new Date().toISOString() } }, `${btn.dataset.act} ${id}`);
+});
+
+load();
+setInterval(() => { if (document.visibilityState === 'visible' && S.tab !== 'settings') load(); }, 120000);
+</script>
+</body>
+</html>
