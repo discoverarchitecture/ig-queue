@@ -113,6 +113,41 @@ function applyDecisions() {
   }
 }
 
+// ---- 2b. Approve by commenting on the notifications issue (GitHub app) -----
+// Only comments by CONFIG.githubUser count. One command per line:
+//   approve            → approve every undecided post in open batches
+//   approve <post-id>  → approve one post
+//   skip <post-id>     → send one post back to the queue
+async function applyCommentCommands() {
+  if (!Q.meta.notifyIssue) return;
+  const since = Q.meta.lastCommentAt || '1970-01-01T00:00:00Z';
+  const comments = await gh('GET', `/repos/${CONFIG.repo}/issues/${Q.meta.notifyIssue}/comments?since=${since}&per_page=100`) || [];
+  for (const c of comments) {
+    if (c.created_at <= since && c.id <= (Q.meta.lastCommentId || 0)) continue;
+    Q.meta.lastCommentAt = c.created_at;
+    Q.meta.lastCommentId = c.id;
+    if (c.user?.login !== CONFIG.githubUser) continue;
+    const done = [];
+    for (const line of c.body.split('\n').map((l) => l.trim().toLowerCase())) {
+      const m = line.match(/^(approve|skip)(?:\s+(\S+))?$/);
+      if (!m) continue;
+      const [, verb, id] = m;
+      const targets = id
+        ? [id].filter((x) => ['scheduled', 'approved'].includes(Q.posts[x]?.status))
+        : verb === 'approve' ? Object.keys(Q.posts).filter((x) => Q.posts[x].status === 'scheduled') : [];
+      for (const x of targets) {
+        if (verb === 'approve') { Q.posts[x].status = 'approved'; Q.posts[x].decidedAt = c.created_at; }
+        else unslot(x, 'skipped');
+        done.push(`${verb === 'approve' ? '✅' : '⏭️'} ${x}`);
+      }
+    }
+    if (done.length) {
+      log('comment commands:', done.join(', '));
+      await gh('POST', `/repos/${CONFIG.repo}/issues/comments/${c.id}/reactions`, { content: '+1' });
+    }
+  }
+}
+
 // ---- 3. Plan a batch every `batchDays`, anchored to CONFIG.anchor ----------
 async function planBatch() {
   const period = CONFIG.batchDays * DAY;
@@ -141,8 +176,14 @@ async function planBatch() {
   const filled = slots.filter((s) => s.post);
   persist(`plan batch ${batch.id}`);
   if (!filled.length) await notify(`Batch **${batch.id}** has no posts — the queue is empty. Add reels to \`~/FindGreatArchitecture/queue/\`.`);
-  else await notify(`New batch **${batch.id}** is ready: ${filled.length} post(s), first at ${fmtSlot(filled[0].at)}. Approve it on the dashboard.` +
-    (filled.length < slots.length ? ` (${slots.length - filled.length} empty slot(s) — the queue is running low.)` : ''));
+  else await notify(`New batch **${batch.id}** is ready — ${filled.length} post(s):\n\n` +
+    filled.map((s) => {
+      const p = Q.posts[s.post];
+      const cover = p.hasCover ? ` · [cover](${CONFIG.siteBase}/m/${encodeURIComponent(s.post)}/cover.jpg)` : '';
+      return `- \`${s.post}\` — ${fmtSlot(s.at)} · [video](${CONFIG.siteBase}/m/${encodeURIComponent(s.post)}/reel.mp4)${cover}\n  > ${(p.caption || '').split('\n')[0].slice(0, 120)}`;
+    }).join('\n') +
+    (filled.length < slots.length ? `\n\n${slots.length - filled.length} empty slot(s) — the queue is running low.` : '') +
+    `\n\n**Reply \`approve\` to approve all**, or \`approve <id>\` / \`skip <id>\` (one per line).`);
 }
 
 // ---- 4. Missed slots + reminders ----------------------------------------
@@ -159,7 +200,7 @@ async function remindersAndMisses() {
     if (waiting.length && !b.remindedAt && now - Date.parse(b.created) > CONFIG.remindAfterHours * HOUR) {
       b.remindedAt = now.toISOString();
       persist(`remind ${b.id}`);
-      await notify(`⏰ Reminder: ${waiting.length} post(s) in batch **${b.id}** still need approval. The next one is due ${fmtSlot(waiting[0].at)}.`);
+      await notify(`⏰ Reminder: ${waiting.length} post(s) in batch **${b.id}** still need approval. The next one is due ${fmtSlot(waiting[0].at)}. Reply \`approve\` to approve all.`);
     }
   }
 }
@@ -320,6 +361,7 @@ async function main() {
 
   await refreshPool();
   applyDecisions();
+  try { await applyCommentCommands(); } catch (e) { log('comment commands', e.message); }
   persist('sync pool + decisions');
   await planBatch();
   await remindersAndMisses();
