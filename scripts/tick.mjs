@@ -210,6 +210,28 @@ async function planBatch() {
     `\n\n**Reply \`approve\` to approve all**, or \`approve <id>\` / \`skip <id>\` (one per line).`);
 }
 
+// ---- 3b. Backfill: new reels fill a planned batch's empty future slots ----
+async function backfill() {
+  const pool = () => Object.keys(Q.posts).filter((id) => Q.posts[id].status === 'pending').sort();
+  const added = [];
+  for (const b of Q.batches) for (const s of b.slots) {
+    if (s.post || Date.parse(s.at) - now < 3 * HOUR) continue;
+    const id = nextByPillar(pool());
+    if (!id) break;
+    s.post = id; delete s.note;
+    Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
+    Object.assign(Q.posts[id], { status: 'scheduled', batch: b.id, slot: s.at });
+    added.push(s);
+  }
+  if (!added.length) return;
+  Q.pool = pool(); deploy = true;
+  persist(`backfill ${added.length} slot(s)`);
+  await notify(`${added.length} new reel(s) added to open slots:\n\n` + added.map((s) => {
+    const p = Q.posts[s.post];
+    return `- \`${s.post}\` — ${fmtSlot(s.at)} · [video](https://raw.githubusercontent.com/${CONFIG.repo}/media/${encodeURIComponent(s.post)}/reel.mp4)\n  > ${(p.caption || '').split('\n')[0].slice(0, 120)}`;
+  }).join('\n') + `\n\n**Reply \`approve\` to approve all**, or \`approve <id>\` / \`skip <id>\` (one per line).`);
+}
+
 // ---- 4. Missed slots + reminders ----------------------------------------
 async function remindersAndMisses() {
   for (const b of Q.batches) {
@@ -392,6 +414,7 @@ async function main() {
   try { await applyCommentCommands(); } catch (e) { log('comment commands', e.message); }
   persist('sync pool + decisions');
   await planBatch();
+  await backfill();
   await remindersAndMisses();
   await publishDue(ig);
 
