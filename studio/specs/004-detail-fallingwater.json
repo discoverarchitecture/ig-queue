@@ -1,0 +1,15 @@
+{
+  "id": "004-detail-fallingwater",
+  "pillar": "detail",
+  "voice": "af_heart",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "photo", "b": "fallingwater", "i": 0, "fill": true, "title": "This house sits on a waterfall", "accent": ["WATERFALL"], "label": false, "vo": "This house sits on a waterfall.", "dur": 2.8 },
+    { "type": "photo", "b": "fallingwater", "i": 1, "move": "out", "vo": "The owners asked for a view of their waterfall. Frank Lloyd Wright put the house right on top of it." },
+    { "type": "photo", "b": "fallingwater", "i": 5, "move": "left", "label": { "name": "The cantilever", "meta": "Terraces held up at one end only" }, "vo": "Those concrete terraces stretch out over the water, held up at one end only. That's a cantilever." },
+    { "type": "photo", "b": "fallingwater", "i": 3, "label": { "name": "Inside", "meta": "Stone floors, the stream below" }, "vo": "Inside, you can hear the falls from every room." },
+    { "type": "site", "clip": "idea", "args": { "idea": "Cantilever" }, "fromMark": "idea", "lead": 0.5, "dur": 4.8, "title": "149 cantilevers", "accent": ["149"], "vo": "Find a hundred and forty-nine more buildings that shouldn't stand up." },
+    { "type": "end", "line": "149 cantilevers", "accent": ["149"], "dur": 3.0 }
+  ],
+  "caption": "They asked for a view of the waterfall. Frank Lloyd Wright built the house on top of it.\n\nFallingwater (1939): concrete terraces cantilevered over the falls, so the building and the stream become one thing.\n\nSee it + 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\n#architecture #fallingwater #franklloydwright #pennsylvania #designinspiration"
+}

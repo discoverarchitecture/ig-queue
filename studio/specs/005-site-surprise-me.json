@@ -1,0 +1,12 @@
+{
+  "id": "005-site-surprise-me",
+  "pillar": "site",
+  "music": "pulse",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "site", "clip": "surprise", "args": { "ids": ["lotus-temple", "habitat-67", "sydney-opera-house"] }, "clipStart": 0, "dur": 3.6, "title": "I let a button pick my next trip", "accent": ["BUTTON"] },
+    { "type": "site", "clip": "surprise", "args": { "ids": ["lotus-temple", "habitat-67", "sydney-opera-house"] }, "clipStart": 3.6 },
+    { "type": "end", "line": "Try “Surprise me” yourself", "accent": ["SURPRISE", "ME"], "dur": 2.8 }
+  ],
+  "caption": "I let one button plan my next architecture trip. 🎲\n\n\"Surprise me\" opens a random building from 2,600+ — photos, the big idea, and links to drawings.\n\nTry it yourself → link in bio\nComment what it gave you 👇\n\n#architecture #travel #designinspiration #architecturelovers #wanderlust"
+}

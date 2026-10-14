@@ -1,0 +1,13 @@
+{
+  "id": "009-site-guess-the-building",
+  "pillar": "site",
+  "music": "pulse",
+  "coverAt": 1.0,
+  "scenes": [
+    { "type": "guess", "b": "solomon-r-guggenheim-museum", "i": 0, "fill": true, "zoom": 3.2, "x": 48, "y": 46, "reveal": 4.2, "dur": 6.0, "title": "Name this building", "accent": ["NAME"], "kicker": "Round 1 · 3 seconds" },
+    { "type": "guess", "b": "sydney-opera-house", "i": 6, "fill": true, "zoom": 2.6, "x": 50, "y": 50, "reveal": 3.6, "dur": 5.4, "title": "Too easy? This one.", "accent": ["THIS"], "kicker": "Round 2", "flash": true },
+    { "type": "site", "clip": "play", "args": { "url": "https://findgreatarchitecture.com/play/" }, "fromMark": "begin", "lead": 0.6, "title": "A new five every day", "accent": ["FIVE"] },
+    { "type": "end", "line": "Play today’s five", "accent": ["FIVE"], "cta": "Play → link in bio", "dur": 2.8 }
+  ],
+  "caption": "Name this building in 3 seconds. ⏱️\n\nOur \"Guess the building\" game has a Daily five — same five buildings for everyone, new every day. No sign-up.\n\nPlay today's five → link in bio\nDrop your score below 👇\n\n#architecture #guessthebuilding #quiz #architecturestudent #designinspiration"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "fga-studio",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "kokoro-js": "1.2.1",
+    "playwright-core": "1.55.0"
+  }
+}

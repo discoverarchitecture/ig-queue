@@ -1,0 +1,193 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700..900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=block" rel="stylesheet">
+<style>
+/* Site tokens (findgreatarchitecture.com styles.css) */
+:root { --red:#DA3A26; --ink:#111110; --paper:#F7F7F5; --stage:#1B1B1A; --hair:#E6E4DF; --graphite:#5D5C57;
+  --display:'Big Shoulders Display',sans-serif; --sans:'Barlow',sans-serif; --cond:'Barlow Condensed',sans-serif; }
+* { box-sizing:border-box; margin:0; }
+html,body { width:1080px; height:1920px; overflow:hidden; background:var(--stage); -webkit-font-smoothing:antialiased; }
+.sc { position:absolute; inset:0; overflow:hidden; visibility:hidden; }
+.sc.on { visibility:visible; }
+.bg { position:absolute; inset:-60px; background-size:cover; background-position:center; filter:blur(38px) brightness(.55) saturate(1.1); }
+.ph { position:absolute; left:0; top:0; width:1080px; height:1920px; object-fit:cover; transform-origin:50% 50%; will-change:transform; }
+.card .ph { height:auto; top:50%; }
+.shade { position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.55) 0, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 56%, rgba(0,0,0,.6) 100%); }
+/* Safe zone: nothing important above 220px or below 1500px (Instagram UI). */
+.title { position:absolute; left:64px; right:64px; top:236px; font:900 132px/.86 var(--display); text-transform:uppercase; color:#fff;
+  letter-spacing:-.005em; text-shadow:0 6px 40px rgba(0,0,0,.35); }
+.title .w { display:inline-block; }
+.title .accent { color:var(--red); }
+.title.dark { color:var(--ink); text-shadow:none; }
+.kicker { position:absolute; left:64px; top:200px; font:600 34px var(--cond); letter-spacing:.14em; text-transform:uppercase; color:#fff; opacity:.9; }
+.label { position:absolute; left:48px; bottom:440px; max-width:984px; background:var(--paper); border-radius:24px; padding:22px 32px 24px; }
+.label .nm { font:800 64px/.95 var(--display); text-transform:uppercase; color:var(--ink); }
+.label .meta { font:600 32px/1.2 var(--cond); color:var(--graphite); margin-top:8px; letter-spacing:.02em; }
+.label .meta b { color:var(--red); font-weight:700; }
+.credit { position:absolute; left:52px; bottom:400px; font:500 22px var(--cond); color:rgba(255,255,255,.85); letter-spacing:.03em; text-shadow:0 1px 6px rgba(0,0,0,.5); }
+.num { position:absolute; right:56px; top:236px; height:84px; min-width:84px; padding:0 22px; border-radius:42px; background:var(--red); color:#fff;
+  display:flex; align-items:center; justify-content:center; font:800 52px var(--display); }
+.pill { position:absolute; left:50%; top:250px; transform:translateX(-50%); white-space:nowrap; background:var(--ink); color:#fff;
+  border-radius:24px; padding:18px 34px 20px; font:900 72px/.95 var(--display); text-transform:uppercase; box-shadow:0 12px 40px rgba(0,0,0,.25); }
+.pill .accent { color:var(--red); }
+video { position:absolute; inset:0; width:1080px; height:1920px; object-fit:cover; background:#fff; }
+/* guess */
+.cd { position:absolute; left:50%; top:1010px; width:220px; height:220px; margin-left:-110px; border-radius:50%; background:var(--red); color:#fff;
+  display:flex; align-items:center; justify-content:center; font:900 150px var(--display); box-shadow:0 18px 60px rgba(0,0,0,.35); }
+.q { position:absolute; left:50%; top:1010px; width:220px; height:220px; margin-left:-110px; border-radius:50%; background:var(--paper); color:var(--ink);
+  display:flex; align-items:center; justify-content:center; font:900 170px var(--display); }
+/* end card */
+.end { background:var(--paper); }
+.end .mark { position:absolute; left:64px; top:300px; font:900 150px/.84 var(--display); text-transform:uppercase; color:var(--ink); letter-spacing:-.01em; }
+.end .mark span { display:block; }
+.end .mark .accent { color:var(--red); }
+.end .line { position:absolute; left:64px; right:64px; top:700px; font:800 84px/.95 var(--display); text-transform:uppercase; color:var(--ink); }
+.end .rule { position:absolute; left:64px; top:660px; height:8px; background:var(--red); }
+.end .url { position:absolute; left:64px; top:940px; font:600 46px var(--sans); color:var(--ink); }
+.end .btn { position:absolute; left:64px; top:1040px; height:120px; padding:0 52px; border-radius:28px; background:var(--red); color:#fff;
+  display:flex; align-items:center; font:700 54px var(--sans); }
+.end .handle { position:absolute; left:64px; top:1210px; font:600 40px var(--cond); color:var(--graphite); letter-spacing:.04em; }
+/* captions (voiced reels) */
+#cap { position:absolute; left:60px; right:60px; top:1180px; display:flex; justify-content:center; pointer-events:none; }
+#cap span { background:rgba(17,17,16,.86); color:#fff; font:700 54px/1.18 var(--sans); padding:14px 26px 16px; border-radius:20px; text-align:center;
+  box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+#cap span em { font-style:normal; color:#FF7A66; }
+#flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
+</style></head>
+<body>
+<div id="root"></div>
+<div id="cap"></div>
+<div id="flash"></div>
+<div aria-hidden="true" style="position:absolute;left:-9999px">
+  <span style="font:900 20px 'Big Shoulders Display'">Aa</span><span style="font:800 20px 'Big Shoulders Display'">Aa</span>
+  <span style="font:700 20px Barlow">Aa</span><span style="font:600 20px Barlow">Aa</span><span style="font:600 20px 'Barlow Condensed'">Aa</span>
+  <span style="font:500 20px 'Barlow Condensed'">Aa</span></div>
+<script>
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const easeOut = (t) => 1 - Math.pow(1 - clamp(t), 3);
+const easeInOut = (t) => { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+/** Wrap each word; words listed in `accent` turn red. */
+const words = (text, accent = []) => esc(text).split(/\s+/).map((w) =>
+  `<span class="w${accent.some((a) => w.replace(/[^\p{L}\p{N}+,]/gu, '').toUpperCase() === a.toUpperCase()) ? ' accent' : ''}">${w}</span>`).join(' ');
+/** Rise-and-fade in from `delay` seconds into the scene. */
+function rise(el, local, delay = 0, dist = 50, dur = .38) {
+  if (!el) return;
+  const k = easeOut((local - delay) / dur);
+  el.style.opacity = k; el.style.transform = (el.dataset.base || '') + ` translateY(${(1 - k) * dist}px)`;
+}
+
+let SPEC, scenes = [];
+async function load(spec) {
+  SPEC = spec;
+  const root = document.getElementById('root');
+  root.innerHTML = '';
+  scenes = spec.scenes.map((s, i) => {
+    const el = document.createElement('section');
+    el.className = 'sc ' + s.type;
+    if (s.type === 'photo' || s.type === 'guess') {
+      el.innerHTML = `<div class="bg" style="background-image:url('${s.img}')"></div><img class="ph" src="${s.img}"><div class="shade"></div>` +
+        (s.kicker ? `<div class="kicker">${esc(s.kicker)}</div>` : '') +
+        (s.title ? `<div class="title">${words(s.title, s.accent)}</div>` : '') +
+        (s.num ? `<div class="num">${esc(s.num)}</div>` : '') +
+        (s.label ? `<div class="label"><div class="nm">${esc(s.label.name)}</div><div class="meta">${s.label.meta}</div></div>` : '') +
+        (s.credit ? `<div class="credit">Photo: ${esc(s.credit)}</div>` : '') +
+        (s.type === 'guess' ? `<div class="q">?</div><div class="cd"></div>` : '');
+    } else if (s.type === 'site') {
+      el.innerHTML = `<video src="${s.video}" muted playsinline preload="auto"></video>` + (s.title ? `<div class="pill">${words(s.title, s.accent)}</div>` : '');
+    } else if (s.type === 'end') {
+      el.innerHTML = `<div class="mark"><span>Find great</span><span class="accent">Architecture.</span></div><div class="rule"></div>
+        <div class="line">${words(s.line || '2,600+ buildings', s.accent)}</div><div class="url">findgreatarchitecture.com</div>
+        <div class="btn">${esc(s.cta || 'Link in bio')}</div><div class="handle">@findgreatarchitecture</div>`;
+    }
+    root.appendChild(el);
+    return { s, el };
+  });
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((im) => im.complete ? 0 : new Promise((r) => { im.onload = im.onerror = r; })));
+  await Promise.all([...document.querySelectorAll('video')].map((v) => v.readyState >= 2 ? 0 : new Promise((r) => { v.onloadeddata = r; v.onerror = r; })));
+  for (const { s, el } of scenes) {
+    const im = el.querySelector('.ph');
+    if (im && im.naturalWidth > im.naturalHeight * 0.8 && !s.fill) el.classList.add('card');
+    // Titles: keep clear of the counter badge and fit in two lines.
+    const t = el.querySelector('.title');
+    if (t) {
+      if (s.num) t.style.right = '200px';
+      el.style.visibility = 'visible';
+      let size = 132;
+      while (t.getBoundingClientRect().height > size * 0.86 * 2 + 12 && size > 76) { size -= 6; t.style.fontSize = size + 'px'; }
+      el.style.visibility = '';
+    }
+  }
+  return true;
+}
+
+function renderPhoto({ s, el }, local) {
+  const p = clamp(local / s.dur);
+  const im = el.querySelector('.ph');
+  const card = el.classList.contains('card');
+  if (s.type === 'guess') {
+    // Zoomed on a detail until `reveal`, then pull back to the whole building.
+    const r = easeInOut((local - s.reveal) / 0.7);
+    const z = s.zoom + (1 - s.zoom) * r;
+    const fx = (50 - s.x) * (z - 1) * (1 - r), fy = (50 - s.y) * (z - 1) * (1 - r);
+    im.style.transform = (card ? 'translateY(-50%) ' : '') + `translate(${fx}%, ${fy}%) scale(${z * (1 + 0.04 * p)})`;
+    const cd = el.querySelector('.cd'), q = el.querySelector('.q');
+    const n = Math.ceil(s.reveal - local);
+    const inCd = local >= s.reveal - 3 && local < s.reveal;
+    cd.style.opacity = inCd ? 1 : 0; cd.textContent = inCd ? n : '';
+    cd.style.transform = inCd ? `scale(${1 + 0.25 * (1 - easeOut(((local - (s.reveal - 3)) % 1) / .25))})` : '';
+    q.style.opacity = local < s.reveal - 3 ? 1 : 0;
+    const lab = el.querySelector('.label');
+    if (lab) { lab.style.opacity = local >= s.reveal ? 1 : 0; if (local >= s.reveal) rise(lab, local, s.reveal + .15); }
+    const cr = el.querySelector('.credit'); if (cr) cr.style.opacity = local >= s.reveal ? 1 : 0;
+  } else {
+    const [a, b] = s.move === 'out' ? [1.14, 1.0] : [1.0, 1.12];
+    const z = a + (b - a) * easeInOut(p);
+    const pan = s.move === 'left' ? `translateX(${(0.5 - p) * 4}%)` : s.move === 'up' ? `translateY(${(0.5 - p) * 4}%)` : '';
+    im.style.transform = (card ? 'translateY(-50%) ' : '') + `${pan} scale(${z})`;
+    rise(el.querySelector('.label'), local, .25);
+    const cr = el.querySelector('.credit'); if (cr) cr.style.opacity = easeOut((local - .4) / .3);
+  }
+  const t = el.querySelector('.title');
+  if (t) [...t.querySelectorAll('.w')].forEach((w, i) => rise(w, local, 0.05 + i * 0.07, 70, .3));
+  rise(el.querySelector('.kicker'), local, 0);
+  const num = el.querySelector('.num'); if (num) { const k = easeOut(local / .25); num.style.opacity = k; num.style.transform = `scale(${0.6 + 0.4 * k})`; }
+}
+
+function renderEnd({ el }, local) {
+  el.querySelectorAll('.mark span').forEach((w, i) => rise(w, local, 0.05 + i * .12, 60));
+  el.querySelector('.rule').style.width = 952 * easeOut((local - .35) / .6) + 'px';
+  [...el.querySelector('.line').querySelectorAll('.w')].forEach((w, i) => rise(w, local, .45 + i * .06, 40, .3));
+  rise(el.querySelector('.url'), local, .8); rise(el.querySelector('.btn'), local, .95); rise(el.querySelector('.handle'), local, 1.1);
+  const btn = el.querySelector('.btn'); const pulse = local > 1.6 ? 1 + 0.03 * Math.sin((local - 1.6) * 5) : 1;
+  btn.style.transform += ` scale(${pulse})`;
+}
+
+async function renderSite({ s, el }, local) {
+  const v = el.querySelector('video');
+  const target = clamp((s.clipStart || 0) + local * (s.rate || 1), 0, Math.max(0, v.duration - 0.04));
+  if (Math.abs(v.currentTime - target) > 0.001) await new Promise((r) => { v.onseeked = r; v.currentTime = target; setTimeout(r, 1500); });
+  const pill = el.querySelector('.pill');
+  if (pill) { const k = easeOut((local - .2) / .35); pill.style.opacity = local < s.dur - .25 ? k : easeOut((s.dur - local) / .25); pill.style.transform = `translateX(-50%) translateY(${(1 - k) * 40}px)`; }
+}
+
+window.seek = async (t) => {
+  let active = scenes.findLast((x) => t >= x.s.start) || scenes[0];
+  for (const x of scenes) x.el.classList.toggle('on', x === active);
+  const local = t - active.s.start;
+  if (active.s.type === 'photo' || active.s.type === 'guess') renderPhoto(active, local);
+  else if (active.s.type === 'end') renderEnd(active, local);
+  else if (active.s.type === 'site') await renderSite(active, local);
+  // a 3-frame white flash on hard cuts flagged with `flash`
+  document.getElementById('flash').style.opacity = active.s.flash && local < 0.1 ? 0.55 * (1 - local / 0.1) : 0;
+  const cap = document.getElementById('cap');
+  const c = (SPEC.captions || []).find((c) => t >= c.t0 && t < c.t1);
+  cap.innerHTML = c ? `<span>${esc(c.text)}</span>` : '';
+  if (c) { const k = easeOut((t - c.t0) / .15); cap.style.opacity = k; cap.style.transform = `scale(${0.94 + 0.06 * k})`; }
+  return true;
+};
+window.load = load;
+</script>
+</body></html>

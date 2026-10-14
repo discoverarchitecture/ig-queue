@@ -1,0 +1,16 @@
+{
+  "id": "003-list-weirdest-homes",
+  "pillar": "list",
+  "music": "pulse",
+  "coverAt": 1.0,
+  "scenes": [
+    { "type": "photo", "b": "cube-houses", "i": 3, "fill": true, "title": "People actually live here", "accent": ["LIVE"], "num": "1/5", "dur": 2.8 },
+    { "type": "photo", "b": "habitat-67", "i": 3, "title": "354 stacked boxes", "accent": ["354"], "num": "2/5", "dur": 2.2, "flash": true },
+    { "type": "photo", "b": "hundertwasserhaus", "i": 4, "title": "No two floors are flat", "accent": ["FLAT"], "num": "3/5", "dur": 2.2, "flash": true },
+    { "type": "photo", "b": "bosco-verticale", "title": "900 trees on the balconies", "accent": ["900"], "num": "4/5", "dur": 2.2, "flash": true },
+    { "type": "photo", "b": "mirador", "i": 3, "title": "A hole in the middle. On purpose.", "accent": ["HOLE"], "num": "5/5", "dur": 2.4, "flash": true },
+    { "type": "site", "clip": "wall", "args": { "by": 2600, "ms": 4500 }, "dur": 3.0, "title": "2,600+ more", "accent": ["2,600+"] },
+    { "type": "end", "line": "Which one would you move into?", "accent": ["YOU"], "dur": 2.8 }
+  ],
+  "caption": "People actually live in these. 🏠\n\nTilted cubes in Rotterdam, 354 stacked boxes in Montréal, 900 trees on the balconies in Milan — which one would you move into?\n\nFind 2,600+ buildings like these → link in bio\n\n#architecture #weirdarchitecture #housing #designinspiration #architecturelovers"
+}
