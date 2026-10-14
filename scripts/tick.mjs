@@ -27,8 +27,12 @@ function persist(msg) {
   git('-c', 'user.name=fga-bot', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
     'commit', '-q', '-m', msg);
   for (let i = 0; i < 4; i++) {
-    try { git('pull', '--rebase', '-q'); git('push', '-q'); return; } catch (e) { log('push retry', e.message); }
+    try { git('pull', '--rebase', '-q'); git('push', '-q'); return; } catch (e) {
+      log('push retry', e.message.split('\n')[0]);
+      try { git('rebase', '--abort'); } catch { /* no rebase in progress */ }
+    }
   }
+  // Give up without publishing anything further; the next run starts from the remote state.
   throw new Error('could not push state');
 }
 
@@ -245,13 +249,17 @@ async function finishPublished(ig, id, mediaId) {
   await notify(`✅ Published **${id}**: ${info.permalink}`, false);
 }
 
+// Instagram fetches media straight from the media branch on raw.githubusercontent.com.
+// (Its video fetcher returns a bare ERROR for the same file served by GitHub Pages
+// on our custom domain; images from Pages work, videos don't.)
+const mediaUrl = (id, file) => `https://raw.githubusercontent.com/${CONFIG.repo}/media/${encodeURIComponent(id)}/${file}`;
+
 async function publish(ig, id) {
   const p = Q.posts[id];
-  const videoUrl = `${CONFIG.siteBase}/m/${encodeURIComponent(id)}/reel.mp4`;
+  const videoUrl = mediaUrl(id, 'reel.mp4');
   const head = await fetch(videoUrl, { method: 'HEAD' }).catch(() => null);
   if (!head?.ok) {
-    log(`video not live yet at ${videoUrl} (${head?.status}); redeploying site`);
-    deploy = true;
+    log(`video not reachable at ${videoUrl} (${head?.status}); will retry next run`);
     return;
   }
   p.status = 'publishing';
@@ -260,7 +268,7 @@ async function publish(ig, id) {
   persist(`publishing ${id} (attempt ${p.attempts})`);
   try {
     const params = { media_type: 'REELS', video_url: videoUrl, caption: p.captionOverride ?? p.caption, share_to_feed: 'true' };
-    if (p.hasCover) params.cover_url = `${CONFIG.siteBase}/m/${encodeURIComponent(id)}/cover.jpg`;
+    if (p.hasCover) params.cover_url = mediaUrl(id, 'cover.jpg');
     else params.thumb_offset = String(CONFIG.thumbOffsetMs);
     const c = await ig.post(`/${CONFIG.igUserId}/media`, params);
     p.container = c.id;
