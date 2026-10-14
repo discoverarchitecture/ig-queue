@@ -81,7 +81,9 @@ function syncMedia() {
     }
     if (!/^[\w.-]+$/.test(id)) { bad.push(`${id}: folder name may only use letters, numbers, - _ .`); continue; }
     const v = validate(id);
-    if (v.fresh) { log('still copying, skipping for now:', id); continue; }
+    // A folder still being written: skip this whole sync rather than push a
+    // branch without it (the scheduler would read that as "post removed").
+    if (v.fresh) { log('still copying, will sync next run:', id); return; }
     if (v.problems.length) { bad.push(`${id}: ${v.problems.join(', ')}`); continue; }
     keep.push(id);
   }
