@@ -23,6 +23,7 @@ const mgit = (...args) => execFileSync('git', [
   `--git-dir=${GIT_DIR}`, `--work-tree=${QUEUE}`,
   '-c', 'credential.helper=', '-c', `credential.helper=!${GH} auth git-credential`,
   '-c', 'user.name=fga-sync', '-c', 'user.email=fga-sync@users.noreply.github.com',
+  '-c', 'http.postBuffer=1048576000', // pushes of several reels exceed git's default HTTP buffer
   ...args,
 ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 
@@ -97,20 +98,38 @@ function syncMedia() {
     execFileSync('git', ['init', '-q', '--bare', GIT_DIR]);
     mgit('remote', 'add', 'origin', `https://github.com/${CONFIG.repo}.git`);
   }
-  fs.rmSync(path.join(GIT_DIR, 'index'), { force: true });
-  const files = selected.flatMap((id) => ['reel.mp4', 'caption.txt', 'cover.jpg']
-    .filter((f) => fs.existsSync(path.join(QUEUE, id, f))).map((f) => `${id}/${f}`));
-  if (files.length) mgit('add', '-f', '--', ...files);
-  const tree = mgit('write-tree');
-  let current = '';
-  try { current = mgit('rev-parse', 'refs/heads/media^{tree}'); } catch {}
-  if (tree === current) { log(`media branch up to date (${selected.length} post(s))`); return; }
+  const filesOf = (id) => ['reel.mp4', 'caption.txt', 'cover.jpg']
+    .filter((f) => fs.existsSync(path.join(QUEUE, id, f))).map((f) => `${id}/${f}`);
+  const treeOf = (ids) => {
+    fs.rmSync(path.join(GIT_DIR, 'index'), { force: true });
+    const files = ids.flatMap(filesOf);
+    if (files.length) mgit('add', '-f', '--', ...files);
+    return mgit('write-tree');
+  };
+  const current = () => { try { return mgit('rev-parse', 'refs/heads/media^{tree}'); } catch { return ''; } };
+  const finalTree = treeOf(selected);
+  if (finalTree === current()) { log(`media branch up to date (${selected.length} post(s))`); return; }
 
-  const commit = mgit('commit-tree', tree, '-m', `media sync: ${selected.length} post(s)`);
-  mgit('push', '-q', '-f', 'origin', `${commit}:refs/heads/media`);
-  mgit('update-ref', 'refs/heads/media', commit);
+  // Push in steps of one post: each push only uploads that post's new files,
+  // so a flaky connection never has to carry every reel in one request.
+  // The posts already on the branch stay in every step, so nothing disappears mid-way.
+  const onBranch = (() => { try { return mgit('ls-tree', '--name-only', 'refs/heads/media').split('\n').filter(Boolean); } catch { return []; } })();
+  const steps = [];
+  let acc = selected.filter((id) => onBranch.includes(id));
+  for (const id of selected.filter((x) => !onBranch.includes(x))) { acc = [...acc, id]; steps.push([...acc]); }
+  if (!steps.length || steps.at(-1).length !== selected.length) steps.push(selected);
+  for (const ids of steps) {
+    const tree = treeOf(ids);
+    if (tree === current()) continue;
+    const commit = mgit('commit-tree', tree, '-m', `media sync: ${ids.length} post(s)`);
+    for (let attempt = 1; ; attempt++) {
+      try { mgit('push', '-q', '-f', 'origin', `${commit}:refs/heads/media`); break; }
+      catch (e) { if (attempt >= 3) throw e; log(`push failed (attempt ${attempt}), retrying:`, e.message.split('\n')[0]); }
+    }
+    mgit('update-ref', 'refs/heads/media', commit);
+    log(`pushed media branch with ${ids.length} post(s)`);
+  }
   try { mgit('reflog', 'expire', '--expire=now', '--all'); mgit('gc', '-q', '--prune=now'); } catch {}
-  log(`pushed ${selected.length} post(s) to media branch`);
   try { execFileSync(GH, ['workflow', 'run', 'tick.yml', '-R', CONFIG.repo, '--ref', 'main'], { stdio: 'pipe' }); }
   catch (e) { log('could not trigger tick:', e.message.split('\n')[0]); }
   macNotify(`Synced ${selected.length} post(s) to the Instagram queue`);
