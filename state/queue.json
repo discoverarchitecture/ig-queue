@@ -52,7 +52,7 @@
   ],
   "posts": {
     "001-discovering-architecture-online": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Discovering architecture online got dumbed down. So we built this. 🧱\n\nWe're a few architects who kept hitting the same wall: Pinterest is beautiful but nameless, and most sites need you to know a building before you can find it.\n\nDiscover Architecture is one big wall of 1,600 buildings you wander instead of search.\n→ Shuffle it, or hit Surprise me\n→ Open any building for photos, key features and links to drawings and articles\n→ Filter by idea, type, movement, region and era\n\nFree. No sign-up. Every photo credited. Link in bio.\n\nWhich building should we add next? Tell us below 👇\nSend this to someone who loves buildings.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturelovers #architecturaldesign #designinspiration #buildings\n\nVoice: AI-generated (Kokoro). Photos: Wikimedia Commons. Pantheon – Thomas_Fuhrmann_Jakobsthal (CC BY-SA 4.0); Salk Institute – Jason Taellious (CC BY-SA 2.0); Sydney Opera House – Boyd159 (CC BY-SA 4.0); Fallingwater – lachrimae72 (CC0); Guggenheim Bilbao – Basotxerri (CC BY-SA 4.0); Barcelona Pavilion – Ashley Pomeroy at English Wikipedia (CC BY 3.0); Church of the Light – 荻野目さん (CC BY 2.0); Unité d'Habitation – vincent desjardins (CC BY 2.0); Teshima Art Museum – KimonBerlin (CC BY-SA 2.0); Kimbell Art Museum – Carol M. Highsmith (Public domain); Habitat 67 – Dllu (CC BY-SA 4.0); Villa Savoye – scarletgreen from Japan (CC BY 2.0); Alhambra – Holger Uwe Schmitt (CC BY-SA 4.0); Casa Luis Barragán – Francesco Bandarin (CC BY-SA 3.0 igo); Therme Vals – fcamusd (CC BY 2.0); Heydar Aliyev Center – Avisadehh (CC0); Louvre Abu Dhabi – Francesco Bini (CC BY-SA 4.0); Centre Pompidou – Chabe01 (CC BY-SA 4.0); SESC Pompéia – Clarissa Sá (CC BY-SA 4.0); IIM Ahmedabad – Students of IIMA (CC BY 3.0); Farnsworth House – Victor Grigas (CC BY-SA 3.0); Seagram Building – Ken OHYAMA from FUNABASHI, Japan (CC BY-SA 2.0); National Assembly of Bangladesh – Saiful Aopu & Nahid Sultan (CC BY-SA 3.0); Chand Baori – Daniel VILLAFRUELA (CC BY-SA 3.0). Photos in the screen recordings are credited on each building's page on the site.",
       "captionSha": "75f92ec0df6498b7e9598ffbef35a00a0b79ed1e",
@@ -61,7 +61,10 @@
       "decidedAt": "2026-10-14T13:39:18.929Z",
       "attempts": 2,
       "container": "18126629449744346",
-      "error": "container ERROR: ERROR"
+      "error": null,
+      "mediaId": "17994971081843696",
+      "permalink": "https://www.instagram.com/reel/DeenSvHgT3-/",
+      "publishedAt": "2026-10-14T14:37:59+0000"
     },
     "002-architect-tadao-ando": {
       "status": "scheduled",
