@@ -132,10 +132,18 @@ async function applyCommentCommands() {
     Q.meta.lastCommentId = c.id;
     if (c.user?.login !== CONFIG.githubUser) continue;
     const done = [];
-    for (const line of c.body.split('\n').map((l) => l.trim().toLowerCase())) {
-      const m = line.match(/^(approve|skip)(?:\s+(\S+))?$/);
-      if (!m) continue;
-      const [, verb, id] = m;
+    // Accept natural replies: "approve", "approved", "yes", "ok", "go", "lgtm", 👍, ✅ approve all;
+    // "skip <id>" / "no <id>" / "remove <id>" hold one back.
+    const YES = /^(approve[ds]?|approval|yes|yep|ok(ay)?|go( ahead)?|lgtm|looks good|good to go|post( them| all)?|👍|✅)$/u;
+    for (const raw of c.body.split('\n')) {
+      const line = raw.trim().toLowerCase().replace(/[.!,\s]+$/, '');
+      let verb, id;
+      const one = line.match(/^(approve[ds]?|yes|ok|skip|no|remove|hold)\s+`?([\w.-]+)`?$/);
+      if (one) { verb = /^(skip|no|remove|hold)$/.test(one[1]) ? 'skip' : 'approve'; id = one[2]; }
+      else if (YES.test(line)) verb = 'approve';
+      else continue;
+      // allow "approve 003" as shorthand for the post whose id starts with 003
+      if (id && !Q.posts[id]) id = Object.keys(Q.posts).find((k) => k.startsWith(id + '-')) || id;
       const targets = id
         ? [id].filter((x) => ['scheduled', 'approved'].includes(Q.posts[x]?.status))
         : verb === 'approve' ? Object.keys(Q.posts).filter((x) => Q.posts[x].status === 'scheduled') : [];
