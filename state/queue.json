@@ -4,7 +4,7 @@
     "notifyIssue": 1,
     "lastCommentAt": "2026-10-14T15:09:47Z",
     "lastCommentId": 6171555650,
-    "lastPillar": "detail"
+    "lastPillar": "site"
   },
   "last": {
     "inboxHash": "a87ef3bf680a6e0e301802d70f7e1e0f8b835a8ee3a44be9c32d73b4c207f73a",
@@ -36,11 +36,11 @@
         },
         {
           "at": "2026-10-16T23:00:00.000Z",
-          "post": null
+          "post": "005-site-surprise-me"
         },
         {
           "at": "2026-10-17T16:00:00.000Z",
-          "post": null
+          "post": "009-site-guess-the-building"
         },
         {
           "at": "2026-10-17T23:00:00.000Z",
@@ -91,20 +91,21 @@
       "slot": "2026-10-16T16:00:00.000Z"
     },
     "005-site-surprise-me": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "I let one button plan my next architecture trip. 🎲\n\n\"Surprise me\" opens a random building from 2,600+ — photos, the big idea, and links to drawings.\n\nTry it yourself → link in bio\nComment what it gave you 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #travel #designinspiration #architecturelovers #wanderlust\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
-      "captionSha": "3386417b6ea4d83fb2cac0080a57cc3556b7ca68"
+      "captionSha": "3386417b6ea4d83fb2cac0080a57cc3556b7ca68",
+      "batch": "2026-10-14",
+      "slot": "2026-10-16T23:00:00.000Z"
     },
     "009-site-guess-the-building": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "Name this building in 3 seconds. ⏱️\n\nOur \"Guess the building\" game has a Daily five — same five buildings for everyone, new every day. No sign-up.\n\nPlay today's five → link in bio\nDrop your score below 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #guessthebuilding #quiz #architecturestudent #designinspiration\n\nPhotos: Solomon R. Guggenheim Museum – Bmzuckerman (CC BY 4.0); Sydney Opera House – Glinted framora (CC BY-SA 4.0)",
-      "captionSha": "678c51292cf99cfc815ab7695985b9bbcbbde321"
+      "captionSha": "678c51292cf99cfc815ab7695985b9bbcbbde321",
+      "batch": "2026-10-14",
+      "slot": "2026-10-17T16:00:00.000Z"
     }
   },
-  "pool": [
-    "005-site-surprise-me",
-    "009-site-guess-the-building"
-  ]
+  "pool": []
 }
