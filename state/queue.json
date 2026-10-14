@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-10-14T12:42:54Z",
-    "lastCommentId": 6168605011,
+    "lastCommentAt": "2026-10-14T14:38:07Z",
+    "lastCommentId": 6170913304,
     "lastPillar": "list"
   },
   "last": {
@@ -81,7 +81,15 @@
       "captionSha": "7721182efd998e905b69a53021de9f7797872882",
       "batch": "2026-10-14",
       "slot": "2026-10-15T23:00:00.000Z"
+    },
+    "004-detail-fallingwater": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "They asked for a view of the waterfall. Frank Lloyd Wright built the house on top of it.\n\nFallingwater (1939): concrete terraces cantilevered over the falls, so the building and the stream become one thing.\n\nSee it + 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #fallingwater #franklloydwright #pennsylvania #designinspiration\n\nPhotos: Fallingwater – lachrimae72 (CC0); Fallingwater – Joshua G Chang (CC BY-SA 4.0); Fallingwater – Daderot (CC0); Fallingwater – Sakul9 (CC BY-SA 4.0)",
+      "captionSha": "d287a09cd95dd91ea3c94171aa50aed28e08b9f1"
     }
   },
-  "pool": []
+  "pool": [
+    "004-detail-fallingwater"
+  ]
 }
