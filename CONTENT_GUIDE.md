@@ -58,13 +58,12 @@ Plain, punchy, a little opinionated. Explain any term the first time ("cantileve
 
 <2–4 short lines: the idea, the surprising fact.>
 
-Explore 1,600+ buildings → link in bio
+Explore 2,600+ buildings → link in bio
 <A question for comments: "Which one would you live in?">
 
 #architecture #<topic> #<architect or movement> #<place> #designinspiration
 
 Photos: <Building> – <Author> (<licence>); …
-Voice: AI-generated.
 ```
 
 ## 6. Hard rules — enforced automatically
@@ -80,7 +79,6 @@ The Mac sync **won't queue** a reel that breaks these (you'll get a Mac notifica
 
 - Photos: Wikimedia Commons (or your own). Use only CC0, CC BY, CC BY-SA or public domain; record author + licence when you pick the photo. Never Pinterest, Google Images or other accounts' posts.
 - Site screen recordings are ours — no credit needed; building pages already credit their photos.
-- AI voice: keep "Voice: AI-generated." in the caption (recommended, not enforced). Meta asks for disclosure of realistic AI audio; also toggle the AI label in the app when posting manually.
 
 ## 8. Folder checklist
 
