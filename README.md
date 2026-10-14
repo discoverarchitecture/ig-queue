@@ -20,8 +20,8 @@ state/queue.json                           batches, slots, statuses
 findgreatarchitecture.com/ig-queue/       dashboard + /m/<post>/reel.mp4 for Instagram to fetch
 ```
 
-- **Every 3 days at 18:00 IST** a batch is planned: the next 6 posts (folder-name order) fill the
-  slots for the following 3 days at **12:00 and 19:00 US Eastern**.
+- **Every 3 days at 18:00 IST** a batch is planned: the next 9 posts (rotating by type) fill the
+  slots for the following 3 days at **09:00, 13:00 and 19:00 US Eastern** (18:30, 22:30, 04:30 IST).
 - You **approve / skip / edit captions** on the dashboard. Decisions land in `state/decisions.json`.
 - Approved posts publish at their slot via the official Instagram API (Instagram Login).
   Anything unapproved at its slot goes back to the queue.

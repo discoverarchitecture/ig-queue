@@ -3,7 +3,7 @@
 **Goal: site visits.** Every reel exists to send people to findgreatarchitecture.com.
 Followers are a side effect. Every post is a **reel** — even a single building with one idea.
 
-## 1. Rotation (2 reels a day)
+## 1. Rotation (3 reels a day — 09:00, 13:00, 19:00 US Eastern)
 
 The scheduler fills slots in this order, then repeats. The folder name carries the pillar:
 `NNN-<pillar>-<slug>`, e.g. `014-architect-tadao-ando`.
