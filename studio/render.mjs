@@ -71,6 +71,12 @@ function music(total, kind) {
 // ---- main ------------------------------------------------------------------
 const B = await buildings();
 const scenes = spec.scenes.map((s, i) => ({ ...s, key: `s${String(i).padStart(2, '0')}` }));
+// House rule: every reel ends on the end card with this spoken sign-off (no on-screen caption — the card shows it).
+export const SIGNOFF = 'Find Great Architecture dot com. A website built by architects, for architects.';
+if (scenes.at(-1)?.type !== 'end') scenes.push({ type: 'end', dur: 3, key: `s${String(scenes.length).padStart(2, '0')}` });
+const endScene = scenes.at(-1);
+endScene.vo = SIGNOFF; endScene.noCaption = true; endScene.voDelay = 0.5;
+const silentStyle = !scenes.some((s) => s.vo && s.type !== 'end');
 
 for (const s of scenes) {
   if (s.b) {
@@ -78,7 +84,8 @@ for (const s of scenes) {
     if (!b) throw new Error(`unknown building id: ${s.b}`);
     const im = pickImage(b, s.i);
     s.img = new URL(im.src, SITE).href;
-    s.credit = `${im.credit.replace(/\s+/g, ' ').trim()} · ${im.license}`;
+    const who = im.credit.replace(/\s+/g, ' ').replace(/\s*\(based on copyright claims\)\.?/i, '').trim();
+    s.credit = `${who.length > 48 ? who.slice(0, 46) + '…' : who} · ${im.license}`;
     s.creditFull = `${b.name} – ${im.credit.replace(/\s+/g, ' ').trim()} (${im.license})`;
     if (s.label !== false) s.label = { name: s.label?.name || b.name, meta: s.label?.meta || `${b.by} · <b>${b.year}</b> · ${cityOf(b)}` };
     else delete s.label;
@@ -105,7 +112,7 @@ const total = +t.toFixed(3);
 
 // captions: each voiced line split into short chunks, timed by character count
 const captions = [];
-for (const s of scenes) if (s.vo) {
+for (const s of scenes) if (s.vo && !s.noCaption) {
   const t0 = s.start + (s.voDelay ?? 0.15), len = VO[s.key].len;
   const ws = s.vo.split(/\s+/), chunks = [];
   for (let i = 0; i < ws.length;) { let n = Math.min(5, ws.length - i); if (ws.length - i - n === 1) n++; chunks.push(ws.slice(i, i + n).join(' ')); i += n; }
@@ -124,10 +131,17 @@ const silent = path.join(WORK, 'video.mp4');
 const enc = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
   '-c:v', 'libx264', '-crf', '17', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-r', String(FPS), silent], { stdio: ['pipe', 'inherit', 'inherit'] });
 const frames = Math.round(total * FPS);
+// Review sheet: one frame per scene, taken mid-line, shown next to what is being said.
+const reviewAt = new Map(scenes.map((s, i) => {
+  const mid = s.vo ? s.start + (s.voDelay ?? 0.15) + VO[s.key].len * 0.55 : s.start + s.dur * 0.6;
+  return [Math.min(frames - 1, Math.round(mid * FPS)), i];
+}));
+const reviewShots = [];
 const t0 = Date.now();
 for (let f = 0; f < frames; f++) {
   await page.evaluate((tt) => window.seek(tt), f / FPS);
   const buf = await page.screenshot({ type: 'jpeg', quality: 93 });
+  if (reviewAt.has(f)) reviewShots[reviewAt.get(f)] = buf.toString('base64');
   if (!enc.stdin.write(buf)) await new Promise((r) => enc.stdin.once('drain', r));
   if (f % 150 === 0) log(`frame ${f}/${frames} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
 }
@@ -137,12 +151,23 @@ await new Promise((r) => enc.on('close', r));
 await page.evaluate((tt) => window.seek(tt), spec.coverAt ?? 1.0);
 await page.evaluate(() => { document.getElementById('cap').innerHTML = ''; });
 await page.screenshot({ type: 'jpeg', quality: 92, path: path.join(OUT, 'cover.jpg') });
+const escH = (x) => String(x ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
+const cells = scenes.map((s, i) => `<figure><img src="data:image/jpeg;base64,${reviewShots[i] || ''}"><figcaption><b>${i + 1}</b> ${escH(s.type)}${s.b ? ` · ${escH(s.b)} #${s.i ?? 'auto'}` : ''}${s.clip ? ` · ${escH(s.clip)}` : ''} · ${s.dur.toFixed(1)}s
+  <p>${s.vo ? '🔊 “' + escH(s.vo) + '”' : s.title ? '🅣 ' + escH(s.title) : ''}</p></figcaption></figure>`).join('');
+const rp = await (await browser.newContext({ viewport: { width: 1600, height: 900 } })).newPage();
+await rp.setContent(`<!doctype html><meta charset="utf-8"><style>body{margin:20px;width:1560px;font:15px system-ui,sans-serif}h1{font-size:22px;margin:0 0 12px}
+  .g{display:flex;flex-wrap:wrap;gap:14px}figure{margin:0;width:290px}img{width:290px;height:516px;object-fit:cover;display:block;border-radius:8px;background:#111}
+  figcaption{margin-top:6px;color:#555}b{color:#DA3A26;font-size:18px}p{margin:4px 0 0;color:#111;font-size:15px;line-height:1.35}</style>
+  <h1>${escH(spec.id)} — does each picture show what's being said?</h1><div class="g">${cells}</div>`);
+await rp.screenshot({ path: path.join(OUT, 'review.jpg'), fullPage: true, type: 'jpeg', quality: 82 });
 await browser.close();
 
 // ---- audio -----------------------------------------------------------------
 const voiced = scenes.filter((s) => s.vo);
-const bed = music(total, spec.music || (voiced.length ? 'pad' : 'pulse'));
-const inputs = ['-i', bed], chains = [`[0:a]volume=${voiced.length ? 0.32 : 0.9}[m]`];
+const bed = music(total, spec.music || (silentStyle ? 'pulse' : 'pad'));
+// Silent-style reels play the music up front and duck it under the spoken sign-off.
+const vol = silentStyle ? `'if(lt(t,${endScene.start.toFixed(2)}),0.9,0.3)'` : '0.32';
+const inputs = ['-i', bed], chains = [`[0:a]volume=${vol}:eval=frame[m]`];
 voiced.forEach((s, i) => {
   inputs.push('-i', VO[s.key].file);
   const d = Math.round((s.start + (s.voDelay ?? 0.15)) * 1000);
@@ -156,6 +181,8 @@ ff(['-i', silent, '-i', audio, '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c
 
 // ---- caption ---------------------------------------------------------------
 let caption = spec.caption.trim();
+const TAGLINE = 'findgreatarchitecture.com — a website built by architects, for architects.';
+if (!caption.includes('built by architects')) caption = caption.replace(/\n\n(#\S+(?:\s+#\S+)*)\s*$/, `\n\n${TAGLINE}\n\n$1`);
 const credits = [...new Set(scenes.filter((s) => s.creditFull).map((s) => s.creditFull))];
 if (credits.length && !/^Photos?:/m.test(caption)) caption += `\n\nPhotos: ${credits.join('; ')}`;
 if (scenes.some((s) => s.type === 'site')) caption += credits.length ? '' : '\n\nPhotos: building photos shown are credited on each building\'s page on findgreatarchitecture.com.';

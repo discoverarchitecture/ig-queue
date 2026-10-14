@@ -44,10 +44,11 @@ video { position:absolute; inset:0; width:1080px; height:1920px; object-fit:cove
 .end .mark .accent { color:var(--red); }
 .end .line { position:absolute; left:64px; right:64px; top:700px; font:800 84px/.95 var(--display); text-transform:uppercase; color:var(--ink); }
 .end .rule { position:absolute; left:64px; top:660px; height:8px; background:var(--red); }
-.end .url { position:absolute; left:64px; top:940px; font:600 46px var(--sans); color:var(--ink); }
-.end .btn { position:absolute; left:64px; top:1040px; height:120px; padding:0 52px; border-radius:28px; background:var(--red); color:#fff;
+.end .url { position:absolute; left:64px; top:920px; font:700 50px var(--sans); color:var(--ink); }
+.end .tag { position:absolute; left:64px; top:990px; font:600 42px var(--cond); color:var(--graphite); letter-spacing:.02em; }
+.end .btn { position:absolute; left:64px; top:1090px; height:120px; padding:0 52px; border-radius:28px; background:var(--red); color:#fff;
   display:flex; align-items:center; font:700 54px var(--sans); }
-.end .handle { position:absolute; left:64px; top:1210px; font:600 40px var(--cond); color:var(--graphite); letter-spacing:.04em; }
+.end .handle { position:absolute; left:64px; top:1260px; font:600 40px var(--cond); color:var(--graphite); letter-spacing:.04em; }
 /* captions (voiced reels) */
 #cap { position:absolute; left:60px; right:60px; top:1180px; display:flex; justify-content:center; pointer-events:none; }
 #cap span { background:rgba(17,17,16,.86); color:#fff; font:700 54px/1.18 var(--sans); padding:14px 26px 16px; border-radius:20px; text-align:center;
@@ -99,6 +100,7 @@ async function load(spec) {
     } else if (s.type === 'end') {
       el.innerHTML = `<div class="mark"><span>Find great</span><span class="accent">Architecture.</span></div><div class="rule"></div>
         <div class="line">${words(s.line || '2,600+ buildings', s.accent)}</div><div class="url">findgreatarchitecture.com</div>
+        <div class="tag">A website built by architects, for architects.</div>
         <div class="btn">${esc(s.cta || 'Link in bio')}</div><div class="handle">@findgreatarchitecture</div>`;
     }
     root.appendChild(el);
@@ -160,7 +162,7 @@ function renderEnd({ el }, local) {
   el.querySelectorAll('.mark span').forEach((w, i) => rise(w, local, 0.05 + i * .12, 60));
   el.querySelector('.rule').style.width = 952 * easeOut((local - .35) / .6) + 'px';
   [...el.querySelector('.line').querySelectorAll('.w')].forEach((w, i) => rise(w, local, .45 + i * .06, 40, .3));
-  rise(el.querySelector('.url'), local, .8); rise(el.querySelector('.btn'), local, .95); rise(el.querySelector('.handle'), local, 1.1);
+  rise(el.querySelector('.url'), local, .8); rise(el.querySelector('.tag'), local, .9); rise(el.querySelector('.btn'), local, 1.0); rise(el.querySelector('.handle'), local, 1.15);
   const btn = el.querySelector('.btn'); const pulse = local > 1.6 ? 1 + 0.03 * Math.sin((local - 1.6) * 5) : 1;
   btn.style.transform += ` scale(${pulse})`;
 }

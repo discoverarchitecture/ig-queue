@@ -4,13 +4,14 @@
   "voice": "am_michael",
   "coverAt": 1.2,
   "scenes": [
-    { "type": "photo", "b": "church-of-the-light", "i": 0, "fill": true, "title": "A boxer built this.", "accent": ["BOXER"], "label": false, "vo": "A boxer built this.", "dur": 2.6 },
-    { "type": "photo", "b": "church-of-the-light", "i": 1, "move": "out", "vo": "Tadao Ando fought as a pro boxer, and never went to architecture school. He taught himself from books." },
-    { "type": "photo", "b": "row-house-in-sumiyoshi", "i": 0, "vo": "His first big house? You cross an open courtyard to get to bed. Even in the rain." },
-    { "type": "photo", "b": "church-on-the-water", "i": 0, "move": "left", "vo": "Here, a glass wall slides away, so the service faces a lake." },
-    { "type": "photo", "b": "chichu-art-museum", "i": 0, "vo": "And this museum is buried in a hill, lit only from above." },
-    { "type": "site", "clip": "search", "args": { "query": "Tadao Ando" }, "fromMark": "search", "lead": 0.5, "dur": 5.2, "title": "All 26 on the site", "accent": ["26"], "vo": "All twenty-six of his buildings are on Find Great Architecture." },
+    { "type": "photo", "b": "church-of-the-light", "i": 0, "fill": true, "title": "A boxer built this.", "accent": ["BOXER"], "label": false, "vo": "A former boxer built this.", "dur": 2.6 },
+    { "type": "photo", "b": "church-of-the-light", "i": 1, "move": "out", "vo": "Tadao Ando never studied architecture. He taught himself, and made light his only decoration." },
+    { "type": "photo", "b": "row-house-in-sumiyoshi", "i": 0, "vo": "His first famous house gives the street one concrete wall, and a single door." },
+    { "type": "photo", "b": "church-on-the-water", "i": 1, "move": "left", "vo": "Here, the glass wall slides away, and the cross stands in a lake." },
+    { "type": "photo", "b": "water-temple-honpuku-ji", "i": 3, "vo": "At this temple, you walk down a stair, straight through a lotus pond." },
+    { "type": "photo", "b": "chichu-art-museum", "i": 3, "vo": "And this museum is buried inside a hill, on an island." },
+    { "type": "site", "clip": "search", "args": { "query": "Tadao Ando" }, "fromMark": "typed", "lead": 1.4, "voDelay": 1.4, "dur": 5.6, "title": "All 26 on the site", "accent": ["26"], "vo": "All twenty-six of his buildings are on the site." },
     { "type": "end", "line": "26 Tadao Ando buildings", "accent": ["26"], "dur": 3.2 }
   ],
-  "caption": "A former boxer with no degree became the master of concrete and light.\n\nTadao Ando taught himself architecture from books. Then he cut a cross into a wall and let the sun do the rest.\n\nExplore all 26 of his buildings → link in bio\nWhich one would you visit first?\n\n#architecture #tadaoando #concrete #japanesearchitecture #designinspiration"
+  "caption": "A former boxer with no degree became the master of concrete and light.\n\nTadao Ando taught himself architecture. Then he cut a cross into a wall and let the sun do the rest.\n\nExplore all 26 of his buildings → link in bio\nWhich one would you visit first?\n\n#architecture #tadaoando #concrete #japanesearchitecture #designinspiration"
 }

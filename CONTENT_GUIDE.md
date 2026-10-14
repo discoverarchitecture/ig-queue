@@ -28,6 +28,19 @@ The scheduler fills slots in this order, then repeats. The folder name carries t
 - One idea per reel. If it needs two, it's two reels.
 - Keep text inside the safe zone: nothing important in the top 220 px or bottom 420 px (Instagram UI covers them).
 
+### Picture = words (house rule)
+Every voiced line plays over a shot that **shows what the line says**. "Courtyard" → you see the courtyard;
+"buried in a hill" → you see the hill. If no photo shows it, rewrite the line to what the photos *do* show —
+never narrate over a generic shot. Biography lines ("never studied architecture") go over the work they lead to,
+phrased so the picture still fits ("…and made light his only decoration" over the cross of light).
+- Pick photos with `node studio/candidates.mjs <building-id> …` (every photo, numbered as on the site).
+- Every render writes `review.jpg` — one frame per line with the words under it. Check it before queueing.
+
+### Sign-off (every post)
+Every reel ends on the end card with the voice saying **"Find Great Architecture dot com. A website built by
+architects, for architects."** — the studio adds it automatically, also to silent reels, and the card shows the
+same line. Captions get `findgreatarchitecture.com — a website built by architects, for architects.` above the hashtags.
+
 ## 3. Look — match the website
 
 | Token | Value | Use |
@@ -60,6 +73,8 @@ Plain, punchy, a little opinionated. Explain any term the first time ("cantileve
 
 Explore 2,600+ buildings → link in bio
 <A question for comments: "Which one would you live in?">
+
+findgreatarchitecture.com — a website built by architects, for architects.
 
 #architecture #<topic> #<architect or movement> #<place> #designinspiration
 
