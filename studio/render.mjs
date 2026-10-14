@@ -39,7 +39,7 @@ const cityOf = (b) => (b.place || '').split(',')[0].trim();
 
 // ---- voice -----------------------------------------------------------------
 function voice(scenes) {
-  const lines = scenes.filter((s) => s.vo).map((s) => ({ id: s.key, text: s.vo, voice: spec.voice || 'am_michael', speed: spec.voiceSpeed || 1 }));
+  const lines = scenes.filter((s) => s.vo).map((s) => ({ id: s.key, text: s.vo, voice: spec.voice || 'af_heart', speed: spec.voiceSpeed || 1 }));
   if (!lines.length) return {};
   const hash = crypto.createHash('sha1').update(JSON.stringify(lines)).digest('hex').slice(0, 10);
   const dir = path.join(WORK, 'vo-' + hash);

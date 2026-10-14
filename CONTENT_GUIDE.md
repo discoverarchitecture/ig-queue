@@ -22,7 +22,7 @@ The scheduler fills slots in this order, then repeats. The folder name carries t
 ## 2. Format
 
 - 1080 × 1920, 9:16, MP4, under 95 MB. Two lengths, alternated:
-  - **Voiced** 20–35 s — AI voice + on-screen text + light music bed.
+  - **Voiced** 20–35 s — AI voice (**Kokoro `af_heart`**, the female voice from the Fallingwater sample — house voice) + on-screen text + light music bed.
   - **Silent** 7–15 s — text + music only, built to loop.
 - **Hook = the most striking frame first.** No logo, no title card, no slow fade-in. The best photo or detail is frame 1.
 - One idea per reel. If it needs two, it's two reels.
