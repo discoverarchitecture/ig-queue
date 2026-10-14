@@ -3,7 +3,8 @@
   "meta": {
     "notifyIssue": 1,
     "lastCommentAt": "2026-10-14T12:42:54Z",
-    "lastCommentId": 6168605011
+    "lastCommentId": 6168605011,
+    "lastPillar": "list"
   },
   "last": {
     "inboxHash": "a87ef3bf680a6e0e301802d70f7e1e0f8b835a8ee3a44be9c32d73b4c207f73a",
@@ -23,12 +24,11 @@
         },
         {
           "at": "2026-10-15T16:00:00.000Z",
-          "post": null,
-          "note": "moved to launch slot"
+          "post": "002-architect-tadao-ando"
         },
         {
           "at": "2026-10-15T23:00:00.000Z",
-          "post": null
+          "post": "003-list-weirdest-homes"
         },
         {
           "at": "2026-10-16T16:00:00.000Z",
@@ -64,20 +64,21 @@
       "error": "container ERROR: ERROR"
     },
     "002-architect-tadao-ando": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "A former boxer with no degree became the master of concrete and light.\n\nTadao Ando taught himself architecture. Then he cut a cross into a wall and let the sun do the rest.\n\nExplore all 26 of his buildings → link in bio\nWhich one would you visit first?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #tadaoando #concrete #japanesearchitecture #designinspiration\n\nPhotos: Church of the Light – 荻野目さん (CC BY 2.0); Church of the Light – The original uploader was Bujatt at English Wikipedia . (CC BY-SA 2.5); Row House in Sumiyoshi – Oiuysdfg (CC BY-SA 3.0); Church on the Water – ume-y (CC BY 2.0); Water Temple (Honpuku-ji) – No machine-readable author provided. おぉたむすねィく探検隊 assumed (based on copyright claims). (CC BY-SA 2.5); Chichu Art Museum – 663highland (CC BY 2.5)",
-      "captionSha": "b64b0b2641bd787932955bfac470c709a79bd73f"
+      "captionSha": "b64b0b2641bd787932955bfac470c709a79bd73f",
+      "batch": "2026-10-14",
+      "slot": "2026-10-15T16:00:00.000Z"
     },
     "003-list-weirdest-homes": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "People actually live in these. 🏠\n\nTilted cubes in Rotterdam, 354 stacked boxes in Montréal, 900 trees on the balconies in Milan — which one would you move into?\n\nFind 2,600+ buildings like these → link in bio\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #weirdarchitecture #housing #designinspiration #architecturelovers\n\nPhotos: Cube Houses – Michielverbeek (CC BY-SA 4.0); Habitat 67 – Guilhem Vellut from Annecy, France (CC BY 2.0); Hundertwasserhaus – Thomas Ledl (CC BY-SA 4.0); Bosco Verticale – Kokky92 (CC BY-SA 4.0); Mirador – Port(u*o)s (CC BY-SA 3.0)",
-      "captionSha": "7721182efd998e905b69a53021de9f7797872882"
+      "captionSha": "7721182efd998e905b69a53021de9f7797872882",
+      "batch": "2026-10-14",
+      "slot": "2026-10-15T23:00:00.000Z"
     }
   },
-  "pool": [
-    "002-architect-tadao-ando",
-    "003-list-weirdest-homes"
-  ]
+  "pool": []
 }
