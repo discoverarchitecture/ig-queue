@@ -47,9 +47,15 @@ function validate(id) {
   if (!cap) problems.push('missing caption.txt');
   else {
     const text = fs.readFileSync(path.join(dir, 'caption.txt'), 'utf8').trim();
+    // Hard rules from CONTENT_GUIDE.md
     if ([...text].length > 2200) problems.push(`caption is ${[...text].length} chars (max 2200)`);
-    if ((text.match(/#[\p{L}\p{N}_]+/gu) || []).length > 30) problems.push('caption has more than 30 hashtags');
+    const tags = (text.match(/#[\p{L}\p{N}_]+/gu) || []).length;
+    if (tags > 5) problems.push(`caption has ${tags} hashtags (max 5)`);
     if ((text.match(/@[\w.]+/g) || []).length > 20) problems.push('caption has more than 20 @mentions');
+    if (!/\b(photos?|credits?|images?|footage)\s*[:：]|\bCC[ -]?(BY|0)\b|public domain|©/i.test(text))
+      problems.push('no photo credits line (e.g. "Photos: Name (CC BY-SA 4.0); …")');
+    if (!/link in (the )?bio|findgreatarchitecture\.com/i.test(text))
+      problems.push('no link-in-bio CTA (mention "link in bio" or findgreatarchitecture.com)');
   }
   const fresh = [reel, cap, cover].some((s) => s && Date.now() - s.mtimeMs < SETTLE_MS);
   return { problems, fresh };

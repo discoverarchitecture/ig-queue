@@ -149,6 +149,24 @@ async function applyCommentCommands() {
 }
 
 // ---- 3. Plan a batch every `batchDays`, anchored to CONFIG.anchor ----------
+// Folder names look like `014-architect-tadao-ando`; the second segment is the
+// content pillar. Slots rotate through CONFIG.pillars; within a pillar (and for
+// folders without one) the lowest folder name goes first.
+const pillarOf = (id) => CONFIG.pillars.find((p) => id.split('-')[1] === p) ?? null;
+function nextByPillar(pool) {
+  if (!pool.length) return null;
+  const order = CONFIG.pillars;
+  const start = (order.indexOf(Q.meta.lastPillar) + 1) % order.length;
+  for (let i = 0; i < order.length; i++) {
+    const hit = pool.find((id) => pillarOf(id) === order[(start + i) % order.length]);
+    if (hit) {
+      const untagged = pool.find((id) => !pillarOf(id));
+      return untagged && untagged < hit ? untagged : hit;
+    }
+  }
+  return pool[0];
+}
+
 async function planBatch() {
   const period = CONFIG.batchDays * DAY;
   const k = Math.floor((now - Date.parse(CONFIG.anchor)) / period);
@@ -164,9 +182,11 @@ async function planBatch() {
   const pool = Object.keys(Q.posts).filter((id) => Q.posts[id].status === 'pending').sort();
   const batch = { id: d0, index: k, created: now.toISOString(), slots, remindedAt: null };
   for (const s of slots) {
-    const id = pool.shift();
+    const id = nextByPillar(pool);
     if (!id) break;
+    pool.splice(pool.indexOf(id), 1);
     s.post = id;
+    Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
     Object.assign(Q.posts[id], { status: 'scheduled', batch: batch.id, slot: s.at });
   }
   Q.batches.push(batch);

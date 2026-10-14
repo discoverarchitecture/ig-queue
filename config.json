@@ -6,6 +6,7 @@
   "apiVersion": "v23.0",
   "timezone": "America/New_York",
   "slots": ["12:00", "19:00"],
+  "pillars": ["architect", "list", "detail", "site"],
   "batchDays": 3,
   "anchor": "2026-10-14T12:30:00Z",
   "maxQueued": 18,
