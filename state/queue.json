@@ -1,7 +1,9 @@
 {
   "version": 1,
   "meta": {
-    "notifyIssue": 1
+    "notifyIssue": 1,
+    "lastCommentAt": "2026-10-14T12:42:54Z",
+    "lastCommentId": 6168605011
   },
   "last": {
     "inboxHash": "a87ef3bf680a6e0e301802d70f7e1e0f8b835a8ee3a44be9c32d73b4c207f73a",
