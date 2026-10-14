@@ -23,24 +23,36 @@
           "note": "launch: owner asked to start posting today"
         },
         {
-          "at": "2026-10-15T16:00:00.000Z",
+          "at": "2026-10-15T13:00:00.000Z",
           "post": "002-architect-tadao-ando"
         },
         {
-          "at": "2026-10-15T23:00:00.000Z",
+          "at": "2026-10-15T17:00:00.000Z",
           "post": "003-list-weirdest-homes"
         },
         {
-          "at": "2026-10-16T16:00:00.000Z",
+          "at": "2026-10-15T23:00:00.000Z",
           "post": "004-detail-fallingwater"
         },
         {
-          "at": "2026-10-16T23:00:00.000Z",
+          "at": "2026-10-16T13:00:00.000Z",
           "post": "005-site-surprise-me"
         },
         {
-          "at": "2026-10-17T16:00:00.000Z",
+          "at": "2026-10-16T17:00:00.000Z",
           "post": "009-site-guess-the-building"
+        },
+        {
+          "at": "2026-10-16T23:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-17T13:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-17T17:00:00.000Z",
+          "post": null
         },
         {
           "at": "2026-10-17T23:00:00.000Z",
@@ -67,44 +79,49 @@
       "publishedAt": "2026-10-14T14:37:59+0000"
     },
     "002-architect-tadao-ando": {
-      "status": "scheduled",
+      "status": "approved",
       "hasCover": true,
       "caption": "A former boxer with no degree became the master of concrete and light.\n\nTadao Ando taught himself architecture. Then he cut a cross into a wall and let the sun do the rest.\n\nExplore all 26 of his buildings → link in bio\nWhich one would you visit first?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #tadaoando #concrete #japanesearchitecture #designinspiration\n\nPhotos: Church of the Light – 荻野目さん (CC BY 2.0); Church of the Light – The original uploader was Bujatt at English Wikipedia . (CC BY-SA 2.5); Row House in Sumiyoshi – Oiuysdfg (CC BY-SA 3.0); Church on the Water – ume-y (CC BY 2.0); Water Temple (Honpuku-ji) – No machine-readable author provided. おぉたむすねィく探検隊 assumed (based on copyright claims). (CC BY-SA 2.5); Chichu Art Museum – 663highland (CC BY 2.5)",
       "captionSha": "b64b0b2641bd787932955bfac470c709a79bd73f",
       "batch": "2026-10-14",
-      "slot": "2026-10-15T16:00:00.000Z"
+      "slot": "2026-10-15T13:00:00.000Z",
+      "decidedAt": "2026-10-14T21:10:16.437Z"
     },
     "003-list-weirdest-homes": {
-      "status": "scheduled",
+      "status": "approved",
       "hasCover": true,
       "caption": "People actually live in these. 🏠\n\nTilted cubes in Rotterdam, 354 stacked boxes in Montréal, 900 trees on the balconies in Milan — which one would you move into?\n\nFind 2,600+ buildings like these → link in bio\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #weirdarchitecture #housing #designinspiration #architecturelovers\n\nPhotos: Cube Houses – Michielverbeek (CC BY-SA 4.0); Habitat 67 – Guilhem Vellut from Annecy, France (CC BY 2.0); Hundertwasserhaus – Thomas Ledl (CC BY-SA 4.0); Bosco Verticale – Kokky92 (CC BY-SA 4.0); Mirador – Port(u*o)s (CC BY-SA 3.0)",
       "captionSha": "7721182efd998e905b69a53021de9f7797872882",
       "batch": "2026-10-14",
-      "slot": "2026-10-15T23:00:00.000Z"
+      "slot": "2026-10-15T17:00:00.000Z",
+      "decidedAt": "2026-10-14T21:10:16.437Z"
     },
     "004-detail-fallingwater": {
-      "status": "scheduled",
+      "status": "approved",
       "hasCover": true,
       "caption": "They asked for a view of the waterfall. Frank Lloyd Wright built the house on top of it.\n\nFallingwater (1939): concrete terraces cantilevered over the falls, so the building and the stream become one thing.\n\nSee it + 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #fallingwater #franklloydwright #pennsylvania #designinspiration\n\nPhotos: Fallingwater – lachrimae72 (CC0); Fallingwater – Joshua G Chang (CC BY-SA 4.0); Fallingwater – Daderot (CC0); Fallingwater – Sakul9 (CC BY-SA 4.0)",
       "captionSha": "d287a09cd95dd91ea3c94171aa50aed28e08b9f1",
       "batch": "2026-10-14",
-      "slot": "2026-10-16T16:00:00.000Z"
+      "slot": "2026-10-15T23:00:00.000Z",
+      "decidedAt": "2026-10-14T21:10:16.437Z"
     },
     "005-site-surprise-me": {
-      "status": "scheduled",
+      "status": "approved",
       "hasCover": true,
       "caption": "I let one button plan my next architecture trip. 🎲\n\n\"Surprise me\" opens a random building from 2,600+ — photos, the big idea, and links to drawings.\n\nTry it yourself → link in bio\nComment what it gave you 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #travel #designinspiration #architecturelovers #wanderlust\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "3386417b6ea4d83fb2cac0080a57cc3556b7ca68",
       "batch": "2026-10-14",
-      "slot": "2026-10-16T23:00:00.000Z"
+      "slot": "2026-10-16T13:00:00.000Z",
+      "decidedAt": "2026-10-14T21:10:16.437Z"
     },
     "009-site-guess-the-building": {
-      "status": "scheduled",
+      "status": "approved",
       "hasCover": true,
       "caption": "Name this building in 3 seconds. ⏱️\n\nOur \"Guess the building\" game has a Daily five — same five buildings for everyone, new every day. No sign-up.\n\nPlay today's five → link in bio\nDrop your score below 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #guessthebuilding #quiz #architecturestudent #designinspiration\n\nPhotos: Solomon R. Guggenheim Museum – Bmzuckerman (CC BY 4.0); Sydney Opera House – Glinted framora (CC BY-SA 4.0)",
       "captionSha": "678c51292cf99cfc815ab7695985b9bbcbbde321",
       "batch": "2026-10-14",
-      "slot": "2026-10-17T16:00:00.000Z"
+      "slot": "2026-10-16T17:00:00.000Z",
+      "decidedAt": "2026-10-14T21:10:16.437Z"
     }
   },
   "pool": []

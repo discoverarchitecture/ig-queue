@@ -24,5 +24,6 @@
   "thumbOffsetMs": 1000,
   "inboxEveryHours": 2,
   "analyticsEveryHours": 24,
-  "tokenRefreshEveryDays": 7
+  "tokenRefreshEveryDays": 7,
+  "autoApprove": true
 }

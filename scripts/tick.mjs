@@ -14,6 +14,11 @@ const CI = !!process.env.GITHUB_ACTIONS;
 const now = new Date();
 const log = (...a) => console.log(`[${new Date().toISOString()}]`, ...a);
 const ACTIVE = ['scheduled', 'approved', 'publishing', 'failed'];
+// Auto-post mode: planned reels are approved up front; the owner only replies to hold one back.
+const INITIAL = CONFIG.autoApprove ? 'approved' : 'scheduled';
+const ASK = CONFIG.autoApprove
+  ? '\n\nNothing to do unless you want to hold one back: reply `skip <number>` (e.g. `skip 003`).'
+  : '\n\n**Reply `approve` (or yes / ok / 👍) to approve all**, or `skip <number>` to hold one back.';
 
 const Q = readJSON('state/queue.json', null) ?? { version: 1, meta: {}, last: {}, batches: [], posts: {}, pool: [] };
 let deploy = false;
@@ -199,7 +204,7 @@ async function planBatch() {
     pool.splice(pool.indexOf(id), 1);
     s.post = id;
     Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
-    Object.assign(Q.posts[id], { status: 'scheduled', batch: batch.id, slot: s.at });
+    Object.assign(Q.posts[id], { status: INITIAL, batch: batch.id, slot: s.at, ...(CONFIG.autoApprove ? { decidedAt: now.toISOString() } : {}) });
   }
   Q.batches.push(batch);
   Q.batches = Q.batches.slice(-20);
@@ -208,14 +213,13 @@ async function planBatch() {
   const filled = slots.filter((s) => s.post);
   persist(`plan batch ${batch.id}`);
   if (!filled.length) await notify(`Batch **${batch.id}** has no posts — the queue is empty. Add reels to \`~/FindGreatArchitecture/queue/\`.`);
-  else await notify(`New batch **${batch.id}** is ready — ${filled.length} post(s):\n\n` +
+  else await notify(`New batch **${batch.id}** ${CONFIG.autoApprove ? 'is scheduled and will post automatically' : 'is ready'} — ${filled.length} post(s):\n\n` +
     filled.map((s) => {
       const p = Q.posts[s.post];
       const cover = p.hasCover ? ` · [cover](${CONFIG.siteBase}/m/${encodeURIComponent(s.post)}/cover.jpg)` : '';
       return `- \`${s.post}\` — ${fmtSlot(s.at)} · [video](${CONFIG.siteBase}/m/${encodeURIComponent(s.post)}/reel.mp4)${cover}\n  > ${(p.caption || '').split('\n')[0].slice(0, 120)}`;
     }).join('\n') +
-    (filled.length < slots.length ? `\n\n${slots.length - filled.length} empty slot(s) — the queue is running low.` : '') +
-    `\n\n**Reply \`approve\` to approve all**, or \`approve <id>\` / \`skip <id>\` (one per line).`);
+    (filled.length < slots.length ? `\n\n${slots.length - filled.length} empty slot(s) — the queue is running low.` : '') + ASK);
 }
 
 // ---- 3b. Backfill: new reels fill a planned batch's empty future slots ----
@@ -228,16 +232,16 @@ async function backfill() {
     if (!id) break;
     s.post = id; delete s.note;
     Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
-    Object.assign(Q.posts[id], { status: 'scheduled', batch: b.id, slot: s.at });
+    Object.assign(Q.posts[id], { status: INITIAL, batch: b.id, slot: s.at, ...(CONFIG.autoApprove ? { decidedAt: now.toISOString() } : {}) });
     added.push(s);
   }
   if (!added.length) return;
   Q.pool = pool(); deploy = true;
   persist(`backfill ${added.length} slot(s)`);
-  await notify(`${added.length} new reel(s) added to open slots:\n\n` + added.map((s) => {
+  await notify(`${added.length} new reel(s) added to open slots${CONFIG.autoApprove ? ' — they will post automatically' : ''}:\n\n` + added.map((s) => {
     const p = Q.posts[s.post];
     return `- \`${s.post}\` — ${fmtSlot(s.at)} · [video](https://raw.githubusercontent.com/${CONFIG.repo}/media/${encodeURIComponent(s.post)}/reel.mp4)\n  > ${(p.caption || '').split('\n')[0].slice(0, 120)}`;
-  }).join('\n') + `\n\n**Reply \`approve\` to approve all**, or \`approve <id>\` / \`skip <id>\` (one per line).`);
+  }).join('\n') + ASK);
 }
 
 // ---- 4. Missed slots + reminders ----------------------------------------
