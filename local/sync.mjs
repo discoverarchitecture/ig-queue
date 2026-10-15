@@ -135,4 +135,17 @@ function syncMedia() {
   macNotify(`Synced ${selected.length} post(s) to the Instagram queue`);
 }
 
+/** GitHub sometimes silently skips scheduled runs for hours. If the scheduler
+ *  hasn't started in 40 minutes, start it from here so posts still go out on time. */
+function kickSchedulerIfStalled() {
+  try {
+    const runs = JSON.parse(execFileSync(GH, ['run', 'list', '-R', CONFIG.repo, '--workflow', 'tick.yml', '--limit', '1', '--json', 'createdAt,status'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }));
+    const last = runs[0];
+    if (last && (last.status !== 'completed' || Date.now() - Date.parse(last.createdAt) < 40 * 60e3)) return;
+    execFileSync(GH, ['workflow', 'run', 'tick.yml', '-R', CONFIG.repo, '--ref', 'main'], { stdio: 'pipe' });
+    log(`scheduler stalled (last run ${last ? last.createdAt : 'never'}); started a run`);
+  } catch (e) { log('could not check the scheduler:', e.message.split('\n')[0]); }
+}
+
 try { syncMedia(); } catch (e) { log('sync failed:', e.message); macNotify('Instagram queue sync failed — see sync.log'); process.exitCode = 1; }
+kickSchedulerIfStalled();
