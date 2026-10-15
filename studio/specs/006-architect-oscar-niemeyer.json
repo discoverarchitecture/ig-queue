@@ -1,0 +1,16 @@
+{
+  "id": "006-architect-oscar-niemeyer",
+  "pillar": "architect",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "photo", "b": "niteroi-contemporary-art-museum", "i": 3, "fill": true, "title": "He hated straight lines.", "accent": ["STRAIGHT"], "label": false, "vo": "This architect hated straight lines.", "dur": 2.6 },
+    { "type": "photo", "b": "cathedral-of-brasilia", "i": 2, "move": "out", "vo": "Oscar Niemeyer built a cathedral out of sixteen curved concrete ribs." },
+    { "type": "photo", "b": "cathedral-of-brasilia", "i": 5, "label": { "name": "Inside the cathedral", "meta": "Looking straight up · <b>1970</b> · Brasília" }, "vo": "Step inside, and the ribs open up to the sky." },
+    { "type": "photo", "b": "copan-building", "i": 1, "move": "up", "vo": "In São Paulo, his apartment block waves like a ribbon, with over a thousand homes." },
+    { "type": "photo", "b": "church-of-saint-francis-of-assisi-pampulha", "i": 3, "vo": "His early church is a row of concrete waves, covered in painted tiles." },
+    { "type": "photo", "b": "niteroi-contemporary-art-museum", "i": 0, "move": "left", "vo": "And this museum floats over the bay, like a saucer." },
+    { "type": "site", "clip": "search", "args": { "query": "Oscar Niemeyer" }, "fromMark": "typed", "lead": 1.4, "voDelay": 1.4, "dur": 5.6, "title": "All 33 on the site", "accent": ["33"], "vo": "All thirty-three of his buildings are on the site." },
+    { "type": "end", "line": "33 Oscar Niemeyer buildings", "accent": ["33"], "dur": 3.2 }
+  ],
+  "caption": "Oscar Niemeyer didn't do straight lines.\n\nA cathedral of curved concrete ribs, a wavy tower with 1,000+ homes, a museum that floats over the bay like a saucer. He built for over 70 years.\n\nAll 33 of his buildings → link in bio\nCurves or right angles — which side are you on?\n\n#architecture #oscarniemeyer #brazil #modernism #designinspiration"
+}

@@ -116,7 +116,8 @@ export async function recordClip(name, opts, outDir) {
   const b = await chromium.launch({ channel: 'chrome', headless: true });
   const ctx = await b.newContext({ viewport: { width: 390, height: 693 }, deviceScaleFactor: 2.77, isMobile: true, hasTouch: true });
   const p = await ctx.newPage();
-  await p.goto(opts.url || SITE, { waitUntil: 'networkidle' });
+  p.setDefaultTimeout(240000);
+  await p.goto(opts.url || SITE, { waitUntil: 'networkidle', timeout: 240000 });
   await p.evaluate(() => document.fonts.ready);
   await p.addStyleTag({ content: TAP_CSS });
   const marks = [];

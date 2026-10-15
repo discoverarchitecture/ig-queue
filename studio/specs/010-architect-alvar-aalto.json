@@ -1,0 +1,16 @@
+{
+  "id": "010-architect-alvar-aalto",
+  "pillar": "architect",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "photo", "b": "villa-mairea", "i": 0, "fill": true, "title": "Modernism, but make it cozy.", "accent": ["COZY"], "label": false, "vo": "Modernism, but make it cozy.", "dur": 2.6 },
+    { "type": "photo", "b": "paimio-sanatorium", "i": 0, "move": "out", "vo": "Alvar Aalto designed this hospital around one person: a patient lying in bed." },
+    { "type": "photo", "b": "paimio-sanatorium", "i": 5, "label": { "name": "A patient room", "meta": "Paimio Sanatorium · <b>1933</b>" }, "vo": "So he shaped the rooms down to the ceilings, the basins and the door handles." },
+    { "type": "photo", "b": "villa-mairea", "i": 4, "label": { "name": "Villa Mairea", "meta": "Alvar Aalto · <b>1939</b> · Noormarkku" }, "vo": "At home, his modernism turned warm, with timber everywhere." },
+    { "type": "photo", "b": "saynatsalo-town-hall", "i": 1, "move": "up", "vo": "And this brick town hall wraps around a raised grass courtyard, up a staircase of grass." },
+    { "type": "photo", "b": "saynatsalo-town-hall", "i": 6, "label": { "name": "The council chamber", "meta": "Timber trusses over the council" }, "vo": "Inside, timber rafters fan out over the council." },
+    { "type": "site", "clip": "search", "args": { "query": "Alvar Aalto" }, "fromMark": "typed", "lead": 1.4, "voDelay": 1.4, "dur": 5.4, "title": "All 29 on the site", "accent": ["29"], "vo": "All twenty-nine of his buildings are on the site." },
+    { "type": "end", "line": "29 Alvar Aalto buildings", "accent": ["29"], "dur": 3.0 }
+  ],
+  "caption": "Modernism, but make it warm. 🌲\n\nAlvar Aalto designed a hospital around patients lying in bed — down to the ceilings, basins and door handles. Then he brought timber and grass into modernism.\n\nAll 29 Aalto buildings → link in bio\nConcrete box or timber cabin?\n\n#architecture #alvaraalto #finland #nordicdesign #modernism"
+}

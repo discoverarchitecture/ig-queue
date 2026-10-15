@@ -78,12 +78,28 @@ const endScene = scenes.at(-1);
 endScene.vo = SIGNOFF; endScene.noCaption = true; endScene.voDelay = 0.5;
 const silentStyle = !scenes.some((s) => s.vo && s.type !== 'end');
 
+/** Download once into cache/img (with retries) so slow networks don't stall rendering. */
+async function localImage(url) {
+  const dir = path.join(HERE, 'cache', 'img');
+  fs.mkdirSync(dir, { recursive: true });
+  const f = path.join(dir, crypto.createHash('sha1').update(url).digest('hex').slice(0, 16) + path.extname(new URL(url).pathname));
+  for (let attempt = 1; !fs.existsSync(f); attempt++) {
+    try {
+      const r = await fetch(url, { signal: AbortSignal.timeout(120000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      fs.writeFileSync(f + '.part', Buffer.from(await r.arrayBuffer()));
+      fs.renameSync(f + '.part', f);
+    } catch (e) { if (attempt >= 4) throw new Error(`could not download ${url}: ${e.message}`); log(`retrying image (${e.message})`); }
+  }
+  return pathToFileURL(f).href;
+}
+
 for (const s of scenes) {
   if (s.b) {
     const b = B[s.b];
     if (!b) throw new Error(`unknown building id: ${s.b}`);
     const im = pickImage(b, s.i);
-    s.img = new URL(im.src, SITE).href;
+    s.img = await localImage(new URL(im.src, SITE).href);
     const who = im.credit.replace(/\s+/g, ' ').replace(/\s*\(based on copyright claims\)\.?/i, '').trim();
     s.credit = `${who.length > 48 ? who.slice(0, 46) + '…' : who} · ${im.license}`;
     s.creditFull = `${b.name} – ${im.credit.replace(/\s+/g, ' ').trim()} (${im.license})`;
@@ -125,7 +141,8 @@ log(`timeline ${total.toFixed(1)}s:`, scenes.map((s) => `${s.type}${s.b ? ':' + 
 // ---- frames → video -----------------------------------------------------------
 const browser = await chromium.launch({ channel: 'chrome', headless: true, args: ['--allow-file-access-from-files', '--autoplay-policy=no-user-gesture-required'] });
 const page = await (await browser.newContext({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 })).newPage();
-await page.goto(pathToFileURL(path.join(HERE, 'stage.html')).href, { waitUntil: 'networkidle' });
+page.setDefaultTimeout(300000);
+await page.goto(pathToFileURL(path.join(HERE, 'stage.html')).href, { waitUntil: 'load' });
 await page.evaluate((sp) => window.load(sp), { scenes, captions });
 const silent = path.join(WORK, 'video.mp4');
 const enc = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',

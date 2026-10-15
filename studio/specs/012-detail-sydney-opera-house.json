@@ -1,0 +1,15 @@
+{
+  "id": "012-detail-sydney-opera-house",
+  "pillar": "detail",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "photo", "b": "sydney-opera-house", "i": 6, "fill": true, "title": "Nobody knew how to build this", "accent": ["NOBODY"], "label": false, "vo": "Nobody knew how to build this.", "dur": 2.6 },
+    { "type": "photo", "b": "sydney-opera-house", "i": 0, "move": "out", "vo": "Jørn Utzon won the competition with sketches. For years, nobody could work out how to build the roof." },
+    { "type": "photo", "b": "sydney-opera-house", "i": 3, "move": "left", "label": { "name": "The shells", "meta": "Every one cut from the same sphere" }, "vo": "The answer: cut every shell from the same sphere, so the pieces could be made in a factory." },
+    { "type": "photo", "b": "sydney-opera-house", "i": 4, "move": "up", "label": { "name": "Inside", "meta": "Timber ribs and stairs under the shells" }, "vo": "Inside, timber ribs climb the walls, right up under the shells." },
+    { "type": "photo", "b": "sydney-opera-house", "i": 7, "vo": "Utzon left before it opened, and never came back to see it finished." },
+    { "type": "site", "clip": "search", "args": { "query": "Utzon" }, "fromMark": "typed", "lead": 1.4, "voDelay": 1.4, "dur": 5.4, "title": "11 Utzon buildings", "accent": ["11"], "vo": "See all eleven of his buildings on the site." },
+    { "type": "end", "line": "11 Jørn Utzon buildings", "accent": ["11"], "dur": 3.0 }
+  ],
+  "caption": "The most famous roof in the world started as an impossible sketch.\n\nEvery shell of the Sydney Opera House is cut from one sphere — that trick is what made it buildable.\n\nExplore it + 10 more Utzon buildings → link in bio\nHave you seen it in person?\n\n#architecture #sydneyoperahouse #utzon #sydney #designinspiration"
+}

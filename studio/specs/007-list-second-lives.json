@@ -1,0 +1,16 @@
+{
+  "id": "007-list-second-lives",
+  "pillar": "list",
+  "music": "pulse",
+  "coverAt": 1.0,
+  "scenes": [
+    { "type": "photo", "b": "tate-modern", "i": 0, "fill": true, "title": "This was a power station", "accent": ["POWER"], "num": "1/5", "dur": 2.8 },
+    { "type": "photo", "b": "high-line", "i": 4, "title": "This park was a railway", "accent": ["RAILWAY"], "num": "2/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "zeitz-mocaa", "i": 4, "title": "This museum was a grain silo", "accent": ["SILO"], "num": "3/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "sesc-pompeia", "i": 7, "title": "This was a drum factory", "accent": ["FACTORY"], "num": "4/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "elbphilharmonie", "i": 0, "title": "This concert hall was a warehouse", "accent": ["WAREHOUSE"], "num": "5/5", "dur": 2.5, "flash": true },
+    { "type": "site", "clip": "idea", "args": { "idea": "Adaptive reuse" }, "fromMark": "idea", "lead": 0.5, "dur": 3.4, "title": "139 second lives", "accent": ["139"] },
+    { "type": "end", "line": "Don't demolish it. Reimagine it.", "accent": ["REIMAGINE"], "dur": 2.8 }
+  ],
+  "caption": "Don't demolish it. Reimagine it. ♻️\n\nA power station became a museum. A railway became a park. A grain silo became an art gallery.\n\n139 buildings with a second life → link in bio\nWhat abandoned building near you deserves this?\n\n#architecture #adaptivereuse #highline #tatemodern #sustainabledesign"
+}

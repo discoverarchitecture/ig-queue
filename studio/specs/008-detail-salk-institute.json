@@ -1,0 +1,14 @@
+{
+  "id": "008-detail-salk-institute",
+  "pillar": "detail",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "photo", "b": "salk-institute", "i": 2, "fill": true, "title": "The emptiest courtyard in America", "accent": ["EMPTIEST"], "label": false, "vo": "This might be the emptiest courtyard in America.", "dur": 2.8 },
+    { "type": "photo", "b": "salk-institute", "i": 1, "move": "out", "vo": "Louis Kahn planned to plant trees here. His friend Luis Barragán said: no trees. Make it a facade to the sky." },
+    { "type": "photo", "b": "salk-institute", "i": 0, "move": "up", "label": { "name": "The water line", "meta": "Runs west to the Pacific" }, "vo": "So the plaza stayed empty, with one thin line of water running straight to the ocean." },
+    { "type": "photo", "b": "salk-institute", "i": 6, "label": { "name": "The study towers", "meta": "Teak windows, angled to the sea" }, "vo": "And the scientists' studies are angled, so every one of them catches the Pacific." },
+    { "type": "site", "clip": "search", "args": { "query": "Louis Kahn" }, "fromMark": "typed", "lead": 1.4, "voDelay": 1.4, "dur": 5.4, "title": "10 Louis Kahn buildings", "accent": ["10"], "vo": "Louis Kahn's ten buildings are all on the site." },
+    { "type": "end", "line": "10 Louis Kahn buildings", "accent": ["10"], "dur": 3.0 }
+  ],
+  "caption": "The most powerful thing in this courtyard is what's missing.\n\nLouis Kahn's Salk Institute (1965): a travertine plaza, one line of water, and the whole Pacific as the view.\n\nExplore it + Kahn's other buildings → link in bio\nWould you add a tree or keep it empty?\n\n#architecture #salkinstitute #louiskahn #lajolla #brutalism"
+}

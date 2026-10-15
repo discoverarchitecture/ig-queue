@@ -1,0 +1,14 @@
+{
+  "id": "013-site-filter-by-idea",
+  "pillar": "site",
+  "music": "pulse",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "site", "clip": "idea", "args": { "idea": "Cantilever" }, "fromMark": "idea", "lead": 0.8, "dur": 3.4, "title": "Search by idea, not name", "accent": ["IDEA"] },
+    { "type": "site", "clip": "idea", "args": { "idea": "Courtyard" }, "fromMark": "idea", "lead": 0.4, "dur": 3.0, "title": "219 courtyards", "accent": ["219"], "flash": true },
+    { "type": "site", "clip": "idea", "args": { "idea": "Light from above" }, "fromMark": "idea", "lead": 0.4, "dur": 3.0, "title": "308 lit from above", "accent": ["308"], "flash": true },
+    { "type": "site", "clip": "idea", "args": { "idea": "Exposed concrete" }, "fromMark": "idea", "lead": 0.4, "dur": 3.0, "title": "407 in raw concrete", "accent": ["407"], "flash": true },
+    { "type": "end", "line": "2,600+ buildings. No sign-up.", "accent": ["2,600+"], "dur": 2.8 }
+  ],
+  "caption": "Don't know the building's name? Search by the idea. 🔎\n\nCantilevers, courtyards, light from above, raw concrete — filter 2,600+ buildings by what makes them great.\n\nTry it free → link in bio\nWhich idea should we feature next?\n\n#architecture #architecturestudent #designresearch #designinspiration #architecturelovers"
+}

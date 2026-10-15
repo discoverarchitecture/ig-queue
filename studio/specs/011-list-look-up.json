@@ -1,0 +1,16 @@
+{
+  "id": "011-list-look-up",
+  "pillar": "list",
+  "music": "pulse",
+  "coverAt": 1.0,
+  "scenes": [
+    { "type": "photo", "b": "solomon-r-guggenheim-museum", "i": 5, "fill": true, "title": "Always look up", "accent": ["UP"], "num": "1/5", "dur": 2.8 },
+    { "type": "photo", "b": "kimbell-art-museum", "i": 5, "title": "Daylight bounced off the vaults", "accent": ["DAYLIGHT"], "num": "2/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "cathedral-of-brasilia", "i": 4, "title": "A nave full of sky", "accent": ["SKY"], "num": "3/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "bagsvaerd-church", "i": 4, "title": "A cloud made of concrete", "accent": ["CLOUD"], "num": "4/5", "dur": 2.3, "flash": true },
+    { "type": "photo", "b": "sydney-opera-house", "i": 4, "title": "Inside the shells", "accent": ["SHELLS"], "num": "5/5", "dur": 2.4, "flash": true },
+    { "type": "site", "clip": "idea", "args": { "idea": "Light from above" }, "fromMark": "idea", "lead": 0.5, "dur": 3.4, "title": "308 lit from above", "accent": ["308"] },
+    { "type": "end", "line": "Which ceiling would you lie under?", "accent": ["CEILING"], "dur": 2.8 }
+  ],
+  "caption": "Always look up. ☀️\n\nFive buildings where the best view is the ceiling — from a spiral in New York to a concrete cloud in Copenhagen.\n\nFilter 308 buildings by \"Light from above\" → link in bio\nWhich ceiling would you lie under?\n\n#architecture #light #guggenheim #lookup #designinspiration"
+}
