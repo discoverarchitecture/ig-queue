@@ -69,11 +69,20 @@ function syncMedia() {
   catch (e) { log('could not pull main (using local state):', e.message.split('\n')[0]); }
   const Q = readJSON('state/queue.json', { posts: {} });
 
+  // A reel is finished only when it is on Instagram AND on YouTube; until then its video stays uploaded.
+  const finished = (id) => Q.posts[id]?.status === 'published' && (Q.posts[id]?.youtube?.id || (Q.posts[id]?.youtube?.attempts || 0) >= 3);
+  const needsYouTube = (id) => Q.posts[id]?.status === 'published' && !finished(id);
+  for (const id of fs.existsSync(POSTED) ? fs.readdirSync(POSTED) : []) {
+    if (needsYouTube(id) && !fs.existsSync(path.join(QUEUE, id))) {
+      fs.renameSync(path.join(POSTED, id), path.join(QUEUE, id));
+      log('brought back for YouTube:', id);
+    }
+  }
   const ids = fs.readdirSync(QUEUE).filter((f) => !f.startsWith('.') && fs.statSync(path.join(QUEUE, f)).isDirectory()).sort();
   const keep = [];
   const bad = [];
   for (const id of ids) {
-    if (Q.posts[id]?.status === 'published') {
+    if (finished(id)) {
       let dst = path.join(POSTED, id);
       if (fs.existsSync(dst)) dst += `-${Date.now()}`;
       fs.renameSync(path.join(QUEUE, id), dst);
@@ -91,7 +100,7 @@ function syncMedia() {
   if (bad.length) { log('needs fixing:\n  ' + bad.join('\n  ')); macNotify(`${bad.length} queue folder(s) need fixing — see sync.log`); }
 
   // Posts already in a batch must stay on the branch; fill the rest in name order.
-  const active = keep.filter((id) => ['scheduled', 'approved', 'publishing', 'failed'].includes(Q.posts[id]?.status));
+  const active = keep.filter((id) => ['scheduled', 'approved', 'publishing', 'failed'].includes(Q.posts[id]?.status) || needsYouTube(id));
   const selected = [...active, ...keep.filter((id) => !active.includes(id))].slice(0, Math.max(CONFIG.maxQueued, active.length));
 
   if (!fs.existsSync(GIT_DIR)) {
