@@ -98,13 +98,15 @@
       "error": null
     },
     "003-list-weirdest-homes": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "People actually live in these. 🏠\n\nTilted cubes in Rotterdam, 354 stacked boxes in Montréal, 900 trees on the balconies in Milan — which one would you move into?\n\nFind 2,600+ buildings like these → link in bio\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #weirdarchitecture #housing #designinspiration #architecturelovers\n\nPhotos: Cube Houses – Michielverbeek (CC BY-SA 4.0); Habitat 67 – Guilhem Vellut from Annecy, France (CC BY 2.0); Hundertwasserhaus – Thomas Ledl (CC BY-SA 4.0); Bosco Verticale – Kokky92 (CC BY-SA 4.0); Mirador – Port(u*o)s (CC BY-SA 3.0)",
       "captionSha": "7721182efd998e905b69a53021de9f7797872882",
       "batch": "2026-10-14",
       "slot": "2026-10-15T13:00:00.000Z",
-      "decidedAt": "2026-10-14T21:10:16.437Z"
+      "decidedAt": "2026-10-14T21:10:16.437Z",
+      "attempts": 1,
+      "container": null
     },
     "004-detail-fallingwater": {
       "status": "approved",
