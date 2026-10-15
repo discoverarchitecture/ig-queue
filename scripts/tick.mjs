@@ -368,6 +368,75 @@ async function publishDue(ig) {
   }
 }
 
+// ---- 5b. YouTube Shorts: mirror every published reel ----------------------
+// Uses the YT_AUTH secret ({client_id, client_secret, refresh_token}). Until Google's API
+// audit passes, YouTube locks API uploads to private; the owner flips them to public.
+// Quota: an upload costs ~1,600 of 10,000 units a day, so at most 5 uploads per 24 h.
+async function ytToken(auth) {
+  const r = await fetch('https://oauth2.googleapis.com/token', { method: 'POST', body: new URLSearchParams({
+    client_id: auth.client_id, client_secret: auth.client_secret, refresh_token: auth.refresh_token, grant_type: 'refresh_token' }) });
+  const j = await r.json();
+  if (!j.access_token) throw new Error(`YouTube token: ${j.error_description || j.error || r.status}`);
+  return j.access_token;
+}
+
+function ytMeta(id, p) {
+  const caption = (p.captionOverride ?? p.caption ?? '').trim();
+  const [first, ...rest] = caption.split('\n');
+  const title = first.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 90).replace(/\s+\S*$/, (m) => (first.length > 90 ? '' : m)) + ' #Shorts';
+  const body = rest.join('\n').trim()
+    .replace(/link in bio/gi, 'findgreatarchitecture.com/?ref=youtube')
+    .replace(/[<>]/g, '');
+  const tags = [...new Set((caption.match(/#[\p{L}\p{N}_]+/gu) || []).map((t) => t.slice(1)))].slice(0, 15);
+  return { title: title.slice(0, 100), description: `${body}\n\nExplore the buildings: https://findgreatarchitecture.com/?ref=youtube`.slice(0, 4900), tags };
+}
+
+async function uploadShort(token, id, p) {
+  const video = await fetch(mediaUrl(id, 'reel.mp4'));
+  if (!video.ok) throw new Error(`could not fetch video (${video.status})`);
+  const bytes = Buffer.from(await video.arrayBuffer());
+  const meta = ytMeta(id, p);
+  const init = await fetch('https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json; charset=UTF-8', 'X-Upload-Content-Type': 'video/mp4', 'X-Upload-Content-Length': String(bytes.length) },
+    body: JSON.stringify({
+      snippet: { title: meta.title, description: meta.description, tags: meta.tags, categoryId: '27', defaultLanguage: 'en', defaultAudioLanguage: 'en' },
+      status: { privacyStatus: 'public', selfDeclaredMadeForKids: false, containsSyntheticMedia: true },
+    }),
+  });
+  if (!init.ok) throw new Error(`YouTube upload start: ${init.status} ${(await init.text()).slice(0, 300)}`);
+  const put = await fetch(init.headers.get('location'), { method: 'PUT', headers: { 'Content-Type': 'video/mp4' }, body: bytes });
+  const v = await put.json().catch(() => ({}));
+  if (!put.ok || !v.id) throw new Error(`YouTube upload: ${put.status} ${JSON.stringify(v.error || v).slice(0, 300)}`);
+  return { id: v.id, url: `https://www.youtube.com/shorts/${v.id}`, privacy: v.status?.privacyStatus || 'unknown' };
+}
+
+async function syncYouTube() {
+  if (!process.env.YT_AUTH) return;
+  const auth = JSON.parse(process.env.YT_AUTH);
+  const day = Date.now() - DAY;
+  const recent = Object.values(Q.posts).filter((p) => p.youtube?.uploadedAt && Date.parse(p.youtube.uploadedAt) > day).length;
+  if (recent >= 5) return log('youtube: daily upload budget used');
+  // One upload per run keeps each run short and spreads quota; oldest Instagram post first.
+  const next = Object.entries(Q.posts)
+    .filter(([, p]) => p.status === 'published' && !p.youtube?.id && (p.youtube?.attempts || 0) < 3)
+    .sort((a, b) => Date.parse(a[1].publishedAt) - Date.parse(b[1].publishedAt))[0];
+  if (!next) return;
+  const [id, p] = next;
+  try {
+    const yt = await uploadShort(await ytToken(auth), id, p);
+    p.youtube = { ...yt, uploadedAt: new Date().toISOString() };
+    persist(`youtube ${id}`);
+    await notify(`▶️ On YouTube: **${id}** — ${yt.url}` + (yt.privacy === 'private'
+      ? `\n\nYouTube keeps API uploads **private** until Google approves the app. Open it in YouTube Studio → Visibility → **Public**.` : ''), yt.privacy === 'private');
+  } catch (e) {
+    p.youtube = { ...(p.youtube || {}), attempts: (p.youtube?.attempts || 0) + 1, error: String(e.message).slice(0, 300) };
+    persist(`youtube failed ${id}`);
+    log('youtube failed', id, e.message);
+    if (p.youtube.attempts >= 3) await notify(`❌ YouTube upload of **${id}** failed 3 times: ${p.youtube.error}`);
+  }
+}
+
 // ---- 6. Inbox + analytics (encrypted at rest) ------------------------------
 const isDue = (key, hours) => !Q.last[key] || now - Date.parse(Q.last[key]) >= hours * HOUR - 5 * 60e3;
 
@@ -439,6 +508,7 @@ async function main() {
   await backfill();
   await remindersAndMisses();
   await publishDue(ig);
+  try { await syncYouTube(); } catch (e) { log('youtube', e.message); }
 
   if (isDue('inbox', CONFIG.inboxEveryHours)) { try { await syncInbox(ig); } catch (e) { log('inbox', e.message); } }
   if (isDue('analytics', CONFIG.analyticsEveryHours)) { try { await syncAnalytics(ig); } catch (e) { log('analytics', e.message); } }

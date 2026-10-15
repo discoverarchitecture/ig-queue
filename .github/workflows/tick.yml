@@ -26,6 +26,7 @@ jobs:
         env:
           FGA_KEY: ${{ secrets.FGA_KEY }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          YT_AUTH: ${{ secrets.YT_AUTH }}
           GH_TOKEN: ${{ github.token }}
       - name: Redeploy site
         if: hashFiles('.deploy-pages') != ''
