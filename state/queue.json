@@ -152,13 +152,15 @@
       }
     },
     "005-site-surprise-me": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "I let one button plan my next architecture trip. 🎲\n\n\"Surprise me\" opens a random building from 2,600+ — photos, the big idea, and links to drawings.\n\nTry it yourself → link in bio\nComment what it gave you 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #travel #designinspiration #architecturelovers #wanderlust\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "3386417b6ea4d83fb2cac0080a57cc3556b7ca68",
       "batch": "2026-10-14",
       "slot": "2026-10-15T23:00:00.000Z",
-      "decidedAt": "2026-10-14T21:10:16.437Z"
+      "decidedAt": "2026-10-14T21:10:16.437Z",
+      "attempts": 1,
+      "container": null
     },
     "009-site-guess-the-building": {
       "status": "approved",
