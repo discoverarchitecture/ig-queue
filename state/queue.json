@@ -83,13 +83,15 @@
       "publishedAt": "2026-10-14T14:37:59+0000"
     },
     "002-architect-tadao-ando": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "A former boxer with no degree became the master of concrete and light.\n\nTadao Ando taught himself architecture. Then he cut a cross into a wall and let the sun do the rest.\n\nExplore all 26 of his buildings → link in bio\nWhich one would you visit first?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #tadaoando #concrete #japanesearchitecture #designinspiration\n\nPhotos: Church of the Light – 荻野目さん (CC BY 2.0); Church of the Light – The original uploader was Bujatt at English Wikipedia . (CC BY-SA 2.5); Row House in Sumiyoshi – Oiuysdfg (CC BY-SA 3.0); Church on the Water – ume-y (CC BY 2.0); Water Temple (Honpuku-ji) – No machine-readable author provided. おぉたむすねィく探検隊 assumed (based on copyright claims). (CC BY-SA 2.5); Chichu Art Museum – 663highland (CC BY 2.5)",
       "captionSha": "b64b0b2641bd787932955bfac470c709a79bd73f",
       "batch": "2026-10-14",
       "slot": "2026-10-15T07:30:00.000Z",
-      "decidedAt": "2026-10-14T21:10:16.437Z"
+      "decidedAt": "2026-10-14T21:10:16.437Z",
+      "attempts": 1,
+      "container": null
     },
     "003-list-weirdest-homes": {
       "status": "approved",
