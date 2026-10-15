@@ -164,7 +164,13 @@
       "mediaId": "18059054639555880",
       "permalink": "https://www.instagram.com/reel/DeiHX_lDVVU/",
       "publishedAt": "2026-10-15T23:15:39+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "tHWHBrQBEVc",
+        "url": "https://www.youtube.com/shorts/tHWHBrQBEVc",
+        "privacy": "public",
+        "uploadedAt": "2026-10-15T23:15:53.184Z"
+      }
     },
     "009-site-guess-the-building": {
       "status": "approved",
