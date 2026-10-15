@@ -101,7 +101,13 @@
       "mediaId": "18144364753579947",
       "permalink": "https://www.instagram.com/reel/DegczuIkRRU/",
       "publishedAt": "2026-10-15T07:44:26+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "m-8zKU0e5S8",
+        "url": "https://www.youtube.com/shorts/m-8zKU0e5S8",
+        "privacy": "public",
+        "uploadedAt": "2026-10-15T20:17:42.833Z"
+      }
     },
     "003-list-weirdest-homes": {
       "status": "published",
