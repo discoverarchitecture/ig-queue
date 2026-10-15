@@ -82,8 +82,10 @@
       "permalink": "https://www.instagram.com/reel/DeenSvHgT3-/",
       "publishedAt": "2026-10-14T14:37:59+0000",
       "youtube": {
-        "attempts": 1,
-        "error": "could not fetch video (404)"
+        "id": "fsMi5WBwyLE",
+        "url": "https://www.youtube.com/shorts/fsMi5WBwyLE",
+        "privacy": "public",
+        "uploadedAt": "2026-10-15T20:05:01.787Z"
       }
     },
     "002-architect-tadao-ando": {
