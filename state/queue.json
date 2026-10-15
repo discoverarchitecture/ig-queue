@@ -4,7 +4,7 @@
     "notifyIssue": 1,
     "lastCommentAt": "2026-10-14T21:06:38Z",
     "lastCommentId": 6178513578,
-    "lastPillar": "site"
+    "lastPillar": "architect"
   },
   "last": {
     "inboxHash": "a87ef3bf680a6e0e301802d70f7e1e0f8b835a8ee3a44be9c32d73b4c207f73a",
@@ -44,23 +44,23 @@
         },
         {
           "at": "2026-10-16T17:00:00.000Z",
-          "post": null
+          "post": "006-architect-oscar-niemeyer"
         },
         {
           "at": "2026-10-16T23:00:00.000Z",
-          "post": null
+          "post": "007-list-second-lives"
         },
         {
           "at": "2026-10-17T13:00:00.000Z",
-          "post": null
+          "post": "008-detail-salk-institute"
         },
         {
           "at": "2026-10-17T17:00:00.000Z",
-          "post": null
+          "post": "013-site-filter-by-idea"
         },
         {
           "at": "2026-10-17T23:00:00.000Z",
-          "post": null
+          "post": "010-architect-alvar-aalto"
         }
       ],
       "remindedAt": null
@@ -128,28 +128,40 @@
       "decidedAt": "2026-10-14T21:10:16.437Z"
     },
     "006-architect-oscar-niemeyer": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Oscar Niemeyer didn't do straight lines.\n\nA cathedral of curved concrete ribs, a wavy tower with 1,000+ homes, a museum that floats over the bay like a saucer. He built for over 70 years.\n\nAll 33 of his buildings → link in bio\nCurves or right angles — which side are you on?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #oscarniemeyer #brazil #modernism #designinspiration\n\nPhotos: Niterói Contemporary Art Museum – Marinelson Almeida - Traveling through Brazil from Niteroi, Brasil (CC BY 2.0); Cathedral of Brasília – Fwsbsb2 (CC BY-SA 4.0); Cathedral of Brasília – Boaventuravinicius (CC BY-SA 4.0); Copan Building – Paul R. Burley (CC BY-SA 4.0); Church of Saint Francis of Assisi, Pampulha – Nicolas de Camaret from São Paulo, Brazil (CC BY 2.0); Niterói Contemporary Art Museum – Maria Fátima Leite (CC BY-SA 4.0)",
-      "captionSha": "6b7f517011502cb1840305483157a7a0864ac026"
+      "captionSha": "6b7f517011502cb1840305483157a7a0864ac026",
+      "batch": "2026-10-14",
+      "slot": "2026-10-16T17:00:00.000Z",
+      "decidedAt": "2026-10-15T07:11:40.635Z"
     },
     "007-list-second-lives": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Don't demolish it. Reimagine it. ♻️\n\nA power station became a museum. A railway became a park. A grain silo became an art gallery.\n\n139 buildings with a second life → link in bio\nWhat abandoned building near you deserves this?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #adaptivereuse #highline #tatemodern #sustainabledesign\n\nPhotos: Tate Modern – King of Hearts (CC BY-SA 4.0); High Line – Elisa.rolle (CC BY-SA 4.0); Zeitz MOCAA – Michael Rowe (CC BY-SA 4.0); SESC Pompéia – Joalpe (CC BY-SA 4.0); Elbphilharmonie – Sparrow (麻雀) (CC BY-SA 4.0)",
-      "captionSha": "c757b90c0c2e60124adbe3cfd7cfa06e9f24eaf3"
+      "captionSha": "c757b90c0c2e60124adbe3cfd7cfa06e9f24eaf3",
+      "batch": "2026-10-14",
+      "slot": "2026-10-16T23:00:00.000Z",
+      "decidedAt": "2026-10-15T07:11:40.635Z"
     },
     "008-detail-salk-institute": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "The most powerful thing in this courtyard is what's missing.\n\nLouis Kahn's Salk Institute (1965): a travertine plaza, one line of water, and the whole Pacific as the view.\n\nExplore it + Kahn's other buildings → link in bio\nWould you add a tree or keep it empty?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #salkinstitute #louiskahn #lajolla #brutalism\n\nPhotos: Salk Institute – Carol M. Highsmith (Public domain); Salk Institute – Daniel L. Lu (user:dllu) (CC BY-SA 4.0); Salk Institute – Jason Taellious (CC BY-SA 2.0)",
-      "captionSha": "05ef8dd0facebe9ce3102b0b3683f31e4aad3706"
+      "captionSha": "05ef8dd0facebe9ce3102b0b3683f31e4aad3706",
+      "batch": "2026-10-14",
+      "slot": "2026-10-17T13:00:00.000Z",
+      "decidedAt": "2026-10-15T07:11:40.635Z"
     },
     "010-architect-alvar-aalto": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Modernism, but make it warm. 🌲\n\nAlvar Aalto designed a hospital around patients lying in bed — down to the ceilings, basins and door handles. Then he brought timber and grass into modernism.\n\nAll 29 Aalto buildings → link in bio\nConcrete box or timber cabin?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #alvaraalto #finland #nordicdesign #modernism\n\nPhotos: Villa Mairea – Ninara from Helsinki, Finland (CC BY 2.0); Paimio Sanatorium – Marit Henriksson (CC BY-SA 4.0); Paimio Sanatorium –  (Public domain); Villa Mairea – Frans Drewniak from Copenhagen, Denmark (CC BY-SA 2.0); Säynätsalo Town Hall – Alexignat (CC BY-SA 4.0); Säynätsalo Town Hall – Antti Leppänen (CC BY 4.0)",
-      "captionSha": "429951f80b42625e6c7dc9e16a21ef45e772f803"
+      "captionSha": "429951f80b42625e6c7dc9e16a21ef45e772f803",
+      "batch": "2026-10-14",
+      "slot": "2026-10-17T23:00:00.000Z",
+      "decidedAt": "2026-10-15T07:11:40.635Z"
     },
     "011-list-look-up": {
       "status": "pending",
@@ -164,19 +176,17 @@
       "captionSha": "35dc6675d6caa1763283f803d1361f43f28ca15e"
     },
     "013-site-filter-by-idea": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Don't know the building's name? Search by the idea. 🔎\n\nCantilevers, courtyards, light from above, raw concrete — filter 2,600+ buildings by what makes them great.\n\nTry it free → link in bio\nWhich idea should we feature next?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #designresearch #designinspiration #architecturelovers\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
-      "captionSha": "a6e398a21beaf73d6f994dc3ea8755bb1be6ec8c"
+      "captionSha": "a6e398a21beaf73d6f994dc3ea8755bb1be6ec8c",
+      "batch": "2026-10-14",
+      "slot": "2026-10-17T17:00:00.000Z",
+      "decidedAt": "2026-10-15T07:11:40.635Z"
     }
   },
   "pool": [
-    "006-architect-oscar-niemeyer",
-    "007-list-second-lives",
-    "008-detail-salk-institute",
-    "010-architect-alvar-aalto",
     "011-list-look-up",
-    "012-detail-sydney-opera-house",
-    "013-site-filter-by-idea"
+    "012-detail-sydney-opera-house"
   ]
 }
