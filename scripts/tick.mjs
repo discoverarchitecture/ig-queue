@@ -380,15 +380,23 @@ async function ytToken(auth) {
   return j.access_token;
 }
 
+// Shorts show viewers only the title, and YouTube makes no description/comment link clickable
+// on Shorts, so the address goes IN the title (always visible) and first in the description.
+const SITE_TAG = ' · findgreatarchitecture.com';
+const SITE_LINK = 'https://findgreatarchitecture.com/?ref=youtube';
 function ytMeta(id, p) {
   const caption = (p.captionOverride ?? p.caption ?? '').trim();
   const [first, ...rest] = caption.split('\n');
-  const title = first.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 90).replace(/\s+\S*$/, (m) => (first.length > 90 ? '' : m)) + ' #Shorts';
+  let hook = first.replace(/[<>]/g, '').replace(/\s+/g, ' ').trim();
+  const room = 100 - SITE_TAG.length;
+  if ([...hook].length > room) hook = [...hook].slice(0, room - 1).join('').replace(/\s+\S*$/, '') + '…';
   const body = rest.join('\n').trim()
-    .replace(/link in bio/gi, 'findgreatarchitecture.com/?ref=youtube')
+    .replace(/→ ?link in bio/gi, `→ ${SITE_LINK}`)
+    .replace(/link in bio/gi, SITE_LINK)
     .replace(/[<>]/g, '');
   const tags = [...new Set((caption.match(/#[\p{L}\p{N}_]+/gu) || []).map((t) => t.slice(1)))].slice(0, 15);
-  return { title: title.slice(0, 100), description: `${body}\n\nExplore the buildings: https://findgreatarchitecture.com/?ref=youtube`.slice(0, 4900), tags };
+  const description = `🔗 ${SITE_LINK}\nA huge, free wall of great buildings for architecture students.\n\n${body}`;
+  return { title: hook + SITE_TAG, description: description.slice(0, 4900), tags };
 }
 
 async function uploadShort(token, id, p) {
