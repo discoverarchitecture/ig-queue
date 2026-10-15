@@ -31,10 +31,20 @@ function persist(msg) {
   try { git('diff', '--cached', '--quiet'); return; } catch { /* has changes */ }
   git('-c', 'user.name=fga-bot', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
     'commit', '-q', '-m', msg);
-  for (let i = 0; i < 4; i++) {
-    try { git('pull', '--rebase', '-q'); git('push', '-q'); return; } catch (e) {
-      log('push retry', e.message.split('\n')[0]);
-      try { git('rebase', '--abort'); } catch { /* no rebase in progress */ }
+  // The scheduler owns state/queue.json and data/*. If someone else pushed meanwhile,
+  // take their latest commit and lay our files on top of it (no rebase, no conflicts).
+  const OWN = ['state/queue.json', 'data/inbox.enc', 'data/analytics.enc'];
+  for (let i = 0; i < 5; i++) {
+    try { git('push', '-q', 'origin', 'HEAD:main'); return; } catch (e) {
+      log('push rejected, re-applying on latest main:', (e.stderr || e.message).toString().split('\n').filter(Boolean).slice(-1)[0]);
+      const mine = Object.fromEntries(OWN.map((f) => [f, readText(f)]));
+      try { git('rebase', '--abort'); } catch { /* none in progress */ }
+      git('fetch', '-q', 'origin', 'main');
+      git('reset', '-q', '--hard', 'origin/main');
+      for (const [f, text] of Object.entries(mine)) if (text != null) writeText(f, text);
+      git('add', ...OWN.filter((f) => mine[f] != null));
+      try { git('diff', '--cached', '--quiet'); return; } catch { /* has changes */ }
+      git('-c', 'user.name=fga-bot', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com', 'commit', '-q', '-m', msg);
     }
   }
   // Give up without publishing anything further; the next run starts from the remote state.
