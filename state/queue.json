@@ -122,7 +122,13 @@
       "mediaId": "18119408035935936",
       "permalink": "https://www.instagram.com/reel/DehVwEfDG7y/",
       "publishedAt": "2026-10-15T16:02:04+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "-IUEBEynWjk",
+        "url": "https://www.youtube.com/shorts/-IUEBEynWjk",
+        "privacy": "public",
+        "uploadedAt": "2026-10-15T20:23:40.646Z"
+      }
     },
     "004-detail-fallingwater": {
       "status": "published",
