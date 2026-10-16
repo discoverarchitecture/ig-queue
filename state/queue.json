@@ -185,7 +185,13 @@
       "mediaId": "18116794895094975",
       "permalink": "https://www.instagram.com/reel/Dej8TysCMsz/",
       "publishedAt": "2026-10-16T16:17:22+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "VCumJmCBusQ",
+        "url": "https://www.youtube.com/shorts/VCumJmCBusQ",
+        "privacy": "public",
+        "uploadedAt": "2026-10-16T20:46:36.465Z"
+      }
     },
     "006-architect-oscar-niemeyer": {
       "status": "published",
