@@ -188,13 +188,15 @@
       "error": null
     },
     "006-architect-oscar-niemeyer": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "Oscar Niemeyer didn't do straight lines.\n\nA cathedral of curved concrete ribs, a wavy tower with 1,000+ homes, a museum that floats over the bay like a saucer. He built for over 70 years.\n\nAll 33 of his buildings → link in bio\nCurves or right angles — which side are you on?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #oscarniemeyer #brazil #modernism #designinspiration\n\nPhotos: Niterói Contemporary Art Museum – Marinelson Almeida - Traveling through Brazil from Niteroi, Brasil (CC BY 2.0); Cathedral of Brasília – Fwsbsb2 (CC BY-SA 4.0); Cathedral of Brasília – Boaventuravinicius (CC BY-SA 4.0); Copan Building – Paul R. Burley (CC BY-SA 4.0); Church of Saint Francis of Assisi, Pampulha – Nicolas de Camaret from São Paulo, Brazil (CC BY 2.0); Niterói Contemporary Art Museum – Maria Fátima Leite (CC BY-SA 4.0)",
       "captionSha": "6b7f517011502cb1840305483157a7a0864ac026",
       "batch": "2026-10-14",
       "slot": "2026-10-16T17:00:00.000Z",
-      "decidedAt": "2026-10-15T07:11:40.635Z"
+      "decidedAt": "2026-10-15T07:11:40.635Z",
+      "attempts": 1,
+      "container": null
     },
     "007-list-second-lives": {
       "status": "approved",
