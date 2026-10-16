@@ -173,7 +173,7 @@
       }
     },
     "009-site-guess-the-building": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Name this building in 3 seconds. ⏱️\n\nOur \"Guess the building\" game has a Daily five — same five buildings for everyone, new every day. No sign-up.\n\nPlay today's five → link in bio\nDrop your score below 👇\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #guessthebuilding #quiz #architecturestudent #designinspiration\n\nPhotos: Solomon R. Guggenheim Museum – Bmzuckerman (CC BY 4.0); Sydney Opera House – Glinted framora (CC BY-SA 4.0)",
       "captionSha": "678c51292cf99cfc815ab7695985b9bbcbbde321",
@@ -181,7 +181,11 @@
       "slot": "2026-10-16T13:00:00.000Z",
       "decidedAt": "2026-10-14T21:10:16.437Z",
       "attempts": 1,
-      "container": "18127382500744346"
+      "container": "18127382500744346",
+      "mediaId": "18116794895094975",
+      "permalink": "https://www.instagram.com/reel/Dej8TysCMsz/",
+      "publishedAt": "2026-10-16T16:17:22+0000",
+      "error": null
     },
     "006-architect-oscar-niemeyer": {
       "status": "approved",
