@@ -25,7 +25,7 @@ const mgit = (...args) => execFileSync('git', [
   '-c', 'user.name=fga-sync', '-c', 'user.email=fga-sync@users.noreply.github.com',
   '-c', 'http.postBuffer=1048576000', // pushes of several reels exceed git's default HTTP buffer
   ...args,
-], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], timeout: 10 * 60e3 }).trim();
 
 /** Accept loosely-named files: one .mp4 → reel.mp4, one .jpg/.jpeg → cover.jpg, one .txt → caption.txt. */
 function normalize(dir) {
@@ -156,5 +156,6 @@ function kickSchedulerIfStalled() {
   } catch (e) { log('could not check the scheduler:', e.message.split('\n')[0]); }
 }
 
-try { syncMedia(); } catch (e) { log('sync failed:', e.message); macNotify('Instagram queue sync failed — see sync.log'); process.exitCode = 1; }
+// Check the scheduler first: a slow upload must never delay a post.
 kickSchedulerIfStalled();
+try { syncMedia(); } catch (e) { log('sync failed:', e.message); macNotify('Instagram queue sync failed — see sync.log'); process.exitCode = 1; }

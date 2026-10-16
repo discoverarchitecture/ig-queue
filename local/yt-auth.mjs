@@ -12,7 +12,7 @@ import { execFile } from 'node:child_process';
 const BASE = path.join(os.homedir(), 'FindGreatArchitecture');
 const client = JSON.parse(fs.readFileSync(path.join(BASE, '.yt-client.json'), 'utf8')).installed;
 const OUT = path.join(BASE, '.yt-auth.json');
-const SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly'];
+const SCOPES = ['https://www.googleapis.com/auth/youtube.upload', 'https://www.googleapis.com/auth/youtube.readonly', 'https://www.googleapis.com/auth/youtube.force-ssl'];
 const state = crypto.randomBytes(12).toString('hex');
 const verifier = crypto.randomBytes(48).toString('base64url');
 const challenge = crypto.createHash('sha256').update(verifier).digest('base64url');
