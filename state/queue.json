@@ -206,7 +206,13 @@
       "mediaId": "17907492405579978",
       "permalink": "https://www.instagram.com/reel/DekGoDZApdv/",
       "publishedAt": "2026-10-16T17:47:32+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "f354KHmgK5w",
+        "url": "https://www.youtube.com/shorts/f354KHmgK5w",
+        "privacy": "public",
+        "uploadedAt": "2026-10-16T21:17:13.354Z"
+      }
     },
     "007-list-second-lives": {
       "status": "approved",
