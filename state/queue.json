@@ -328,7 +328,7 @@
       "decidedAt": "2026-10-17T13:24:25.268Z"
     },
     "013-site-filter-by-idea": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Don't know the building's name? Search by the idea. 🔎\n\nCantilevers, courtyards, light from above, raw concrete — filter 2,600+ buildings by what makes them great.\n\nTry it free → link in bio\nWhich idea should we feature next?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #designresearch #designinspiration #architecturelovers\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "a6e398a21beaf73d6f994dc3ea8755bb1be6ec8c",
@@ -336,7 +336,11 @@
       "slot": "2026-10-17T17:00:00.000Z",
       "decidedAt": "2026-10-15T07:11:40.635Z",
       "attempts": 1,
-      "container": "18127762846744346"
+      "container": "18127762846744346",
+      "mediaId": "17898530556394483",
+      "permalink": "https://www.instagram.com/reel/DempnD4Dqfe/",
+      "publishedAt": "2026-10-17T17:31:46+0000",
+      "error": null
     }
   },
   "pool": []
