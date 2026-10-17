@@ -4,7 +4,7 @@
     "notifyIssue": 1,
     "lastCommentAt": "2026-10-17T01:16:27Z",
     "lastCommentId": 6227845010,
-    "lastPillar": "architect"
+    "lastPillar": "detail"
   },
   "last": {
     "inboxHash": "a87ef3bf680a6e0e301802d70f7e1e0f8b835a8ee3a44be9c32d73b4c207f73a",
@@ -61,6 +61,50 @@
         {
           "at": "2026-10-17T23:00:00.000Z",
           "post": "010-architect-alvar-aalto"
+        }
+      ],
+      "remindedAt": null
+    },
+    {
+      "id": "2026-10-17",
+      "index": 1,
+      "created": "2026-10-17T13:24:25.268Z",
+      "slots": [
+        {
+          "at": "2026-10-18T13:00:00.000Z",
+          "post": "011-list-look-up"
+        },
+        {
+          "at": "2026-10-18T17:00:00.000Z",
+          "post": "012-detail-sydney-opera-house"
+        },
+        {
+          "at": "2026-10-18T23:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-19T13:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-19T17:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-19T23:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-20T13:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-20T17:00:00.000Z",
+          "post": null
+        },
+        {
+          "at": "2026-10-20T23:00:00.000Z",
+          "post": null
         }
       ],
       "remindedAt": null
@@ -254,16 +298,22 @@
       "decidedAt": "2026-10-15T07:11:40.635Z"
     },
     "011-list-look-up": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Always look up. ☀️\n\nFive buildings where the best view is the ceiling — from a spiral in New York to a concrete cloud in Copenhagen.\n\nFilter 308 buildings by \"Light from above\" → link in bio\nWhich ceiling would you lie under?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #light #guggenheim #lookup #designinspiration\n\nPhotos: Solomon R. Guggenheim Museum – Tony Hisgett from Birmingham, UK (CC BY 2.0); Kimbell Art Museum – Joe Mabel (CC BY-SA 4.0); Cathedral of Brasília – Sintegrity (CC BY-SA 4.0); Bagsværd Church – seier+seier (CC BY 2.0); Sydney Opera House – Chris Olszewski (CC BY-SA 4.0)",
-      "captionSha": "654b854ad6cdad0bd2deb3378284852bb5309092"
+      "captionSha": "654b854ad6cdad0bd2deb3378284852bb5309092",
+      "batch": "2026-10-17",
+      "slot": "2026-10-18T13:00:00.000Z",
+      "decidedAt": "2026-10-17T13:24:25.268Z"
     },
     "012-detail-sydney-opera-house": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "The most famous roof in the world started as an impossible sketch.\n\nEvery shell of the Sydney Opera House is cut from one sphere — that trick is what made it buildable.\n\nExplore it + 10 more Utzon buildings → link in bio\nHave you seen it in person?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #sydneyoperahouse #utzon #sydney #designinspiration\n\nPhotos: Sydney Opera House – Glinted framora (CC BY-SA 4.0); Sydney Opera House – Boyd159 (CC BY-SA 4.0); Sydney Opera House – Tony Hisgett from Birmingham, UK (CC BY 2.0); Sydney Opera House – Chris Olszewski (CC BY-SA 4.0); Sydney Opera House – Kgbo (CC BY-SA 4.0)",
-      "captionSha": "35dc6675d6caa1763283f803d1361f43f28ca15e"
+      "captionSha": "35dc6675d6caa1763283f803d1361f43f28ca15e",
+      "batch": "2026-10-17",
+      "slot": "2026-10-18T17:00:00.000Z",
+      "decidedAt": "2026-10-17T13:24:25.268Z"
     },
     "013-site-filter-by-idea": {
       "status": "approved",
@@ -275,8 +325,5 @@
       "decidedAt": "2026-10-15T07:11:40.635Z"
     }
   },
-  "pool": [
-    "011-list-look-up",
-    "012-detail-sydney-opera-house"
-  ]
+  "pool": []
 }
