@@ -215,13 +215,15 @@
       }
     },
     "007-list-second-lives": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "Don't demolish it. Reimagine it. ♻️\n\nA power station became a museum. A railway became a park. A grain silo became an art gallery.\n\n139 buildings with a second life → link in bio\nWhat abandoned building near you deserves this?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #adaptivereuse #highline #tatemodern #sustainabledesign\n\nPhotos: Tate Modern – King of Hearts (CC BY-SA 4.0); High Line – Elisa.rolle (CC BY-SA 4.0); Zeitz MOCAA – Michael Rowe (CC BY-SA 4.0); SESC Pompéia – Joalpe (CC BY-SA 4.0); Elbphilharmonie – Sparrow (麻雀) (CC BY-SA 4.0)",
       "captionSha": "c757b90c0c2e60124adbe3cfd7cfa06e9f24eaf3",
       "batch": "2026-10-14",
       "slot": "2026-10-16T23:00:00.000Z",
-      "decidedAt": "2026-10-15T07:11:40.635Z"
+      "decidedAt": "2026-10-15T07:11:40.635Z",
+      "attempts": 1,
+      "container": null
     },
     "008-detail-salk-institute": {
       "status": "approved",
