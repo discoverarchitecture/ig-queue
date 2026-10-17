@@ -280,7 +280,7 @@
       }
     },
     "008-detail-salk-institute": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "The most powerful thing in this courtyard is what's missing.\n\nLouis Kahn's Salk Institute (1965): a travertine plaza, one line of water, and the whole Pacific as the view.\n\nExplore it + Kahn's other buildings → link in bio\nWould you add a tree or keep it empty?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #salkinstitute #louiskahn #lajolla #brutalism\n\nPhotos: Salk Institute – Carol M. Highsmith (Public domain); Salk Institute – Daniel L. Lu (user:dllu) (CC BY-SA 4.0); Salk Institute – Jason Taellious (CC BY-SA 2.0)",
       "captionSha": "05ef8dd0facebe9ce3102b0b3683f31e4aad3706",
@@ -288,7 +288,11 @@
       "slot": "2026-10-17T13:00:00.000Z",
       "decidedAt": "2026-10-15T07:11:40.635Z",
       "attempts": 1,
-      "container": "18127682383744346"
+      "container": "18127682383744346",
+      "mediaId": "18084711824323845",
+      "permalink": "https://www.instagram.com/reel/DemNYXLEkWQ/",
+      "publishedAt": "2026-10-17T13:25:03+0000",
+      "error": null
     },
     "010-architect-alvar-aalto": {
       "status": "approved",
