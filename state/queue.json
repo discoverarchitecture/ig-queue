@@ -227,7 +227,13 @@
       "mediaId": "17910486831559838",
       "permalink": "https://www.instagram.com/reel/Dek5--FE7g_/",
       "publishedAt": "2026-10-17T01:16:17+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "lh8UOewQrhg",
+        "url": "https://www.youtube.com/shorts/lh8UOewQrhg",
+        "privacy": "public",
+        "uploadedAt": "2026-10-17T01:16:26.750Z"
+      }
     },
     "008-detail-salk-institute": {
       "status": "approved",
