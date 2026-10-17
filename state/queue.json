@@ -340,7 +340,13 @@
       "mediaId": "17898530556394483",
       "permalink": "https://www.instagram.com/reel/DempnD4Dqfe/",
       "publishedAt": "2026-10-17T17:31:46+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "whgapcr8P14",
+        "url": "https://www.youtube.com/shorts/whgapcr8P14",
+        "privacy": "public",
+        "uploadedAt": "2026-10-17T17:31:56.575Z"
+      }
     }
   },
   "pool": []
