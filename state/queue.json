@@ -292,7 +292,13 @@
       "mediaId": "18084711824323845",
       "permalink": "https://www.instagram.com/reel/DemNYXLEkWQ/",
       "publishedAt": "2026-10-17T13:25:03+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "PKCB03tISNg",
+        "url": "https://www.youtube.com/shorts/PKCB03tISNg",
+        "privacy": "public",
+        "uploadedAt": "2026-10-17T13:25:15.213Z"
+      }
     },
     "010-architect-alvar-aalto": {
       "status": "approved",
