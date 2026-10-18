@@ -334,7 +334,13 @@
       "mediaId": "18025995587880890",
       "permalink": "https://www.instagram.com/reel/DeozB30kvOM/",
       "publishedAt": "2026-10-18T13:32:34+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "PTz3neHX7Yc",
+        "url": "https://www.youtube.com/shorts/PTz3neHX7Yc",
+        "privacy": "public",
+        "uploadedAt": "2026-10-18T13:32:47.005Z"
+      }
     },
     "012-detail-sydney-opera-house": {
       "status": "approved",
