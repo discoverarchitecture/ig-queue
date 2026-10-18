@@ -313,7 +313,13 @@
       "mediaId": "18102110969042103",
       "permalink": "https://www.instagram.com/reel/DenX7PlDNAM/",
       "publishedAt": "2026-10-18T00:16:31+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "eMnYK-LOWx4",
+        "url": "https://www.youtube.com/shorts/eMnYK-LOWx4",
+        "privacy": "public",
+        "uploadedAt": "2026-10-18T00:16:41.919Z"
+      }
     },
     "011-list-look-up": {
       "status": "approved",
