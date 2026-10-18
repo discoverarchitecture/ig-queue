@@ -322,7 +322,7 @@
       }
     },
     "011-list-look-up": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Always look up. ☀️\n\nFive buildings where the best view is the ceiling — from a spiral in New York to a concrete cloud in Copenhagen.\n\nFilter 308 buildings by \"Light from above\" → link in bio\nWhich ceiling would you lie under?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #light #guggenheim #lookup #designinspiration\n\nPhotos: Solomon R. Guggenheim Museum – Tony Hisgett from Birmingham, UK (CC BY 2.0); Kimbell Art Museum – Joe Mabel (CC BY-SA 4.0); Cathedral of Brasília – Sintegrity (CC BY-SA 4.0); Bagsværd Church – seier+seier (CC BY 2.0); Sydney Opera House – Chris Olszewski (CC BY-SA 4.0)",
       "captionSha": "654b854ad6cdad0bd2deb3378284852bb5309092",
@@ -330,7 +330,11 @@
       "slot": "2026-10-18T13:00:00.000Z",
       "decidedAt": "2026-10-17T13:24:25.268Z",
       "attempts": 1,
-      "container": "18128056918744346"
+      "container": "18128056918744346",
+      "mediaId": "18025995587880890",
+      "permalink": "https://www.instagram.com/reel/DeozB30kvOM/",
+      "publishedAt": "2026-10-18T13:32:34+0000",
+      "error": null
     },
     "012-detail-sydney-opera-house": {
       "status": "approved",
