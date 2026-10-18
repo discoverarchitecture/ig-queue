@@ -351,7 +351,7 @@
       "slot": "2026-10-18T17:00:00.000Z",
       "decidedAt": "2026-10-17T13:24:25.268Z",
       "attempts": 1,
-      "container": null
+      "container": "18128172235744346"
     },
     "013-site-filter-by-idea": {
       "status": "published",
