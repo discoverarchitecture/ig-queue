@@ -301,7 +301,7 @@
       }
     },
     "010-architect-alvar-aalto": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Modernism, but make it warm. 🌲\n\nAlvar Aalto designed a hospital around patients lying in bed — down to the ceilings, basins and door handles. Then he brought timber and grass into modernism.\n\nAll 29 Aalto buildings → link in bio\nConcrete box or timber cabin?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #alvaraalto #finland #nordicdesign #modernism\n\nPhotos: Villa Mairea – Ninara from Helsinki, Finland (CC BY 2.0); Paimio Sanatorium – Marit Henriksson (CC BY-SA 4.0); Paimio Sanatorium –  (Public domain); Villa Mairea – Frans Drewniak from Copenhagen, Denmark (CC BY-SA 2.0); Säynätsalo Town Hall – Alexignat (CC BY-SA 4.0); Säynätsalo Town Hall – Antti Leppänen (CC BY 4.0)",
       "captionSha": "429951f80b42625e6c7dc9e16a21ef45e772f803",
@@ -309,7 +309,11 @@
       "slot": "2026-10-17T23:00:00.000Z",
       "decidedAt": "2026-10-15T07:11:40.635Z",
       "attempts": 1,
-      "container": "18127849003744346"
+      "container": "18127849003744346",
+      "mediaId": "18102110969042103",
+      "permalink": "https://www.instagram.com/reel/DenX7PlDNAM/",
+      "publishedAt": "2026-10-18T00:16:31+0000",
+      "error": null
     },
     "011-list-look-up": {
       "status": "approved",
