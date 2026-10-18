@@ -343,7 +343,7 @@
       }
     },
     "012-detail-sydney-opera-house": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "The most famous roof in the world started as an impossible sketch.\n\nEvery shell of the Sydney Opera House is cut from one sphere — that trick is what made it buildable.\n\nExplore it + 10 more Utzon buildings → link in bio\nHave you seen it in person?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #sydneyoperahouse #utzon #sydney #designinspiration\n\nPhotos: Sydney Opera House – Glinted framora (CC BY-SA 4.0); Sydney Opera House – Boyd159 (CC BY-SA 4.0); Sydney Opera House – Tony Hisgett from Birmingham, UK (CC BY 2.0); Sydney Opera House – Chris Olszewski (CC BY-SA 4.0); Sydney Opera House – Kgbo (CC BY-SA 4.0)",
       "captionSha": "35dc6675d6caa1763283f803d1361f43f28ca15e",
@@ -351,7 +351,11 @@
       "slot": "2026-10-18T17:00:00.000Z",
       "decidedAt": "2026-10-17T13:24:25.268Z",
       "attempts": 1,
-      "container": "18128172235744346"
+      "container": "18128172235744346",
+      "mediaId": "17943484044091033",
+      "permalink": "https://www.instagram.com/reel/DepbR-Gjcgw/",
+      "publishedAt": "2026-10-18T19:24:15+0000",
+      "error": null
     },
     "013-site-filter-by-idea": {
       "status": "published",
