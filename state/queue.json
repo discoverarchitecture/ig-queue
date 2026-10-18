@@ -355,7 +355,13 @@
       "mediaId": "17943484044091033",
       "permalink": "https://www.instagram.com/reel/DepbR-Gjcgw/",
       "publishedAt": "2026-10-18T19:24:15+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "DjHU4VnQzDM",
+        "url": "https://www.youtube.com/shorts/DjHU4VnQzDM",
+        "privacy": "public",
+        "uploadedAt": "2026-10-18T19:24:27.255Z"
+      }
     },
     "013-site-filter-by-idea": {
       "status": "published",
