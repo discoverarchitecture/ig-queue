@@ -96,11 +96,11 @@
         },
         {
           "at": "2026-10-20T13:00:00.000Z",
-          "post": null
+          "post": "014-talk-heydar-aliyev-center"
         },
         {
           "at": "2026-10-20T17:00:00.000Z",
-          "post": null
+          "post": "015-talk-fallingwater"
         },
         {
           "at": "2026-10-20T23:00:00.000Z",
@@ -385,20 +385,23 @@
       }
     },
     "014-talk-heydar-aliyev-center": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Where does this building end and the ground begin? 🌊\n\nZaha Hadid's Heydar Aliyev Center in Baku is one continuous surface: the lawn rolls up into the roof, and inside, floors, walls and stairs flow into each other. That's parametricism.\n\nExplore it and more Zaha Hadid → link in bio\nWould you call it a building or a landscape?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #zahahadid #parametricism #baku #designinspiration\n\nPhotos: Heydar Aliyev Center – Avisadehh (CC0); Heydar Aliyev Center – Mahmoodrezamo (CC BY-SA 4.0)",
-      "captionSha": "632275bf59885b37008dc01b78ecc74bf6ac2176"
+      "captionSha": "632275bf59885b37008dc01b78ecc74bf6ac2176",
+      "batch": "2026-10-17",
+      "slot": "2026-10-20T13:00:00.000Z",
+      "decidedAt": "2026-10-19T20:49:54.677Z"
     },
     "015-talk-fallingwater": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Is that house sitting on a waterfall? 🌊\n\nFrank Lloyd Wright's Fallingwater (1939): the terraces are concrete cantilevers held at one end, and a glass hatch in the living room opens onto stairs down to the stream.\n\nExplore it and 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #fallingwater #franklloydwright #cantilever #designinspiration\n\nPhotos: Fallingwater – lachrimae72 (CC0); Fallingwater – Joshua G Chang (CC BY-SA 4.0); Fallingwater – Daderot (CC0); Fallingwater – Sakul9 (CC BY-SA 4.0)",
-      "captionSha": "f764b5174b85329062ea103ed5800aea2cb17cc4"
+      "captionSha": "f764b5174b85329062ea103ed5800aea2cb17cc4",
+      "batch": "2026-10-17",
+      "slot": "2026-10-20T17:00:00.000Z",
+      "decidedAt": "2026-10-19T20:49:54.677Z"
     }
   },
-  "pool": [
-    "014-talk-heydar-aliyev-center",
-    "015-talk-fallingwater"
-  ]
+  "pool": []
 }
