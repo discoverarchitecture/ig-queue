@@ -5,15 +5,24 @@ Followers are a side effect. Every post is a **reel** — even a single building
 
 ## 1. Rotation (3 reels a day — 09:00, 13:00, 19:00 US Eastern)
 
-The scheduler fills slots in this order, then repeats. The folder name carries the pillar:
-`NNN-<pillar>-<slug>`, e.g. `014-architect-tadao-ando`.
+Since 2026-10-20: **09:00 and 13:00 = Walk & Talk, 19:00 = site feature** (`slotPillars` in config.json).
+If a slot's pillar has nothing queued, the lowest-numbered reel of any pillar fills it.
+The folder name carries the pillar: `NNN-<pillar>-<slug>`, e.g. `015-talk-fallingwater`.
 
-| Pillar | Folder tag | What it is | Example titles |
+| Pillar | Folder tag | What it is | Example |
 | --- | --- | --- | --- |
-| Architect | `architect` | 3–5 buildings by one architect + their signature move | "Tadao Ando only needs concrete and light" |
-| List | `list` | A quirky themed set pulled from the site's filters | "The 5 weirdest buildings on Earth", "Libraries that look like spaceships" |
-| Detail | `detail` | One project in depth: the idea, 3 features, why it matters | "Why Fallingwater shouldn't stand up" |
+| Walk & Talk | `talk` | One building, a curious friend (male, `am_michael`) asks, an architecture-loving guide (female, `af_heart`) explains, street-guide tone. 25–33 s. | "Hold on. Is that house sitting on a waterfall?" |
 | Site | `site` | A website feature in action — Surprise me, Shuffle, filters, Guess the building | "I let 'Surprise me' pick my next trip" |
+
+Retired (Oct 14–18, kept for the record): `architect`, `list`, `detail` — photo + single voiceover reels held only 2–5 s of watch time.
+
+### Walk & Talk rules
+- Spec: `"format": "talk"`, `"pillar": "talk"`; each photo scene has `talk: [{who: friend|guide, text}]`. Studio adds the ending (friend: "Where do I find more like this?" → guide: sign-off).
+- **Frame 1 = the friend's question over the most striking photo, voiced within 0.1 s.** No label on the hook.
+- **One question per photo:** friend asks about what's on screen → guide answers in ≤ 2 short sentences → cut to the next photo. The question is what keeps people watching.
+- Plain words; name one real idea per reel (parametricism, cantilever…) and explain it in one line.
+- Subtitles are chat bubbles: friend ink/left, guide red/right; words light up as they are spoken.
+- Caption ends with a question to the viewer (comments).
 
 **Show the website whenever possible.** Screen recordings of the site are the product demo:
 - *Guess the building* is a site recording: zoom on a detail from the wall → pause → reveal the building page.

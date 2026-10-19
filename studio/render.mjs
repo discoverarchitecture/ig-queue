@@ -38,15 +38,17 @@ function pickImage(b, i) {
 const cityOf = (b) => (b.place || '').split(',')[0].trim();
 
 // ---- voice -----------------------------------------------------------------
+// Speakers: the guide is the house voice (female); in Walk & Talk reels a curious friend (male) asks.
+const VOICES = { guide: 'af_heart', friend: 'am_michael' };
 function voice(scenes) {
-  const lines = scenes.filter((s) => s.vo).map((s) => ({ id: s.key, text: s.vo, voice: 'af_heart' /* house voice: always the female voice */, speed: spec.voiceSpeed || 1 }));
+  const lines = scenes.flatMap((s) => s.lines || []).map((l) => ({ id: l.id, text: l.text, voice: VOICES[l.who] || VOICES.guide, speed: spec.voiceSpeed || 1 }));
   if (!lines.length) return {};
   const hash = crypto.createHash('sha1').update(JSON.stringify(lines)).digest('hex').slice(0, 10);
   const dir = path.join(WORK, 'vo-' + hash);
   if (FRESH || !fs.existsSync(path.join(dir, 'done'))) {
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'lines.json'), JSON.stringify(lines));
-    log('voicing', lines.length, 'lines with', spec.voice);
+    log('voicing', lines.length, 'lines');
     execFileSync('node', [path.join(HERE, 'voice.mjs'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'ignore', 'inherit'] });
     for (const l of lines) // trim the model's leading/trailing silence
       ff(['-i', `${dir}/${l.id}.wav`, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,aresample=48000', `${dir}/${l.id}.t.wav`]);
@@ -75,8 +77,12 @@ const scenes = spec.scenes.map((s, i) => ({ ...s, key: `s${String(i).padStart(2,
 export const SIGNOFF = 'Find Great Architecture dot com. A website built by architects, for architects.';
 if (scenes.at(-1)?.type !== 'end') scenes.push({ type: 'end', dur: 3, key: `s${String(scenes.length).padStart(2, '0')}` });
 const endScene = scenes.at(-1);
-endScene.vo = SIGNOFF; endScene.noCaption = true; endScene.voDelay = 0.5;
-const silentStyle = !scenes.some((s) => s.vo && s.type !== 'end');
+endScene.noCaption = true; endScene.voDelay = 0.5;
+if (spec.format === 'talk') endScene.talk = [{ who: 'friend', text: spec.outro || 'Where do I find more like this?' }, { who: 'guide', text: SIGNOFF }];
+else endScene.vo = SIGNOFF;
+// Every scene's speech as a list of lines: a Walk & Talk exchange, or the single narration line.
+for (const s of scenes) s.lines = s.talk ? s.talk.map((l, n) => ({ id: `${s.key}_${n}`, who: l.who === 'friend' ? 'friend' : 'guide', text: l.text })) : s.vo ? [{ id: s.key, who: 'guide', text: s.vo }] : [];
+const silentStyle = !scenes.some((s) => s.lines.length && s.type !== 'end');
 
 /** Download once into cache/img (with retries) so slow networks don't stall rendering. */
 async function localImage(url) {
@@ -120,7 +126,9 @@ for (const s of scenes) {
     if (s.fromMark) s.clipStart = Math.max(0, m.marks[s.fromMark] - (s.lead ?? 0.8));
     s.dur = s.dur || m.duration - (s.clipStart || 0);
   }
-  if (s.vo) s.dur = Math.max(s.dur || 0, VO[s.key].len + (s.voDelay ?? 0.15) + 0.35);
+  let at = s.voDelay ?? 0.15;
+  for (const l of s.lines) { l.at = at; l.len = VO[l.id].len; at += l.len + (s.talk ? 0.18 : 0); }
+  if (s.lines.length) s.dur = Math.max(s.dur || 0, at + 0.35);
 }
 let t = 0;
 for (const s of scenes) { s.start = +t.toFixed(3); t += s.dur; }
@@ -128,7 +136,13 @@ const total = +t.toFixed(3);
 
 // captions: each voiced line split into short chunks, timed by character count
 const captions = [];
-for (const s of scenes) if (s.vo && !s.noCaption) {
+for (const s of scenes) if (s.talk && !s.noCaption) {
+  s.lines.forEach((l, n) => {
+    const next = s.lines[n + 1];
+    captions.push({ t0: +(s.start + l.at).toFixed(3), t1: +(next ? s.start + next.at : s.start + s.dur).toFixed(3), speak: +l.len.toFixed(3), text: l.text, who: l.who, scene: s.key });
+  });
+}
+for (const s of scenes) if (s.vo && !s.talk && !s.noCaption) {
   const t0 = s.start + (s.voDelay ?? 0.15), len = VO[s.key].len;
   const ws = s.vo.split(/\s+/), chunks = [];
   for (let i = 0; i < ws.length;) { let n = Math.min(5, ws.length - i); if (ws.length - i - n === 1) n++; chunks.push(ws.slice(i, i + n).join(' ')); i += n; }
@@ -143,14 +157,15 @@ const browser = await chromium.launch({ channel: 'chrome', headless: true, args:
 const page = await (await browser.newContext({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 })).newPage();
 page.setDefaultTimeout(300000);
 await page.goto(pathToFileURL(path.join(HERE, 'stage.html')).href, { waitUntil: 'load' });
-await page.evaluate((sp) => window.load(sp), { scenes, captions });
+await page.evaluate((sp) => window.load(sp), { scenes, captions, talk: spec.format === 'talk' });
 const silent = path.join(WORK, 'video.mp4');
 const enc = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
   '-c:v', 'libx264', '-crf', '17', '-preset', 'medium', '-pix_fmt', 'yuv420p', '-r', String(FPS), silent], { stdio: ['pipe', 'inherit', 'inherit'] });
 const frames = Math.round(total * FPS);
 // Review sheet: one frame per scene, taken mid-line, shown next to what is being said.
 const reviewAt = new Map(scenes.map((s, i) => {
-  const mid = s.vo ? s.start + (s.voDelay ?? 0.15) + VO[s.key].len * 0.55 : s.start + s.dur * 0.6;
+  const l = s.lines.at(-1);
+  const mid = l ? s.start + l.at + l.len * 0.7 : s.start + s.dur * 0.6;
   return [Math.min(frames - 1, Math.round(mid * FPS)), i];
 }));
 const reviewShots = [];
@@ -170,7 +185,7 @@ await page.evaluate(() => { document.getElementById('cap').innerHTML = ''; });
 await page.screenshot({ type: 'jpeg', quality: 92, path: path.join(OUT, 'cover.jpg') });
 const escH = (x) => String(x ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const cells = scenes.map((s, i) => `<figure><img src="data:image/jpeg;base64,${reviewShots[i] || ''}"><figcaption><b>${i + 1}</b> ${escH(s.type)}${s.b ? ` · ${escH(s.b)} #${s.i ?? 'auto'}` : ''}${s.clip ? ` · ${escH(s.clip)}` : ''} · ${s.dur.toFixed(1)}s
-  <p>${s.vo ? '🔊 “' + escH(s.vo) + '”' : s.title ? '🅣 ' + escH(s.title) : ''}</p></figcaption></figure>`).join('');
+  <p>${s.lines.length ? s.lines.map((l) => (l.who === 'friend' ? '🙋 ' : '🔊 ') + '“' + escH(l.text) + '”').join('<br>') : s.title ? '🅣 ' + escH(s.title) : ''}</p></figcaption></figure>`).join('');
 const rp = await (await browser.newContext({ viewport: { width: 1600, height: 900 } })).newPage();
 await rp.setContent(`<!doctype html><meta charset="utf-8"><style>body{margin:20px;width:1560px;font:15px system-ui,sans-serif}h1{font-size:22px;margin:0 0 12px}
   .g{display:flex;flex-wrap:wrap;gap:14px}figure{margin:0;width:290px}img{width:290px;height:516px;object-fit:cover;display:block;border-radius:8px;background:#111}
@@ -180,14 +195,14 @@ await rp.screenshot({ path: path.join(OUT, 'review.jpg'), fullPage: true, type: 
 await browser.close();
 
 // ---- audio -----------------------------------------------------------------
-const voiced = scenes.filter((s) => s.vo);
+const voiced = scenes.flatMap((s) => s.lines.map((l) => ({ file: VO[l.id].file, at: s.start + l.at })));
 const bed = music(total, spec.music || (silentStyle ? 'pulse' : 'pad'));
 // Silent-style reels play the music up front and duck it under the spoken sign-off.
 const vol = silentStyle ? `'if(lt(t,${endScene.start.toFixed(2)}),0.9,0.3)'` : '0.32';
 const inputs = ['-i', bed], chains = [`[0:a]volume=${vol}:eval=frame[m]`];
-voiced.forEach((s, i) => {
-  inputs.push('-i', VO[s.key].file);
-  const d = Math.round((s.start + (s.voDelay ?? 0.15)) * 1000);
+voiced.forEach((v, i) => {
+  inputs.push('-i', v.file);
+  const d = Math.round(v.at * 1000);
   chains.push(`[${i + 1}:a]adelay=${d}|${d}[v${i}]`);
 });
 const mixIn = '[m]' + voiced.map((_, i) => `[v${i}]`).join('');

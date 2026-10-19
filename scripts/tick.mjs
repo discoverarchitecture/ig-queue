@@ -176,22 +176,16 @@ async function applyCommentCommands() {
 }
 
 // ---- 3. Plan a batch every `batchDays`, anchored to CONFIG.anchor ----------
-// Folder names look like `014-architect-tadao-ando`; the second segment is the
-// content pillar. Slots rotate through CONFIG.pillars; within a pillar (and for
-// folders without one) the lowest folder name goes first.
+// Folder names look like `014-talk-fallingwater`; the second segment is the
+// content pillar. Each daily slot has its own pillar (CONFIG.slotPillars, in the
+// same order as CONFIG.slots); if that pillar has nothing queued, the lowest
+// folder name of any pillar fills the slot.
 const pillarOf = (id) => CONFIG.pillars.find((p) => id.split('-')[1] === p) ?? null;
-function nextByPillar(pool) {
+const hmInTz = (at) => new Intl.DateTimeFormat('en-GB', { timeZone: CONFIG.timezone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(new Date(at));
+function nextByPillar(pool, at) {
   if (!pool.length) return null;
-  const order = CONFIG.pillars;
-  const start = (order.indexOf(Q.meta.lastPillar) + 1) % order.length;
-  for (let i = 0; i < order.length; i++) {
-    const hit = pool.find((id) => pillarOf(id) === order[(start + i) % order.length]);
-    if (hit) {
-      const untagged = pool.find((id) => !pillarOf(id));
-      return untagged && untagged < hit ? untagged : hit;
-    }
-  }
-  return pool[0];
+  const want = CONFIG.slotPillars?.[CONFIG.slots.indexOf(hmInTz(at))];
+  return pool.find((id) => pillarOf(id) === want) ?? pool[0];
 }
 
 async function planBatch() {
@@ -209,11 +203,10 @@ async function planBatch() {
   const pool = Object.keys(Q.posts).filter((id) => Q.posts[id].status === 'pending').sort();
   const batch = { id: d0, index: k, created: now.toISOString(), slots, remindedAt: null };
   for (const s of slots) {
-    const id = nextByPillar(pool);
+    const id = nextByPillar(pool, s.at);
     if (!id) break;
     pool.splice(pool.indexOf(id), 1);
     s.post = id;
-    Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
     Object.assign(Q.posts[id], { status: INITIAL, batch: batch.id, slot: s.at, ...(CONFIG.autoApprove ? { decidedAt: now.toISOString() } : {}) });
   }
   Q.batches.push(batch);
@@ -238,10 +231,9 @@ async function backfill() {
   const added = [];
   for (const b of Q.batches) for (const s of b.slots) {
     if (s.post || Date.parse(s.at) - now < 3 * HOUR) continue;
-    const id = nextByPillar(pool());
+    const id = nextByPillar(pool(), s.at);
     if (!id) break;
     s.post = id; delete s.note;
-    Q.meta.lastPillar = pillarOf(id) ?? Q.meta.lastPillar;
     Object.assign(Q.posts[id], { status: INITIAL, batch: b.id, slot: s.at, ...(CONFIG.autoApprove ? { decidedAt: now.toISOString() } : {}) });
     added.push(s);
   }

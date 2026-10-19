@@ -1,0 +1,84 @@
+{
+  "id": "talk-fallingwater",
+  "pillar": "talk",
+  "format": "talk",
+  "coverAt": 1.6,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "fallingwater",
+      "i": 0,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Hold on. Is that house sitting on a waterfall?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fallingwater",
+      "i": 6,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Right on top of it. The family wanted a view of their waterfall. Frank Lloyd Wright gave them the waterfall itself."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fallingwater",
+      "i": 1,
+      "move": "left",
+      "label": {
+        "name": "The cantilevers",
+        "meta": "Held at one end only"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Then why aren't those balconies falling into the stream?"
+        },
+        {
+          "who": "guide",
+          "text": "They're cantilevers: concrete trays held at one end only, anchored back into the house."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fallingwater",
+      "i": 5,
+      "label": {
+        "name": "The hatch",
+        "meta": "Living room stairs down to the stream"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Okay, and what's that glass box in the living room?"
+        },
+        {
+          "who": "guide",
+          "text": "A hatch. Slide it open, and stairs take you straight down to the water."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "149 cantilevers on the site",
+      "accent": [
+        "149"
+      ],
+      "dur": 3
+    }
+  ],
+  "caption": "Is that house sitting on a waterfall? 🌊\n\nFrank Lloyd Wright's Fallingwater (1939): the terraces are concrete cantilevers held at one end, and a glass hatch in the living room opens onto stairs down to the stream.\n\nExplore it and 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\n#architecture #fallingwater #franklloydwright #cantilever #designinspiration",
+  "voiceSpeed": 1.1
+}

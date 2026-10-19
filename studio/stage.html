@@ -56,6 +56,17 @@ video { position:absolute; left:97px; top:172px; width:886px; height:1576px; obj
 #cap span { background:rgba(17,17,16,.86); color:#fff; font:700 54px/1.18 var(--sans); padding:14px 26px 16px; border-radius:20px; text-align:center;
   box-decoration-break:clone; -webkit-box-decoration-break:clone; }
 #cap span em { font-style:normal; color:#FF7A66; }
+/* Walk & Talk: chat bubbles, friend left (ink), guide right (red); the label moves to the top */
+body.talk .label { top:236px; bottom:auto; }
+body.talk .card .ph { top:40%; }
+#cap.chat { top:1150px; flex-direction:column; align-items:stretch; gap:16px; }
+#cap.chat .b { max-width:680px; padding:18px 28px 20px; border-radius:28px; font:700 50px/1.2 var(--sans); box-shadow:0 10px 30px rgba(0,0,0,.25); }
+#cap.chat .b small { display:block; font:600 24px var(--cond); letter-spacing:.08em; text-transform:uppercase; opacity:.75; margin-bottom:4px; }
+#cap.chat .friend { align-self:flex-start; background:#111110; color:#fff; border-bottom-left-radius:8px; }
+#cap.chat .guide { align-self:flex-end; background:var(--red); color:#fff; border-bottom-right-radius:8px; }
+#cap.chat .b.prev { opacity:.5; font-size:34px; padding:10px 22px 12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:620px; }
+#cap.chat .b.prev small { display:none; }
+#cap.chat .b .dim { font-style:normal; opacity:.38; }
 #flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
 </style></head>
 <body>
@@ -84,6 +95,7 @@ function rise(el, local, delay = 0, dist = 50, dur = .38) {
 let SPEC, scenes = [];
 async function load(spec) {
   SPEC = spec;
+  document.body.classList.toggle('talk', !!spec.talk);
   const root = document.getElementById('root');
   root.innerHTML = '';
   scenes = spec.scenes.map((s, i) => {
@@ -189,9 +201,26 @@ window.seek = async (t) => {
   // a 3-frame white flash on hard cuts flagged with `flash`
   document.getElementById('flash').style.opacity = active.s.flash && local < 0.1 ? 0.55 * (1 - local / 0.1) : 0;
   const cap = document.getElementById('cap');
-  const c = (SPEC.captions || []).find((c) => t >= c.t0 && t < c.t1);
-  cap.innerHTML = c ? `<span>${esc(c.text)}</span>` : '';
-  if (c) { const k = easeOut((t - c.t0) / .15); cap.style.opacity = k; cap.style.transform = `scale(${0.94 + 0.06 * k})`; }
+  const all = SPEC.captions || [];
+  const ci = all.findIndex((c) => t >= c.t0 && t < c.t1);
+  const c = all[ci];
+  if (c && c.who) {
+    // chat: previous line (same scene) faded above, current line revealed word by word as it is spoken
+    cap.className = 'chat'; cap.style.opacity = 1; cap.style.transform = '';
+    const prev = ci > 0 && all[ci - 1].who && all[ci - 1].scene === c.scene ? all[ci - 1] : null;
+    const label = (w) => (w === 'friend' ? 'Friend' : 'Guide');
+    const ws = c.text.split(/\s+/), shown = Math.max(1, Math.ceil(ws.length * clamp((t - c.t0) / Math.max(.3, c.speak * .92))));
+    const rest = ws.slice(shown).join(' ');
+    const words = esc(ws.slice(0, shown).join(' ')) + (rest ? ` <i class="dim">${esc(rest)}</i>` : '');
+    cap.innerHTML = (prev ? `<div class="b prev ${prev.who}"><small>${label(prev.who)}</small>${esc(prev.text)}</div>` : '') +
+      `<div class="b ${c.who}"><small>${label(c.who)}</small>${words}</div>`;
+    const k = easeOut((t - c.t0) / .18), cur = cap.lastElementChild;
+    cur.style.opacity = k; cur.style.transform = `translateY(${(1 - k) * 30}px)`;
+  } else {
+    cap.className = '';
+    cap.innerHTML = c ? `<span>${esc(c.text)}</span>` : '';
+    if (c) { const k = easeOut((t - c.t0) / .15); cap.style.opacity = k; cap.style.transform = `scale(${0.94 + 0.06 * k})`; }
+  }
   return true;
 };
 window.load = load;

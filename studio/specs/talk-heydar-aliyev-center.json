@@ -1,0 +1,86 @@
+{
+  "id": "talk-heydar-aliyev-center",
+  "pillar": "talk",
+  "format": "talk",
+  "coverAt": 1.6,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "heydar-aliyev-center",
+      "i": 1,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Where does that building end, and the ground begin?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "heydar-aliyev-center",
+      "i": 0,
+      "move": "left",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "That's the trick. Zaha Hadid made it one continuous surface. The lawn just rolls up and becomes the roof."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "heydar-aliyev-center",
+      "i": 3,
+      "move": "up",
+      "label": {
+        "name": "Inside",
+        "meta": "Heydar Aliyev Center · Zaha Hadid · <b>2012</b>"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "And inside? It looks like it's melting."
+        },
+        {
+          "who": "guide",
+          "text": "Floors, walls and stairs all flow into each other. There's barely a corner anywhere."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "heydar-aliyev-center",
+      "i": 5,
+      "move": "out",
+      "label": {
+        "name": "Parametricism",
+        "meta": "Shapes worked out curve by curve"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "How do you even draw something like that?"
+        },
+        {
+          "who": "guide",
+          "text": "With software. It's called parametricism: every curve is calculated, not sketched."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "More Zaha Hadid on the site",
+      "accent": [
+        "ZAHA",
+        "HADID"
+      ],
+      "dur": 3
+    }
+  ],
+  "caption": "Where does this building end and the ground begin? 🌊\n\nZaha Hadid's Heydar Aliyev Center in Baku is one continuous surface: the lawn rolls up into the roof, and inside, floors, walls and stairs flow into each other. That's parametricism.\n\nExplore it and more Zaha Hadid → link in bio\nWould you call it a building or a landscape?\n\n#architecture #zahahadid #parametricism #baku #designinspiration",
+  "voiceSpeed": 1.1
+}
