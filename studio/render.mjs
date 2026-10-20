@@ -2,6 +2,7 @@
 // Output: out/<id>/reel.mp4 (1080×1920, 30 fps, ~-14 LUFS), cover.jpg, caption.txt
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawn, execFileSync } from 'node:child_process';
@@ -40,8 +41,13 @@ const cityOf = (b) => (b.place || '').split(',')[0].trim();
 // ---- voice -----------------------------------------------------------------
 // Speakers: the guide is the house voice (female); in Walk & Talk reels a curious friend (male) asks.
 const VOICES = { guide: 'af_heart', friend: 'am_michael' };
+// `"tts": "dia"` in a spec voices the whole conversation with Dia (studio/dia.py) instead of line by line.
+const DIA_PY = path.join(os.homedir(), 'FindGreatArchitecture', '.dia-venv', 'bin', 'python');
 function voice(scenes) {
-  const lines = scenes.flatMap((s) => s.lines || []).map((l) => ({ id: l.id, text: l.text, voice: VOICES[l.who] || VOICES.guide, speed: spec.voiceSpeed || 1 }));
+  const dia = spec.tts === 'dia';
+  const lines = scenes.flatMap((s) => (s.lines || []).map((l) => dia
+    ? { id: l.id, text: l.say, who: l.who, scene: s.key, engine: 'dia' }
+    : { id: l.id, text: l.say, voice: VOICES[l.who] || VOICES.guide, speed: spec.voiceSpeed || 1 }));
   if (!lines.length) return {};
   const hash = crypto.createHash('sha1').update(JSON.stringify(lines)).digest('hex').slice(0, 10);
   const dir = path.join(WORK, 'vo-' + hash);
@@ -49,7 +55,8 @@ function voice(scenes) {
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'lines.json'), JSON.stringify(lines));
     log('voicing', lines.length, 'lines');
-    execFileSync('node', [path.join(HERE, 'voice.mjs'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'ignore', 'inherit'] });
+    if (dia) execFileSync(DIA_PY, [path.join(HERE, 'dia.py'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'inherit', 'inherit'], timeout: 60 * 60e3 });
+    else execFileSync('node', [path.join(HERE, 'voice.mjs'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'ignore', 'inherit'] });
     for (const l of lines) // trim the model's leading/trailing silence
       ff(['-i', `${dir}/${l.id}.wav`, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,aresample=48000', `${dir}/${l.id}.t.wav`]);
     fs.writeFileSync(path.join(dir, 'done'), '');
@@ -81,7 +88,8 @@ endScene.noCaption = true; endScene.voDelay = 0.5;
 if (spec.format === 'talk') endScene.talk = [{ who: 'friend', text: spec.outro || 'Where do I find more like this?' }, { who: 'guide', text: SIGNOFF }];
 else endScene.vo = SIGNOFF;
 // Every scene's speech as a list of lines: a Walk & Talk exchange, or the single narration line.
-for (const s of scenes) s.lines = s.talk ? s.talk.map((l, n) => ({ id: `${s.key}_${n}`, who: l.who === 'friend' ? 'friend' : 'guide', text: l.text })) : s.vo ? [{ id: s.key, who: 'guide', text: s.vo }] : [];
+for (const s of scenes) s.lines = (s.talk ? s.talk.map((l, n) => ({ id: `${s.key}_${n}`, who: l.who === 'friend' ? 'friend' : 'guide', say: l.text })) : s.vo ? [{ id: s.key, who: 'guide', say: s.vo }] : [])
+  .map((l) => ({ ...l, text: l.say.replace(/\s*\([^)]*\)\s*/g, ' ').trim() })); // "(laughs)" is voiced, never shown
 const silentStyle = !scenes.some((s) => s.lines.length && s.type !== 'end');
 
 /** Download once into cache/img (with retries) so slow networks don't stall rendering. */
