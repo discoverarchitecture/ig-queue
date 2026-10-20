@@ -56,17 +56,23 @@ video { position:absolute; left:97px; top:172px; width:886px; height:1576px; obj
 #cap span { background:rgba(17,17,16,.86); color:#fff; font:700 54px/1.18 var(--sans); padding:14px 26px 16px; border-radius:20px; text-align:center;
   box-decoration-break:clone; -webkit-box-decoration-break:clone; }
 #cap span em { font-style:normal; color:#FF7A66; }
-/* Walk & Talk: chat bubbles, friend left (ink), guide right (red); the label moves to the top */
+/* Walk & Talk subtitles, "two sides" (owner pick 2026-10-20): no boxes; friend speaks from the left
+   behind an outlined F, guide answers from the right behind a red G; the previous line stays faint above */
 body.talk .label { top:236px; bottom:auto; }
 body.talk .card .ph { top:40%; }
-#cap.chat { top:1150px; flex-direction:column; align-items:stretch; gap:16px; }
-#cap.chat .b { max-width:680px; padding:18px 28px 20px; border-radius:28px; font:700 50px/1.2 var(--sans); box-shadow:0 10px 30px rgba(0,0,0,.25); }
-#cap.chat .b small { display:block; font:600 24px var(--cond); letter-spacing:.08em; text-transform:uppercase; opacity:.75; margin-bottom:4px; }
-#cap.chat .friend { align-self:flex-start; background:#111110; color:#fff; border-bottom-left-radius:8px; }
-#cap.chat .guide { align-self:flex-end; background:var(--red); color:#fff; border-bottom-right-radius:8px; }
-#cap.chat .b.prev { opacity:.5; font-size:34px; padding:10px 22px 12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:620px; }
-#cap.chat .b.prev small { display:none; }
-#cap.chat .b .dim { font-style:normal; opacity:.38; }
+body.talk .shade { background:linear-gradient(rgba(0,0,0,.5) 0, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 46%, rgba(0,0,0,.55) 62%, rgba(0,0,0,.82) 100%); }
+#cap.chat { top:auto; bottom:440px; flex-direction:column; align-items:stretch; gap:22px; }
+#cap.chat .prev { font:600 36px/1.2 var(--sans); color:rgba(255,255,255,.55); text-shadow:0 2px 14px rgba(0,0,0,.6); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+#cap.chat .prev.guide { text-align:right; }
+#cap.chat .line { display:flex; gap:26px; align-items:flex-start; }
+#cap.chat .line.friend { margin-right:90px; }
+#cap.chat .line.guide { margin-left:90px; flex-direction:row-reverse; text-align:right; }
+#cap.chat .t { font:700 60px/1.24 var(--sans); color:#fff; text-shadow:0 2px 4px rgba(0,0,0,.55), 0 4px 30px rgba(0,0,0,.55); }
+#cap.chat .mk { flex:none; width:66px; height:66px; margin-top:6px; border-radius:50%; box-sizing:border-box; display:flex; align-items:center; justify-content:center;
+  font:700 34px/1 var(--cond); color:#fff; box-shadow:0 2px 16px rgba(0,0,0,.4); }
+#cap.chat .friend .mk { border:5px solid #fff; }
+#cap.chat .guide .mk { background:var(--red); }
+#cap.chat .dim { font-style:normal; color:rgba(255,255,255,.55); }
 #flash { position:absolute; inset:0; background:#fff; opacity:0; pointer-events:none; }
 </style></head>
 <body>
@@ -205,15 +211,14 @@ window.seek = async (t) => {
   const ci = all.findIndex((c) => t >= c.t0 && t < c.t1);
   const c = all[ci];
   if (c && c.who) {
-    // chat: previous line (same scene) faded above, current line revealed word by word as it is spoken
+    // two sides: previous line (same scene) faint above, current line lit word by word as it is spoken
     cap.className = 'chat'; cap.style.opacity = 1; cap.style.transform = '';
     const prev = ci > 0 && all[ci - 1].who && all[ci - 1].scene === c.scene ? all[ci - 1] : null;
-    const label = (w) => (w === 'friend' ? 'Friend' : 'Guide');
     const ws = c.text.split(/\s+/), shown = Math.max(1, Math.ceil(ws.length * clamp((t - c.t0) / Math.max(.3, c.speak * .92))));
     const rest = ws.slice(shown).join(' ');
     const words = esc(ws.slice(0, shown).join(' ')) + (rest ? ` <i class="dim">${esc(rest)}</i>` : '');
-    cap.innerHTML = (prev ? `<div class="b prev ${prev.who}"><small>${label(prev.who)}</small>${esc(prev.text)}</div>` : '') +
-      `<div class="b ${c.who}"><small>${label(c.who)}</small>${words}</div>`;
+    cap.innerHTML = (prev ? `<div class="prev ${prev.who}">${esc(prev.text)}</div>` : '') +
+      `<div class="line ${c.who}"><div class="mk">${c.who === 'friend' ? 'F' : 'G'}</div><div class="t">${words}</div></div>`;
     const k = easeOut((t - c.t0) / .18), cur = cap.lastElementChild;
     cur.style.opacity = k; cur.style.transform = `translateY(${(1 - k) * 30}px)`;
   } else {
