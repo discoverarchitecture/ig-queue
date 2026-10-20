@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-10-20T12:50:14Z",
-    "lastCommentId": 6291238589,
+    "lastCommentAt": "2026-10-20T13:51:03Z",
+    "lastCommentId": 6292447023,
     "lastPillar": "detail"
   },
   "last": {
@@ -457,7 +457,15 @@
       "batch": "2026-10-17",
       "slot": "2026-10-20T17:00:00.000Z",
       "decidedAt": "2026-10-19T20:49:54.677Z"
+    },
+    "016-talk-pantheon": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "Wait… is there a hole in that roof? ☔️\n\nThe Pantheon in Rome (c. 125 AD) is still the largest dome ever built in unreinforced concrete. Coffers lighten it, and the oculus at the top is open to the sky — when it rains, it rains inside.\n\nExplore it and 345 more buildings lit from above → link in bio\nWould you stand under it in the rain?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #pantheon #rome #romanarchitecture #designinspiration\n\nPhotos: Pantheon – C messier (CC BY-SA 4.0); Pantheon – Thomas_Fuhrmann_Jakobsthal (CC BY-SA 4.0); Pantheon – Nhartmannphotos (CC BY-SA 4.0)",
+      "captionSha": "e3c4b3433586c57ef021d5c8320e44bcda0e2547"
     }
   },
-  "pool": []
+  "pool": [
+    "016-talk-pantheon"
+  ]
 }
