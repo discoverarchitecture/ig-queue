@@ -450,7 +450,7 @@
       }
     },
     "015-talk-fallingwater": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Is that house sitting on a waterfall? 🌊\n\nFrank Lloyd Wright's Fallingwater (1939): the terraces are concrete cantilevers held at one end, and a glass hatch in the living room opens onto stairs down to the stream.\n\nExplore it and 149 more cantilevers → link in bio\nWould you sleep over a waterfall?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #fallingwater #franklloydwright #cantilever #designinspiration\n\nPhotos: Fallingwater – lachrimae72 (CC0); Fallingwater – Joshua G Chang (CC BY-SA 4.0); Fallingwater – Daderot (CC0); Fallingwater – Sakul9 (CC BY-SA 4.0)",
       "captionSha": "f764b5174b85329062ea103ed5800aea2cb17cc4",
@@ -458,7 +458,11 @@
       "slot": "2026-10-20T17:00:00.000Z",
       "decidedAt": "2026-10-19T20:49:54.677Z",
       "attempts": 1,
-      "container": "18128949589744346"
+      "container": "18128949589744346",
+      "mediaId": "18179167795438183",
+      "permalink": "https://www.instagram.com/reel/DeuaQODAfk1/",
+      "publishedAt": "2026-10-20T17:51:27+0000",
+      "error": null
     },
     "016-talk-pantheon": {
       "status": "approved",
