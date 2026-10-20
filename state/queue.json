@@ -462,7 +462,13 @@
       "mediaId": "18179167795438183",
       "permalink": "https://www.instagram.com/reel/DeuaQODAfk1/",
       "publishedAt": "2026-10-20T17:51:27+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "W04b4vO6jlI",
+        "url": "https://www.youtube.com/shorts/W04b4vO6jlI",
+        "privacy": "public",
+        "uploadedAt": "2026-10-20T17:51:39.337Z"
+      }
     },
     "016-talk-pantheon": {
       "status": "approved",
