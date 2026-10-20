@@ -429,13 +429,15 @@
       }
     },
     "014-talk-heydar-aliyev-center": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "Where does this building end and the ground begin? 🌊\n\nZaha Hadid's Heydar Aliyev Center in Baku is one continuous surface: the lawn rolls up into the roof, and inside, floors, walls and stairs flow into each other. That's parametricism.\n\nExplore it and more Zaha Hadid → link in bio\nWould you call it a building or a landscape?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #zahahadid #parametricism #baku #designinspiration\n\nPhotos: Heydar Aliyev Center – Avisadehh (CC0); Heydar Aliyev Center – Mahmoodrezamo (CC BY-SA 4.0)",
       "captionSha": "632275bf59885b37008dc01b78ecc74bf6ac2176",
       "batch": "2026-10-17",
       "slot": "2026-10-20T13:00:00.000Z",
-      "decidedAt": "2026-10-19T20:49:54.677Z"
+      "decidedAt": "2026-10-19T20:49:54.677Z",
+      "attempts": 1,
+      "container": null
     },
     "015-talk-fallingwater": {
       "status": "approved",
