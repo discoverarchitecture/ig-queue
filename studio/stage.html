@@ -107,7 +107,7 @@ async function load(spec) {
         (s.title ? `<div class="title">${words(s.title, s.accent)}</div>` : '') +
         (s.num ? `<div class="num">${esc(s.num)}</div>` : '') +
         (s.label ? `<div class="label"><div class="nm">${esc(s.label.name)}</div><div class="meta">${s.label.meta}</div></div>` : '') +
-        (s.credit ? `<div class="credit">Photo: ${esc(s.credit)}</div>` : '') +
+        /* no on-screen photo credit (owner, 2026-10-20): credits live in the caption */
         (s.type === 'guess' ? `<div class="q">?</div><div class="cd"></div>` : '');
     } else if (s.type === 'site') {
       el.innerHTML = `<video src="${s.video}" muted playsinline preload="auto"></video>` + (s.title ? `<div class="pill">${words(s.title, s.accent)}</div>` : '');
