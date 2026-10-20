@@ -441,7 +441,13 @@
       "mediaId": "18331952851263850",
       "permalink": "https://www.instagram.com/reel/Det-uK2AcJ2/",
       "publishedAt": "2026-10-20T13:50:54+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "5uuM-r-XwnI",
+        "url": "https://www.youtube.com/shorts/5uuM-r-XwnI",
+        "privacy": "public",
+        "uploadedAt": "2026-10-20T13:51:01.798Z"
+      }
     },
     "015-talk-fallingwater": {
       "status": "approved",
