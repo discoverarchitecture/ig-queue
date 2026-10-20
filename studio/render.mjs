@@ -45,8 +45,10 @@ const VOICES = { guide: 'af_heart', friend: 'am_michael' };
 const DIA_PY = path.join(os.homedir(), 'FindGreatArchitecture', '.dia-venv', 'bin', 'python');
 function voice(scenes) {
   const dia = spec.tts === 'dia';
+  // Walk & Talk friend: male or female (the guide is always female); unset = a fixed 50/50 pick from the reel id
+  const cast = `${spec.friend || (parseInt(crypto.createHash('sha1').update(spec.id).digest('hex').slice(0, 2), 16) % 2 ? 'female' : 'male')}-friend`;
   const lines = scenes.flatMap((s) => (s.lines || []).map((l) => dia
-    ? { id: l.id, text: l.say, who: l.who, scene: s.key, engine: 'dia' }
+    ? { id: l.id, text: l.say, who: l.who, scene: s.key, engine: 'dia', cast }
     : { id: l.id, text: l.say, voice: VOICES[l.who] || VOICES.guide, speed: spec.voiceSpeed || 1 }));
   if (!lines.length) return {};
   const hash = crypto.createHash('sha1').update(JSON.stringify(lines)).digest('hex').slice(0, 10);
@@ -55,7 +57,7 @@ function voice(scenes) {
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, 'lines.json'), JSON.stringify(lines));
     log('voicing', lines.length, 'lines');
-    if (dia) execFileSync(DIA_PY, [path.join(HERE, 'dia.py'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'inherit', 'inherit'], timeout: 60 * 60e3 });
+    if (dia) { log('voicing with Dia,', cast); execFileSync(DIA_PY, [path.join(HERE, 'dia.py'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'inherit', 'inherit'], timeout: 60 * 60e3, env: { ...process.env, DIA_CAST: cast, PYTHONUNBUFFERED: '1' } }); }
     else execFileSync('node', [path.join(HERE, 'voice.mjs'), path.join(dir, 'lines.json'), dir], { stdio: ['ignore', 'ignore', 'inherit'] });
     for (const l of lines) // trim the model's leading/trailing silence
       ff(['-i', `${dir}/${l.id}.wav`, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,aresample=48000', `${dir}/${l.id}.t.wav`]);

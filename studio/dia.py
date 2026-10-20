@@ -5,7 +5,7 @@
 #   python dia.py lines.json outdir
 #   lines.json: [{id, who: friend|guide, scene, text}]   ->  outdir/<id>.wav
 #
-# The same two voices every time come from a reference clip (voices/dia/ref.wav +
+# The same voices every time come from a reference clip (voices/dia/<cast>/ref.wav +
 # ref.txt, friend = [S1], guide = [S2]; ref-friend.wav / ref-guide.wav are its two
 # halves) given to Dia as an audio prompt. Each chunk is checked with Whisper and a
 # speaker-verification model; a chunk that skips words or swaps voices is retried.
@@ -21,8 +21,9 @@ TRIES = 4
 
 lines = json.load(open(sys.argv[1]))
 out = sys.argv[2]
-ref_wav = os.path.join(HERE, 'voices', 'dia', 'ref.wav')
-ref_txt = os.path.join(HERE, 'voices', 'dia', 'ref.txt')
+CAST = os.path.join(HERE, 'voices', 'dia', os.environ.get('DIA_CAST', 'male-friend'))   # male-friend | female-friend
+ref_wav = os.path.join(CAST, 'ref.wav')
+ref_txt = os.path.join(CAST, 'ref.txt')
 use_ref = os.path.exists(ref_wav) and os.path.exists(ref_txt)
 seed0 = int(os.environ.get('DIA_SEED', '7'))
 
@@ -38,7 +39,7 @@ sv = WavLMForXVector.from_pretrained('microsoft/wavlm-base-plus-sv').eval()
 def embed(y, sr):
     i = sv_fe(librosa.resample(y, orig_sr=sr, target_sr=16000), sampling_rate=16000, return_tensors='pt')
     with torch.no_grad(): return torch.nn.functional.normalize(sv(**i).embeddings[0], dim=-1).numpy()
-REF_EMB = {w: embed(librosa.load(os.path.join(HERE, 'voices', 'dia', f'ref-{w}.wav'), sr=SR)[0], SR) for w in ('friend', 'guide')} if use_ref else None
+REF_EMB = {w: embed(librosa.load(os.path.join(CAST, f'ref-{w}.wav'), sr=SR)[0], SR) for w in ('friend', 'guide')} if use_ref else None
 ref_text = open(ref_txt).read().strip() if use_ref else ''
 
 spoken = lambda t: re.sub(r'\s+', ' ', re.sub(r'\([^)]*\)', ' ', t)).strip()   # drop (laughs) etc.
