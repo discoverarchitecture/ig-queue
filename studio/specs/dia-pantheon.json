@@ -1,0 +1,106 @@
+{
+  "id": "dia-pantheon",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "pantheon",
+      "i": 6,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Is there a hole in that roof?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "pantheon",
+      "i": 0,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Yep! That's the Pantheon in Rome, and it's almost two thousand years old."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "pantheon",
+      "i": 3,
+      "move": "up",
+      "label": {
+        "name": "The dome",
+        "meta": "Plain concrete · no steel inside"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Seriously? And the dome's still standing?"
+        },
+        {
+          "who": "guide",
+          "text": "Still the biggest dome ever built in plain concrete. No steel inside at all."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "pantheon",
+      "i": 1,
+      "move": "left",
+      "label": {
+        "name": "The coffers",
+        "meta": "Sunken panels that lighten the dome"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Okay, and what are all those square dents?"
+        },
+        {
+          "who": "guide",
+          "text": "They're called coffers. They make the dome lighter, so it can hold itself up."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "pantheon",
+      "i": 4,
+      "label": {
+        "name": "The oculus",
+        "meta": "Open to the sky"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "So what happens when it rains?"
+        },
+        {
+          "who": "guide",
+          "text": "(laughs) It rains inside! The floor slopes a little, and drains carry the water away."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "345 buildings lit from above on the site",
+      "accent": [
+        "345"
+      ],
+      "dur": 3
+    }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait… is there a hole in that roof? ☔️\n\nThe Pantheon in Rome (c. 125 AD) is still the largest dome ever built in unreinforced concrete. Coffers lighten it, and the oculus at the top is open to the sky — when it rains, it rains inside.\n\nExplore it and 345 more buildings lit from above → link in bio\nWould you stand under it in the rain?\n\n#architecture #pantheon #rome #romanarchitecture #designinspiration"
+}

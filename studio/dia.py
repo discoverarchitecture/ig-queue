@@ -10,13 +10,14 @@
 # halves) given to Dia as an audio prompt. Each chunk is checked with Whisper and a
 # speaker-verification model; a chunk that skips words or swaps voices is retried.
 import sys, os, json, re, difflib, numpy as np, soundfile as sf, librosa, torch
+from num2words import num2words
 from transformers import AutoProcessor, DiaForConditionalGeneration, pipeline, AutoFeatureExtractor, WavLMForXVector
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DEV = 'mps' if torch.backends.mps.is_available() else 'cpu'
 SR = 44100
 TAG = {'friend': '[S1]', 'guide': '[S2]'}
-MAX_CHARS = 230   # text per Dia call: longer chunks make Dia rush
+MAX_CHARS = 230   # text per Dia call: longer chunks make Dia rush and drop lines
 TRIES = 4
 
 lines = json.load(open(sys.argv[1]))
@@ -43,7 +44,9 @@ REF_EMB = {w: embed(librosa.load(os.path.join(CAST, f'ref-{w}.wav'), sr=SR)[0], 
 ref_text = open(ref_txt).read().strip() if use_ref else ''
 
 spoken = lambda t: re.sub(r'\s+', ' ', re.sub(r'\([^)]*\)', ' ', t)).strip()   # drop (laughs) etc.
-norm = lambda t: re.sub(r'[^a-z0-9]', '', t.lower().replace('.com', 'dotcom'))
+# Whisper writes "2,000" where the script says "two thousand": compare both as words
+words_for_numbers = lambda t: re.sub(r'\d[\d,]*', lambda m: ' ' + num2words(int(m.group().replace(',', '') or 0)) + ' ', t)
+norm = lambda t: re.sub(r'[^a-z]', '', words_for_numbers(t).lower().replace('.com', 'dotcom'))
 
 # Chunks: whole scenes, packed up to MAX_CHARS, so a cut never splits an exchange.
 scenes = []
@@ -51,8 +54,9 @@ for l in lines:
     if scenes and scenes[-1][0]['scene'] == l['scene']: scenes[-1].append(l)
     else: scenes.append([l])
 chunks = []
-for s in scenes:
-    if chunks and sum(len(l['text']) for l in chunks[-1] + s) <= MAX_CHARS: chunks[-1] += s
+for k, s in enumerate(scenes):
+    last = k == len(scenes) - 1   # the ending rides with the scene before it: alone, Dia loses the friend's voice
+    if chunks and (last or sum(len(l['text']) for l in chunks[-1] + s) <= MAX_CHARS): chunks[-1] += s
     else: chunks.append(list(s))
 
 def generate(ls, seed):
@@ -74,7 +78,12 @@ def generate(ls, seed):
 def align(audio, ls):
     """Map Whisper's words onto the script; return per-line (start, end) seconds and match quality."""
     y16 = librosa.resample(audio, orig_sr=SR, target_sr=16000)
-    words = [w for w in asr({'raw': y16, 'sampling_rate': 16000}, return_timestamps='word', generate_kwargs={'language': 'en'})['chunks'] if norm(w['text'])]
+    words = []
+    for w in asr({'raw': y16, 'sampling_rate': 16000}, return_timestamps='word', generate_kwargs={'language': 'en'})['chunks']:
+        if words and re.match(r'^\s*,\d', w['text']):   # Whisper splits "2,000" into "2" + ",000"
+            words[-1] = {'text': words[-1]['text'] + w['text'].strip(), 'timestamp': (words[-1]['timestamp'][0], w['timestamp'][1])}
+        else: words.append(w)
+    words = [w for w in words if norm(w['text'])]
     script, owner = '', []
     for i, l in enumerate(ls):
         n = norm(spoken(l['text'])); script += n; owner += [i] * len(n)
@@ -96,24 +105,36 @@ def align(audio, ls):
     return per_line, quality, len(heard) / max(1, len(script))
 
 os.makedirs(out, exist_ok=True)
+CACHE = os.path.join(HERE, 'cache', 'dia-chunks')   # finished chunks: changing one line re-voices only its chunk
+os.makedirs(CACHE, exist_ok=True)
+import hashlib
 for c, ls in enumerate(chunks):
-    best = None
-    for t in range(TRIES):
-        audio = generate(ls, seed0 + 101 * t + c)
-        per_line, q, extra = align(audio, ls)
-        wrong = 0
-        if REF_EMB:
-            for i, l in enumerate(ls):
-                if not per_line[i]: continue
-                s0, e0 = per_line[i][0]['timestamp'][0], per_line[i][-1]['timestamp'][1] or per_line[i][-1]['timestamp'][0] + .3
-                e = embed(audio[int(s0 * SR):int(e0 * SR)], SR)
-                other = 'guide' if l['who'] == 'friend' else 'friend'
-                wrong += float(e @ REF_EMB[l['who']]) <= float(e @ REF_EMB[other])
-        score = min(q) - max(0, extra - 1.15) - wrong  # penalise missing words, invented ones, and the wrong voice
-        print(f"chunk {c + 1}/{len(chunks)} try {t + 1}: match {[round(x, 2) for x in q]} heard/script {extra:.2f} wrong voice {wrong}", flush=True)
-        if best is None or score > best[0]: best = (score, audio, per_line)
-        if min(q) >= 0.9 and extra <= 1.15 and all(per_line) and not wrong: break
-    _, audio, per_line = best
+    key = hashlib.sha1(json.dumps([CAST.split(os.sep)[-1], ref_text, seed0, [(l['who'], l['text']) for l in ls]]).encode()).hexdigest()[:16]
+    hit = os.path.join(CACHE, key)
+    if os.path.exists(hit + '.json'):
+        audio = sf.read(hit + '.wav', dtype='float32')[0]; per_line = json.load(open(hit + '.json'))
+        print(f"chunk {c + 1}/{len(chunks)}: cached", flush=True)
+    else:
+        best = None
+        for t in range(TRIES):
+            audio = generate(ls, seed0 + 101 * t + c)
+            per_line, q, extra = align(audio, ls)
+            wrong = 0
+            if REF_EMB:
+                for i, l in enumerate(ls):
+                    if not per_line[i]: continue
+                    s0, e0 = per_line[i][0]['timestamp'][0], per_line[i][-1]['timestamp'][1] or per_line[i][-1]['timestamp'][0] + .3
+                    e = embed(audio[int(s0 * SR):int(e0 * SR)], SR)
+                    other = 'guide' if l['who'] == 'friend' else 'friend'
+                    wrong += float(e @ REF_EMB[l['who']]) <= float(e @ REF_EMB[other])
+            dropped = sum(x < 0.5 for x in q)
+            score = sum(q) / len(q) - 3 * dropped - 0.5 * wrong - max(0, extra - 1.15)  # a dropped line is the worst failure
+            print(f"chunk {c + 1}/{len(chunks)} try {t + 1}: match {[round(x, 2) for x in q]} heard/script {extra:.2f} wrong voice {wrong}", flush=True)
+            if min(q) < 0.9: print('   heard:', ' '.join(w['text'] for w in sum(per_line, []))[:300], flush=True)
+            if best is None or score > best[0]: best = (score, audio, per_line)
+            if min(q) >= 0.9 and extra <= 1.15 and all(per_line) and not wrong: break
+        _, audio, per_line = best
+        sf.write(hit + '.wav', audio, SR); json.dump(per_line, open(hit + '.json', 'w'))
     dur = len(audio) / SR
     for i, l in enumerate(ls):
         ws = per_line[i]
