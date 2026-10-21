@@ -3,3 +3,4 @@ _site/
 media/
 .deploy-pages
 node_modules/
+studio/__pycache__/
