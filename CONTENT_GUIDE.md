@@ -28,6 +28,73 @@ Retired (Oct 14–18, kept for the record): `architect`, `list`, `detail` — ph
 - *Guess the building* is a site recording: zoom on a detail from the wall → pause → reveal the building page.
 - Every non-`site` reel still ends on a 2–3 s screen recording of that building's page or the wall.
 
+## 1b. Runbook — making a Walk & Talk reel (written for Sonnet; follow it step by step)
+
+Content is written by Sonnet from 2026-10-21. The studio checks what a model could get wrong; trust its errors over your judgement.
+Run everything from `~/FindGreatArchitecture/ig-queue/studio`. A reel takes about 12 minutes, almost all of it Dia voicing — run the render
+in the background and wait for it; never start a second render while one is running (the Mac runs out of memory).
+
+**Steps**
+1. **Pick a building:** `node suggest.mjs 10` (or `node suggest.mjs 10 Cantilever`). It lists famous, unused buildings with the photo numbers, the site's own one-line
+   summary and each idea's site count. Pick one whose summary has a *visible, surprising* idea.
+2. **Look at the photos:** `node candidates.mjs <building-id>` then open `out/_candidates/<id>.jpg`. Choose 4–5 photos, each showing a different thing.
+   Photo 1 must be the most striking image (it is full-screen for the first 3 s).
+3. **Write the spec** `specs/dia-<slug>.json` from the template below. Facts come ONLY from the site's record (name, architect, year, place, summary, ideas)
+   and from what the chosen photos plainly show. Never add a number, material, date or claim you cannot see or read there.
+4. **Check it:** `node check-spec.mjs specs/dia-<slug>.json` — fix every ERROR and read every warn. Repeat until "OK".
+5. **Render (≈ 8 min, background):** `PYTHONUNBUFFERED=1 node render.mjs specs/dia-<slug>.json`. Look at `out/dia-<slug>/review.jpg`: does each photo show what is
+   being said? If a line fails, change the line (not the photo), re-check, re-render — finished voice chunks are cached, so only the changed exchange is re-voiced.
+   If it prints `Dia dropped line …`, reword that line (shorter, no repeated words from its neighbours) and re-render.
+6. **Queue it:** `node ship.mjs dia-<slug> --sync`. It numbers the folder, checks the caption rules and uploads. The scheduler fills the next free slot by itself
+   (slot 09:00 and 13:00 ET = Walk & Talk, 19:00 ET = site feature).
+7. **Keep ≥ 6 Walk & Talk reels ahead of the queue** (3 days). Check with `node -e 'const q=require("../state/queue.json");console.log(Object.entries(q.posts).filter(([,p])=>["pending","approved","scheduled"].includes(p.status)).map(([k,p])=>k+" "+p.status).join("\n"))'`.
+
+**Spec template** (copy `specs/dia-pantheon.json` and change it; this is its shape)
+```json
+{ "id": "dia-<slug>", "pillar": "talk", "format": "talk", "tts": "dia", "friend": "female", "coverAt": 1.4,
+  "scenes": [
+    { "type": "photo", "b": "<id>", "i": 6, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
+      "talk": [ { "who": "friend", "text": "Wait. Is there a hole in that roof?" } ] },
+    { "type": "photo", "b": "<id>", "i": 0, "move": "out",
+      "talk": [ { "who": "guide", "text": "Yep! That's the Pantheon in Rome, and it's almost two thousand years old." } ] },
+    { "type": "photo", "b": "<id>", "i": 3, "move": "up", "label": { "name": "The dome", "meta": "Plain concrete · no steel inside" },
+      "talk": [ { "who": "friend", "text": "Seriously? And the dome's still standing?" },
+                { "who": "guide",  "text": "Still the biggest dome ever built in plain concrete. No steel inside at all." } ] },
+    { "type": "end", "line": "345 buildings lit from above on the site", "accent": ["345"], "dur": 3 }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Hook question? ☔️\n\nTwo-sentence summary with the architect and year.\n\nExplore it and N more <idea> → link in bio\nQuestion for the viewer?\n\n#architecture #<building> #<architect-or-city> #<idea> #designinspiration" }
+```
+`move` can be `in`, `out`, `left`, `up`. Leave out `friend` for a 50/50 pick, or set `"male"` / `"female"` (mix them across the week). The studio adds the end-card
+sign-off, the "Photos:" credits and the site tagline to the caption — never write those yourself.
+
+**How to write the lines (this is what holds people's attention)**
+- **Scene 1 = one friend question** that a stranger can't scroll past ("Is that house sitting on a waterfall?"). ≤ 14 words, about what the photo shows.
+- **Scene 2 = one guide line** that names the building, the architect or the place and gives the first surprise.
+- **Every later photo = friend question → guide answer.** The question points at something visible; the answer is one idea in ≤ 2 short sentences (≤ 26 words).
+  Explain any term the first time ("cantilever: concrete trays held at one end only").
+- Spoken style: contractions, "Okay, but…", "No way.", "Seriously?". One `(laughs)` at most per reel, on a friend or guide line where something is funny.
+- **Never let a line repeat words from the line just before it.** Dia then speaks it in the other speaker's voice (this broke "Two thousand years?" after "…two thousand years old."). The checker catches 3-word overlaps; also avoid echoes by meaning.
+- Numbers as words in speech ("two thousand"), digits are fine on the end card and in the caption.
+- 4–5 photos, 330–560 spoken characters, ≈ 28–33 s. Plain words only: no emoji, hashtags, brackets or quotes inside a line.
+- **Caption:** line 1 = the hook question. Last sentence before the hashtags = a question to the viewer (drives comments). Exactly 5 hashtags. Include "→ link in bio".
+- **Globally minded:** audience is worldwide, Western-heavy. Never "in our country"; use place names; no India-first framing.
+
+**If it goes wrong**
+| Symptom | Cause | Fix |
+| --- | --- | --- |
+| `Dia dropped line …` | line too long or echoes its neighbour | shorter / reworded, re-render |
+| Out of memory, Mac crawls | two renders at once, or Dia at full precision | wait for the first to finish; `dia.py` already uses bf16 |
+| Wrong voice on a line (the verifier retried 4× and still failed) | the line copies the previous line's words | reword the friend line to ask something new |
+| `could not download <url>` | photo host is slow | re-run; downloads are cached |
+| `ship: spec is newer than the render` | you edited the spec after rendering | re-render |
+| Reel is > 35 s | too many words | cut a scene or shorten the guide answers |
+
+**Feature reel (19:00 ET slot)** — a screen recording of the site, silent, 12–16 s. Copy `specs/013-site-filter-by-idea.json` (filter by idea) or
+`specs/005-site-surprise-me.json` (Surprise me) and change the ideas/ids/numbers; counts on screen must be real site counts (`node suggest.mjs` prints them).
+Folder tag `site`; render with `node render.mjs specs/<id>.json`; queue with `ship.mjs` (it only knows `dia-` talk reels — for a feature reel copy
+`out/<id>/{reel.mp4,cover.jpg,caption.txt}` into `~/FindGreatArchitecture/queue/<next-number>-site-<slug>/` through a `.tmp-` folder and rename it).
+
 ## 2. Format
 
 - 1080 × 1920, 9:16, MP4, under 95 MB. Two lengths, alternated:
