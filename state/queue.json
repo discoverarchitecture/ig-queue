@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-10-22T12:46:28Z",
-    "lastCommentId": 6341097919,
+    "lastCommentAt": "2026-10-22T12:54:06Z",
+    "lastCommentId": 6341249221,
     "lastPillar": "detail"
   },
   "last": {
@@ -526,7 +526,15 @@
       "batch": "2026-10-20",
       "slot": "2026-10-23T17:00:00.000Z",
       "decidedAt": "2026-10-22T12:54:01.528Z"
+    },
+    "021-site-search-an-architect": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "Which architect's work should we pull up next? 🔎\n\nType any name — Zaha, Aalto, Kahn — and the whole wall filters to their buildings.\n\nTry it free → link in bio\nDrop an architect below and we'll search them next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architects #designresearch #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
+      "captionSha": "7a55b7cd0fbf6993b28445c516d137a771a48d4f"
     }
   },
-  "pool": []
+  "pool": [
+    "021-site-search-an-architect"
+  ]
 }
