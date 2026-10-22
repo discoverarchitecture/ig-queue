@@ -1,0 +1,106 @@
+{
+  "id": "dia-villa-tugendhat",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "villa-tugendhat",
+      "i": 5,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Is that whole wall made of glass?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "villa-tugendhat",
+      "i": 0,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Yep! It's Villa Tugendhat in Brno, designed by Mies van der Rohe in nineteen thirty, as a family home."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "villa-tugendhat",
+      "i": 4,
+      "move": "up",
+      "label": {
+        "name": "Glass walls",
+        "meta": "Glass walls that drop away to the garden"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "And what's outside those windows?"
+        },
+        {
+          "who": "guide",
+          "text": "The garden. The glass walls drop away, so the house opens straight onto it."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "villa-tugendhat",
+      "i": 3,
+      "move": "left",
+      "label": {
+        "name": "The terrace",
+        "meta": "A rounded glass screen"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "What's that curved bit on the terrace?"
+        },
+        {
+          "who": "guide",
+          "text": "A rounded screen of glass, tucked beneath the overhang of the roof."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "villa-tugendhat",
+      "i": 7,
+      "label": {
+        "name": "The kitchen",
+        "meta": "A window onto the green"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Even the kitchen has a view?"
+        },
+        {
+          "who": "guide",
+          "text": "Yes! One big window in there looks straight out over the trees."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "100+ buildings with a free plan on the site",
+      "accent": [
+        "100+"
+      ],
+      "dur": 3
+    }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait. Is that whole wall made of glass? 🪟\n\nMies van der Rohe's Villa Tugendhat in Brno (1930) is a family home with an open plan and glass walls that drop away to the garden.\n\nExplore it and 100+ more buildings with a free plan → link in bio\nWould you live in a glass house?\n\n#architecture #miesvanderohe #villatugendhat #modernism #designinspiration"
+}

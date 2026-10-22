@@ -17,8 +17,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DEV = 'mps' if torch.backends.mps.is_available() else 'cpu'
 SR = 44100
 TAG = {'friend': '[S1]', 'guide': '[S2]'}
-MAX_CHARS = 230   # text per Dia call: longer chunks make Dia rush and drop lines
-TRIES = 4
+MAX_CHARS = 140   # text per Dia call: short chunks (about one exchange) keep the two voices apart and stop lines being dropped
+TRIES = 6
 
 lines = json.load(open(sys.argv[1]))
 out = sys.argv[2]
@@ -140,12 +140,12 @@ for c, ls0 in enumerate(chunks):
                     wrong += is_wrong
                     if is_wrong: bad.append(l['id'])
             dropped = sum(x < 0.5 for x in q)
-            score = sum(q) / len(q) - 3 * dropped - 0.5 * wrong - max(0, extra - 1.15)  # a dropped line is the worst failure
+            score = sum(q) / len(q) - 3 * dropped - 0.5 * wrong - max(0, extra - 1.25)  # a dropped line is the worst failure
             print(f"chunk {c + 1}/{len(chunks)} try {t + 1}: match {[round(x, 2) for x in q]} heard/script {extra:.2f} wrong voice {wrong}", flush=True)
             if min(q) < 0.9: print('   heard:', ' '.join(w['text'] for w in sum(per_line, []))[:300], flush=True)
             ok_lines = all(per_line[1:] if ctx else per_line)
             if best is None or score > best[0]: best = (score, audio, per_line, bad)
-            if min(q) >= 0.9 and extra <= 1.15 and ok_lines and not wrong: break
+            if min(q) >= 0.9 and extra <= 1.25 and ok_lines and not wrong: break
         _, audio, per_line, bad = best
         sf.write(hit + '.wav', audio, SR); json.dump({'per_line': per_line, 'bad': bad}, open(hit + '.json', 'w'))
     all_bad += bad

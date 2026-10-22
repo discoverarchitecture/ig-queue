@@ -85,6 +85,7 @@ sign-off, the "Photos:" credits and the site tagline to the caption — never wr
 | Symptom | Cause | Fix |
 | --- | --- | --- |
 | `Dia dropped line …` | line too long or echoes its neighbour | shorter / reworded, re-render |
+| `WRONG VOICE on line(s) s02_1` printed, or `ship` refuses | Dia spoke that line in the other speaker's voice (it keeps failing for short guide answers (< 9 words) and for answers that reuse the question's words) | make the guide answer 10–20 words with different words from the question; re-render |
 | Out of memory, Mac crawls | two renders at once, or Dia at full precision | wait for the first to finish; `dia.py` already uses bf16 |
 | Wrong voice on a line (the verifier retried 4× and still failed) | the line copies the previous line's words | reword the friend line to ask something new |
 | `could not download <url>` | photo host is slow | re-run; downloads are cached |

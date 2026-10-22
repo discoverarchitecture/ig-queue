@@ -6,23 +6,100 @@
   "friend": "male",
   "coverAt": 1.4,
   "scenes": [
-    { "type": "photo", "b": "barbican-estate", "i": 1, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
-      "talk": [ { "who": "friend", "text": "Wait. Is that a lake in front of a housing block?" } ] },
-    { "type": "photo", "b": "barbican-estate", "i": 2, "move": "out",
-      "talk": [ { "who": "guide", "text": "Yep! That's the Barbican in London, a walkway city by Chamberlin, Powell and Bon, from nineteen eighty-two." } ] },
-    { "type": "photo", "b": "barbican-estate", "i": 3, "move": "up",
-      "label": { "name": "The walkways", "meta": "A walkway city above the street" },
-      "talk": [ { "who": "friend", "text": "What's that long indoor street?" },
-                { "who": "guide", "text": "A raised walkway. The whole estate sits above the street on walkways." } ] },
-    { "type": "photo", "b": "barbican-estate", "i": 5, "move": "left",
-      "label": { "name": "Exposed concrete", "meta": "Textured concrete, bright blue paint" },
-      "talk": [ { "who": "friend", "text": "What's up with those bright blue columns?" },
-                { "who": "guide", "text": "Bold paint against raw, textured concrete." } ] },
-    { "type": "photo", "b": "barbican-estate", "i": 7,
-      "label": { "name": "The towers", "meta": "Housing, arts centre, lake and conservatory" },
-      "talk": [ { "who": "friend", "text": "Are those towers part of it too?" },
-                { "who": "guide", "text": "Yes! Three towers rise above a city of housing, an arts centre and a lake." } ] },
-    { "type": "end", "line": "70+ megastructures on the site", "accent": ["70+"], "dur": 3 }
+    {
+      "type": "photo",
+      "b": "barbican-estate",
+      "i": 1,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Is that a lake in front of a housing block?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "barbican-estate",
+      "i": 2,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Yep! That's the Barbican in London, a walkway city by Chamberlin, Powell and Bon, from nineteen eighty-two."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "barbican-estate",
+      "i": 3,
+      "move": "up",
+      "label": {
+        "name": "The walkways",
+        "meta": "A walkway city above the street"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Whoa, what is that long hallway?"
+        },
+        {
+          "who": "guide",
+          "text": "It's raised up high. The whole estate sits above the street."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "barbican-estate",
+      "i": 5,
+      "move": "left",
+      "label": {
+        "name": "Exposed concrete",
+        "meta": "Textured concrete, bright blue paint"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "What's up with those bright blue columns?"
+        },
+        {
+          "who": "guide",
+          "text": "Bold paint against raw, textured concrete."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "barbican-estate",
+      "i": 7,
+      "label": {
+        "name": "The towers",
+        "meta": "Housing, arts centre, lake and conservatory"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Are those towers part of it too?"
+        },
+        {
+          "who": "guide",
+          "text": "Yes! Three towers rise above a city of housing, an arts centre and a lake."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "70+ megastructures on the site",
+      "accent": [
+        "70+"
+      ],
+      "dur": 3
+    }
   ],
   "outro": "No way. Where do I find more like this?",
   "caption": "Wait. Is that a lake in front of a housing block? 🏙️\n\nThe Barbican in London (1982) by Chamberlin, Powell and Bon is a walkway city of housing, an arts centre, a lake and a conservatory, all above the street.\n\nExplore it and 70+ more megastructures → link in bio\nWould you want to live here?\n\n#architecture #barbican #brutalism #london #designinspiration"

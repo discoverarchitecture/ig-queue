@@ -77,6 +77,7 @@ lines.forEach((l, k) => {
   if (/\b\d{1,3}(,\d{3})+\b|\b\d{4,}\b/.test(l.text.replace(/\bc\.?\s?\d{3,4}\b/, ''))) warn(`"${l.text.slice(0, 30)}…": write big numbers as words ("two thousand"), Dia reads digits badly`);
   if (l.who === 'friend' && w.length > 14) err(`friend line is ${w.length} words (max 14): "${l.text}"`);
   if (l.who === 'guide' && (w.length > 26 || sentences > 2)) err(`guide line is ${w.length} words / ${sentences} sentences (max 26 / 2): "${l.text}"`);
+  if (l.who === 'guide' && w.length < 9 && lines.indexOf(l) > 1 && l.text !== lines.at(-1)?.text) warn(`guide line is only ${w.length} words: "${l.text}" — short answers right after a question are the likeliest to come out in the wrong voice; aim for 10–20 words`);
   if (l.who === 'friend' && !/[?!]$|\.$/.test(l.text.trim())) warn(`friend line has no end punctuation: "${l.text}"`);
   // Dia swaps voices when a line repeats the neighbouring line's words (hit on the Pantheon: "Two thousand years?")
   const prev = lines[k - 1];
@@ -85,6 +86,8 @@ lines.forEach((l, k) => {
     const grams = (x) => new Set(x.slice(0, -2).map((_, i) => x.slice(i, i + 3).join(' ')));
     const ga = grams(a);
     if ([...grams(b)].some((g) => ga.has(g))) err(`"${l.text}" repeats 3+ words from the line before it — Dia then speaks it in the other voice. Reword it.`);
+    const shared = [...new Set(b.filter((w) => w.length >= 6 && a.includes(w)))];
+    if (shared.length) warn(`"${l.text.slice(0, 40)}…" reuses "${shared.join('", "')}" from the line before it — Dia often swaps voices on echoes (it did on "walkway"); prefer a different word`);
     if (a.length >= 2 && b.length >= 2 && a.slice(-2).join(' ') === b.slice(0, 2).join(' ')) err(`"${l.text}" starts with the last words of the previous line — reword`);
   }
 });

@@ -1,0 +1,106 @@
+{
+  "id": "dia-yale-art-and-architecture",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "male",
+  "coverAt": 1.4,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "yale-art-and-architecture-building",
+      "i": 1,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Why does that concrete have stripes?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "yale-art-and-architecture-building",
+      "i": 0,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "That's corduroy concrete, on Paul Rudolph's Art and Architecture Building at Yale, from nineteen sixty-three."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "yale-art-and-architecture-building",
+      "i": 4,
+      "move": "up",
+      "label": {
+        "name": "The review pit",
+        "meta": "On the fourth floor"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "What's that sunken orange area?"
+        },
+        {
+          "who": "guide",
+          "text": "That's the review pit. It sits on the fourth floor, in the middle of the building."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "yale-art-and-architecture-building",
+      "i": 5,
+      "move": "left",
+      "label": {
+        "name": "Interlocking levels",
+        "meta": "Dozens of levels open to each other"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait, how many levels are in here?"
+        },
+        {
+          "who": "guide",
+          "text": "Dozens! Interlocking levels, all open to each other."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "yale-art-and-architecture-building",
+      "i": 7,
+      "label": {
+        "name": "The studio",
+        "meta": "A design studio built in section"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "And that's where people actually work?"
+        },
+        {
+          "who": "guide",
+          "text": "Yes! A real design studio, with messy desks and drawings everywhere."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "190+ buildings with striking sections on the site",
+      "accent": [
+        "190+"
+      ],
+      "dur": 3
+    }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait. Why does that concrete have stripes? 🏛️\n\nPaul Rudolph's Art and Architecture Building at Yale (1963) is a design studio built in section, with dozens of interlocking levels and corduroy concrete.\n\nExplore it and 190+ more buildings with striking sections → link in bio\nWould you want to work in a studio like this?\n\n#architecture #paulrudolph #brutalism #yale #designinspiration"
+}

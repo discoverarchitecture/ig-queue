@@ -1,0 +1,29 @@
+{
+  "id": "dia-boston-city-hall",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "photo", "b": "boston-city-hall", "i": 2, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
+      "talk": [ { "who": "friend", "text": "Wait. Is that building upside down?" } ] },
+    { "type": "photo", "b": "boston-city-hall", "i": 0, "move": "out",
+      "talk": [ { "who": "guide", "text": "Almost! It's Boston City Hall, from nineteen sixty-eight, shaped like a stepped pyramid turned over." } ] },
+    { "type": "photo", "b": "boston-city-hall", "i": 4, "move": "up",
+      "label": { "name": "Exposed concrete", "meta": "Raw concrete, shaped into huge blocks" },
+      "talk": [ { "who": "friend", "text": "What's that rough grey stuff it's made of?" },
+                { "who": "guide", "text": "Exposed concrete, left raw and shaped into huge, deep blocks." } ] },
+    { "type": "photo", "b": "boston-city-hall", "i": 3, "move": "left",
+      "label": { "name": "The courtyard", "meta": "Open to the sky" },
+      "talk": [ { "who": "friend", "text": "Is there an open space in the middle?" },
+                { "who": "guide", "text": "Yes, an open courtyard, with the sky right overhead." } ] },
+    { "type": "photo", "b": "boston-city-hall", "i": 6,
+      "label": { "name": "The form", "meta": "Functions shown from outside" },
+      "talk": [ { "who": "friend", "text": "Why does it look so strange from above?" },
+                { "who": "guide", "text": "The shape shows the city government's different jobs, right on the outside." } ] },
+    { "type": "end", "line": "530+ buildings with public space on the site", "accent": ["530+"], "dur": 3 }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait. Is that building upside down? 🔄\n\nBoston City Hall (1968) by Kallmann McKinnell & Knowles is an inverted ziggurat, its shape showing the city government's functions from the outside.\n\nExplore it and 530+ more buildings with public space → link in bio\nWould you want to work here?\n\n#architecture #brutalism #boston #bostoncityhall #designinspiration"
+}

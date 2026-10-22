@@ -1,0 +1,13 @@
+{
+  "id": "search-a-city",
+  "pillar": "site",
+  "music": "pulse",
+  "coverAt": 1.2,
+  "scenes": [
+    { "type": "site", "clip": "search", "args": { "query": "Tokyo" }, "fromMark": "search", "lead": 0.8, "dur": 3.4, "title": "Search any city", "accent": ["CITY"] },
+    { "type": "site", "clip": "search", "args": { "query": "Lisbon" }, "fromMark": "search", "lead": 0.4, "dur": 3.0, "title": "Lisbon", "accent": ["LISBON"], "flash": true },
+    { "type": "site", "clip": "search", "args": { "query": "Chicago" }, "fromMark": "search", "lead": 0.4, "dur": 3.0, "title": "Chicago", "accent": ["CHICAGO"], "flash": true },
+    { "type": "end", "line": "Search any city. Free.", "accent": ["CITY"], "dur": 2.8 }
+  ],
+  "caption": "Which city's architecture should we pull up next? 🌍\n\nType any city — Tokyo, Lisbon, Chicago — and the whole wall filters to the great buildings there.\n\nTry it free → link in bio\nDrop a city below and we'll search it next.\n\n#architecture #architecturestudent #architecturetravel #cityarchitecture #designinspiration"
+}

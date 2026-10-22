@@ -1,0 +1,12 @@
+{
+  "id": "wall-scroll",
+  "pillar": "site",
+  "music": "pulse",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "site", "clip": "wall", "args": { "by": 2600, "ms": 7000 }, "clipStart": 0, "dur": 3.6, "title": "3,900+ buildings on one wall", "accent": ["3,900+"] },
+    { "type": "site", "clip": "wall", "args": { "by": 2600, "ms": 7000 }, "clipStart": 3.6, "dur": 4.4, "title": "How many can you name?", "accent": ["NAME"] },
+    { "type": "end", "line": "Scroll the whole wall. Free.", "accent": ["WALL"], "dur": 2.8 }
+  ],
+  "caption": "How many of these buildings can you name? 🧱\n\nOne wall, 3,900+ great buildings. Scroll it, tap any photo, and see the big idea behind it.\n\nScroll it free → link in bio\nDrop the first building you recognised.\n\n#architecture #architecturestudent #architecturelovers #designinspiration #buildings"
+}
