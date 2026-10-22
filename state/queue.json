@@ -577,6 +577,12 @@
       "hasCover": true,
       "caption": "Which city's architecture should we pull up next? 🌍\n\nType any city — Tokyo, Lisbon, Chicago — and the whole wall filters to the great buildings there.\n\nTry it free → link in bio\nDrop a city below and we'll search it next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architecturetravel #cityarchitecture #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "2475ac7805c68f9119b77153b838025ae08b24b6"
+    },
+    "029-talk-villa-tugendhat": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "Wait. Is that whole wall made of glass? 🪟\n\nMies van der Rohe's Villa Tugendhat in Brno (1930) is a family home with an open plan and glass walls that drop away to the garden.\n\nExplore it and 100+ more buildings with a free plan → link in bio\nWould you live in a glass house?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #miesvanderohe #villatugendhat #modernism #designinspiration\n\nPhotos: Villa Tugendhat – JensKunstfreund (CC BY-SA 4.0); Villa Tugendhat – Petr1987 (CC BY-SA 4.0)",
+      "captionSha": "28a12710111e695a44a6fde9f9e7dbc0e7beb263"
     }
   },
   "pool": [
@@ -586,6 +592,7 @@
     "025-site-wall-scroll",
     "026-talk-boston-city-hall",
     "027-talk-barbican-estate",
-    "028-site-search-a-city"
+    "028-site-search-a-city",
+    "029-talk-villa-tugendhat"
   ]
 }
