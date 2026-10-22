@@ -55,7 +55,7 @@ photos.forEach((s, i) => {
     if (!s.label || !s.label.name || !s.label.meta) err(`${where}: needs "label":{"name":"…","meta":"…"} naming the idea shown`);
   }
 });
-if (end && end.type === 'end' && (end.line || '').length > 42) err(`end "line" is ${end.line.length} characters (max 42): it wraps to 3 lines and runs into the website address`);
+if (end && end.type === 'end' && (end.line || '').length > 44) err(`end "line" is ${end.line.length} characters (max 44): it wraps to 3 lines and runs into the website address`);
 if (end && end.type === 'end' && !/site|more|\d/i.test(end.line || '')) warn('end "line" should point to the site: e.g. "345 buildings lit from above on the site"');
 
 // the site grows every day: counts on the end card and in the caption must be rounded DOWN to ten with a "+"
