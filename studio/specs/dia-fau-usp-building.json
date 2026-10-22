@@ -1,0 +1,106 @@
+{
+  "id": "dia-fau-usp-building",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "fau-usp-building",
+      "i": 4,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Is that really a school?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fau-usp-building",
+      "i": 0,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "It is! It's the architecture school at the University of São Paulo, designed by Vilanova Artigas in nineteen sixty-nine."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fau-usp-building",
+      "i": 5,
+      "move": "left",
+      "label": {
+        "name": "The ramps",
+        "meta": "Levels joined by ramps"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Okay, but how do you get between floors?"
+        },
+        {
+          "who": "guide",
+          "text": "Ramps! The whole school is joined by ramps, and it's open to the city."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fau-usp-building",
+      "i": 6,
+      "move": "up",
+      "label": {
+        "name": "Open to the city",
+        "meta": "One great roof over everyone"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Is anyone actually allowed in there?"
+        },
+        {
+          "who": "guide",
+          "text": "Yes, it's open to the city, and students gather right in the middle."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "fau-usp-building",
+      "i": 7,
+      "label": {
+        "name": "Exposed concrete",
+        "meta": "The structure left bare"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Why is everything left as bare concrete?"
+        },
+        {
+          "who": "guide",
+          "text": "Exposed concrete. No paint, no cladding, just the structure itself."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "512 exposed concrete buildings on the site",
+      "accent": [
+        "512"
+      ],
+      "dur": 3
+    }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait. Is that really a school? 🏫\n\nVilanova Artigas's FAU-USP building in São Paulo (1969) puts an architecture school under one great concrete roof, joined by ramps and open to the city.\n\nExplore it and 512 more exposed concrete buildings → link in bio\nWould you want to study here?\n\n#architecture #brutalism #saopaulo #exposedconcrete #designinspiration"
+}

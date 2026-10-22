@@ -108,38 +108,50 @@ def align(audio, ls):
     return per_line, quality, len(heard) / max(1, len(script))
 
 os.makedirs(out, exist_ok=True)
+all_bad = []
 CACHE = os.path.join(HERE, 'cache', 'dia-chunks')   # finished chunks: changing one line re-voices only its chunk
 os.makedirs(CACHE, exist_ok=True)
 import hashlib
-for c, ls in enumerate(chunks):
+for c, ls0 in enumerate(chunks):
+    # A chunk that opens with the friend's question has no voice to anchor on and often lands in the guide's voice:
+    # so it starts with the previous chunk's last guide line (spoken, checked, then cut away).
+    ctx = chunks[c - 1][-1] if c and chunks[c - 1][-1]['who'] == 'guide' else None
+    ls = ([{'id': '_ctx', 'who': 'guide', 'text': ctx['text']}] if ctx else []) + ls0
     key = hashlib.sha1(json.dumps([CAST.split(os.sep)[-1], ref_text, seed0, [(l['who'], l['text']) for l in ls]]).encode()).hexdigest()[:16]
     hit = os.path.join(CACHE, key)
     if os.path.exists(hit + '.json'):
-        audio = sf.read(hit + '.wav', dtype='float32')[0]; per_line = json.load(open(hit + '.json'))
+        audio = sf.read(hit + '.wav', dtype='float32')[0]; cached = json.load(open(hit + '.json'))
+        per_line, bad = (cached['per_line'], cached['bad']) if isinstance(cached, dict) else (cached, [])
         print(f"chunk {c + 1}/{len(chunks)}: cached", flush=True)
     else:
         best = None
         for t in range(TRIES):
             audio = generate(ls, seed0 + 101 * t + c)
             per_line, q, extra = align(audio, ls)
-            wrong = 0
+            if ctx: q = q[1:]   # the context line is not part of the reel
+            wrong = 0; bad = []
             if REF_EMB:
                 for i, l in enumerate(ls):
-                    if not per_line[i]: continue
+                    if l['id'] == '_ctx' or not per_line[i]: continue
                     s0, e0 = per_line[i][0]['timestamp'][0], per_line[i][-1]['timestamp'][1] or per_line[i][-1]['timestamp'][0] + .3
                     e = embed(audio[int(s0 * SR):int(e0 * SR)], SR)
                     other = 'guide' if l['who'] == 'friend' else 'friend'
-                    wrong += float(e @ REF_EMB[l['who']]) <= float(e @ REF_EMB[other])
+                    is_wrong = float(e @ REF_EMB[l['who']]) <= float(e @ REF_EMB[other])
+                    wrong += is_wrong
+                    if is_wrong: bad.append(l['id'])
             dropped = sum(x < 0.5 for x in q)
             score = sum(q) / len(q) - 3 * dropped - 0.5 * wrong - max(0, extra - 1.15)  # a dropped line is the worst failure
             print(f"chunk {c + 1}/{len(chunks)} try {t + 1}: match {[round(x, 2) for x in q]} heard/script {extra:.2f} wrong voice {wrong}", flush=True)
             if min(q) < 0.9: print('   heard:', ' '.join(w['text'] for w in sum(per_line, []))[:300], flush=True)
-            if best is None or score > best[0]: best = (score, audio, per_line)
-            if min(q) >= 0.9 and extra <= 1.15 and all(per_line) and not wrong: break
-        _, audio, per_line = best
-        sf.write(hit + '.wav', audio, SR); json.dump(per_line, open(hit + '.json', 'w'))
+            ok_lines = all(per_line[1:] if ctx else per_line)
+            if best is None or score > best[0]: best = (score, audio, per_line, bad)
+            if min(q) >= 0.9 and extra <= 1.15 and ok_lines and not wrong: break
+        _, audio, per_line, bad = best
+        sf.write(hit + '.wav', audio, SR); json.dump({'per_line': per_line, 'bad': bad}, open(hit + '.json', 'w'))
+    all_bad += bad
     dur = len(audio) / SR
     for i, l in enumerate(ls):
+        if l['id'] == '_ctx': continue
         ws = per_line[i]
         if not ws: raise SystemExit(f"Dia dropped line {l['id']}: {l['text']}")
         s0, e0 = ws[0]['timestamp'][0], ws[-1]['timestamp'][1] or ws[-1]['timestamp'][0] + .3
@@ -148,4 +160,6 @@ for c, ls in enumerate(chunks):
         a = max(0, (prev_end + s0) / 2 if prev_end else s0 - .25)
         b = min(dur, (e0 + nxt) / 2 if nxt else e0 + .35)
         sf.write(os.path.join(out, l['id'] + '.wav'), audio[int(a * SR):int(b * SR)], SR)
+json.dump(all_bad, open(os.path.join(out, 'voice-check.json'), 'w'))
 print('dia: voiced', len(lines), 'lines in', len(chunks), 'chunks', flush=True)
+if all_bad: print('WRONG VOICE on line(s): ' + ', '.join(all_bad) + ' — reword those friend/guide lines and re-render', flush=True)

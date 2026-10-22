@@ -19,6 +19,11 @@ const die = (m) => { console.error('ship: ' + m); process.exit(1); };
 for (const f of ['reel.mp4', 'cover.jpg', 'caption.txt']) if (!fs.existsSync(path.join(out, f))) die(`${out}/${f} is missing — render first`);
 if (fs.statSync(path.join(out, 'reel.mp4')).mtimeMs < fs.statSync(path.join(HERE, 'specs', id + '.json')).mtimeMs) die('the spec is newer than the render — re-render first');
 if (fs.statSync(path.join(out, 'reel.mp4')).size > 95 * 1024 * 1024) die('reel is over 95 MB');
+const vcFile = path.join(out, 'voice-check.json');
+if (fs.existsSync(vcFile)) {
+  const bad = JSON.parse(fs.readFileSync(vcFile, 'utf8'));
+  if (bad.length) die(`the voice check flagged line(s) ${bad.join(', ')} as spoken in the wrong voice — reword those lines in the spec and re-render`);
+}
 const cap = fs.readFileSync(path.join(out, 'caption.txt'), 'utf8').trim();
 const tags = (cap.match(/#[\p{L}\p{N}_]+/gu) || []).length;
 if (tags > 5) die(`caption has ${tags} hashtags (max 5)`);

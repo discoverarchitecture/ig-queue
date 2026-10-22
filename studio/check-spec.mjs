@@ -57,6 +57,13 @@ photos.forEach((s, i) => {
 });
 if (end && end.type === 'end' && !/site|more|\d/i.test(end.line || '')) warn('end "line" should point to the site: e.g. "345 buildings lit from above on the site"');
 
+// the site grows every day: counts on the end card and in the caption must be rounded DOWN to ten with a "+"
+for (const [where, txt] of [['end line', end?.line || ''], ['caption', spec.caption || '']]) {
+  for (const m of txt.matchAll(/\b(\d{2,4})(\+?)\s+(?:more\s+)?(?:\w+\s+){0,3}?(buildings|courtyards?|houses)\b/gi)) {
+    if (!m[2] && Number(m[1]) % 10 !== 0) warn(`${where}: "${m[0]}" — write counts rounded down to ten with "+", e.g. "${Math.floor(m[1] / 10) * 10}+"`);
+  }
+}
+
 // ---- line rules -----------------------------------------------------------
 let chars = 0, laughs = 0;
 lines.forEach((l, k) => {

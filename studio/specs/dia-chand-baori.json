@@ -6,24 +6,101 @@
   "friend": "male",
   "coverAt": 1.4,
   "scenes": [
-    { "type": "photo", "b": "chand-baori", "i": 5, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
-      "talk": [ { "who": "friend", "text": "Wait. How deep is that hole?" } ] },
-    { "type": "photo", "b": "chand-baori", "i": 1, "move": "out",
-      "talk": [ { "who": "guide", "text": "Thirteen storeys deep! It's Chand Baori, a stepwell in Abhaneri, India, built around the year eight hundred." } ] },
-    { "type": "photo", "b": "chand-baori", "i": 7, "move": "left",
-      "label": { "name": "The steps", "meta": "Stairs all the way down to the water" },
-      "talk": [ { "who": "friend", "text": "Why build so many steps?" },
-                { "who": "guide", "text": "So people could reach the water at any level, wherever it had dropped to." } ] },
-    { "type": "photo", "b": "chand-baori", "i": 6, "move": "up",
-      "label": { "name": "The shade", "meta": "Architecture as a climate machine" },
-      "talk": [ { "who": "friend", "text": "And what's that shady walkway for?" },
-                { "who": "guide", "text": "Shade and deep stone. The whole place works as a climate machine." } ] },
-    { "type": "photo", "b": "chand-baori", "i": 3,
-      "label": { "name": "The builders", "meta": "Unknown · around 800" },
-      "talk": [ { "who": "friend", "text": "Okay, but who built it?" },
-                { "who": "guide", "text": "Nobody knows! The builders were never recorded." } ] },
-    { "type": "end", "line": "248 buildings with water on the site", "accent": ["248"], "dur": 3 }
+    {
+      "type": "photo",
+      "b": "chand-baori",
+      "i": 5,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. How deep is that hole?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "chand-baori",
+      "i": 1,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Thirteen storeys deep! It's Chand Baori, a stepwell in Abhaneri, India, built around the year eight hundred."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "chand-baori",
+      "i": 7,
+      "move": "left",
+      "label": {
+        "name": "The steps",
+        "meta": "Stairs all the way down to the water"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Why build so many steps?"
+        },
+        {
+          "who": "guide",
+          "text": "So people could reach the water at any level, wherever it had dropped to."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "chand-baori",
+      "i": 6,
+      "move": "up",
+      "label": {
+        "name": "The shade",
+        "meta": "Architecture as a climate machine"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "And what's that shady walkway for?"
+        },
+        {
+          "who": "guide",
+          "text": "Shade and deep stone. The whole place works as a climate machine."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "chand-baori",
+      "i": 3,
+      "label": {
+        "name": "The builders",
+        "meta": "Unknown · around 800"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Okay, but who built it?"
+        },
+        {
+          "who": "guide",
+          "text": "Nobody knows! The builders were never recorded."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "280+ buildings with water on the site",
+      "accent": [
+        "280+"
+      ],
+      "dur": 3
+    }
   ],
   "outro": "No way. Where do I find more like this?",
-  "caption": "Wait. How deep is that hole? 🕳️\n\nChand Baori in Abhaneri, India (c. 800) is a stepwell thirteen storeys deep, built by unknown hands as a climate machine.\n\nExplore it and 248 more buildings with water → link in bio\nWould you walk down all thirteen storeys?\n\n#architecture #stepwell #chandbaori #ancientarchitecture #designinspiration"
+  "caption": "Wait. How deep is that hole? 🕳️\n\nChand Baori in Abhaneri, India (c. 800) is a stepwell thirteen storeys deep, built by unknown hands as a climate machine.\n\nExplore it and 280+ more buildings with water → link in bio\nWould you walk down all thirteen storeys?\n\n#architecture #stepwell #chandbaori #ancientarchitecture #designinspiration"
 }

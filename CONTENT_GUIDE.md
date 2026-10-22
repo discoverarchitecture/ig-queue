@@ -75,6 +75,7 @@ sign-off, the "Photos:" credits and the site tagline to the caption — never wr
   Explain any term the first time ("cantilever: concrete trays held at one end only").
 - Spoken style: contractions, "Okay, but…", "No way.", "Seriously?". One `(laughs)` at most per reel, on a friend or guide line where something is funny.
 - **Never let a line repeat words from the line just before it.** Dia then speaks it in the other speaker's voice (this broke "Two thousand years?" after "…two thousand years old."). The checker catches 3-word overlaps; also avoid echoes by meaning.
+- **Counts on the end card and in the caption are rounded DOWN to ten with a plus** ("280+ buildings with water"). The site gains buildings every day (≈ 4,000 now), so a bare number is out of date within a week; `suggest.mjs` prints the number to write.
 - Numbers as words in speech ("two thousand"), digits are fine on the end card and in the caption.
 - 4–5 photos, 330–560 spoken characters, ≈ 28–33 s. Plain words only: no emoji, hashtags, brackets or quotes inside a line.
 - **Caption:** line 1 = the hook question. Last sentence before the hashtags = a question to the viewer (drives comments). Exactly 5 hashtags. Include "→ link in bio".

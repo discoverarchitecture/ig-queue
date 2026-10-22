@@ -63,6 +63,8 @@ function voice(scenes) {
       ff(['-i', `${dir}/${l.id}.wav`, '-af', 'silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,aresample=48000', `${dir}/${l.id}.t.wav`]);
     fs.writeFileSync(path.join(dir, 'done'), '');
   }
+  const vc = path.join(dir, 'voice-check.json');
+  if (fs.existsSync(vc)) fs.copyFileSync(vc, path.join(OUT, 'voice-check.json')); else fs.rmSync(path.join(OUT, 'voice-check.json'), { force: true });
   return Object.fromEntries(lines.map((l) => [l.id, { file: `${dir}/${l.id}.t.wav`, len: probe(`${dir}/${l.id}.t.wav`) }]));
 }
 

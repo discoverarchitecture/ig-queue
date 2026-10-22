@@ -22,7 +22,7 @@ const rows = all
 for (const b of rows) {
   console.log(`\n${b.id} — ${b.name}, ${b.by}, ${b.year}, ${b.place}`);
   console.log(`  site says: "${b.study}"`);
-  console.log(`  ideas: ${(b.concepts || []).map((c) => `${c} (${conceptCount[c]} on the site)`).join(' · ')}`);
+  console.log(`  ideas: ${(b.concepts || []).map((c) => `${c} (${conceptCount[c]} on the site → write "${Math.floor(conceptCount[c] / 10) * 10}+")`).join(' · ')}`);
   console.log('  photos: ' + b.images.map((im, i) => `${i}=${im.kind}${real(im) ? '' : '✗'}`).join('  '));
 }
 console.log(`\n${rows.length} candidates (✗ = don't use). Look at them: node candidates.mjs <id> …  → out/_candidates/*.jpg`);
