@@ -525,7 +525,13 @@
       "mediaId": "18194670268392163",
       "permalink": "https://www.instagram.com/reel/De0LGeAgo1P/",
       "publishedAt": "2026-10-22T23:34:27+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "tylouS6sHng",
+        "url": "https://www.youtube.com/shorts/tylouS6sHng",
+        "privacy": "public",
+        "uploadedAt": "2026-10-22T23:34:36.960Z"
+      }
     },
     "019-talk-casa-luis-barragan": {
       "status": "approved",
