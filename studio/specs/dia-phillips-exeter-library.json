@@ -1,0 +1,106 @@
+{
+  "id": "dia-phillips-exeter-library",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "male",
+  "coverAt": 1.4,
+  "scenes": [
+    {
+      "type": "photo",
+      "b": "phillips-exeter-academy-library",
+      "i": 4,
+      "fill": true,
+      "move": "in",
+      "voDelay": 0.05,
+      "label": false,
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Wait. Is that a giant circle cut into the wall?"
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "phillips-exeter-academy-library",
+      "i": 0,
+      "move": "out",
+      "talk": [
+        {
+          "who": "guide",
+          "text": "Yep! It's Louis Kahn's library at Phillips Exeter Academy, from nineteen seventy-one, and outside it's a plain brick box."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "phillips-exeter-academy-library",
+      "i": 3,
+      "move": "up",
+      "label": {
+        "name": "The atrium",
+        "meta": "Books stacked around a central atrium"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "So what's inside?"
+        },
+        {
+          "who": "guide",
+          "text": "A huge central atrium, with the books stacked all around it."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "phillips-exeter-academy-library",
+      "i": 5,
+      "move": "left",
+      "label": {
+        "name": "The staircase",
+        "meta": "Curved travertine double stair"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "Ooh, what's that sweeping stair by the door?"
+        },
+        {
+          "who": "guide",
+          "text": "A curved travertine double staircase, right at the library entrance."
+        }
+      ]
+    },
+    {
+      "type": "photo",
+      "b": "phillips-exeter-academy-library",
+      "i": 7,
+      "label": {
+        "name": "The carrels",
+        "meta": "Reading carrels at the brick edge"
+      },
+      "talk": [
+        {
+          "who": "friend",
+          "text": "And where do people actually sit to read?"
+        },
+        {
+          "who": "guide",
+          "text": "Along the brick edge, in little carrels beside the windows."
+        }
+      ]
+    },
+    {
+      "type": "end",
+      "line": "394 buildings lit from above on the site",
+      "accent": [
+        "394"
+      ],
+      "dur": 3
+    }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Wait. Is that a giant circle cut into the wall? ⭕\n\nLouis Kahn's Phillips Exeter Academy Library (1971) wraps its books around a central atrium framed by huge circles.\n\nExplore it and 394 more buildings lit from above → link in bio\nWould you want to study in here?\n\n#architecture #louiskahn #library #brick #designinspiration"
+}

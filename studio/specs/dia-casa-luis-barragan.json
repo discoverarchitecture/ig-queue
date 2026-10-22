@@ -1,0 +1,29 @@
+{
+  "id": "dia-casa-luis-barragan",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "male",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "photo", "b": "casa-luis-barragan", "i": 0, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
+      "talk": [ { "who": "friend", "text": "Is that a house, or a paint swatch?" } ] },
+    { "type": "photo", "b": "casa-luis-barragan", "i": 1, "move": "out",
+      "talk": [ { "who": "guide", "text": "It's Luis Barragán's house in Mexico City, from nineteen forty-eight. From the street, it's a blank wall." } ] },
+    { "type": "photo", "b": "casa-luis-barragan", "i": 2, "move": "left",
+      "label": { "name": "Colour", "meta": "Colour, light and gardens within" },
+      "talk": [ { "who": "friend", "text": "So what's hiding behind that wall?" },
+                { "who": "guide", "text": "Colour, light and gardens. All of it kept inside, away from the street." } ] },
+    { "type": "photo", "b": "casa-luis-barragan", "i": 5, "move": "up",
+      "label": { "name": "Light and shadow", "meta": "A yellow lattice beside still water" },
+      "talk": [ { "who": "friend", "text": "What's that glowing yellow window?" },
+                { "who": "guide", "text": "A yellow lattice, glowing in the sun, right beside a still pool." } ] },
+    { "type": "photo", "b": "casa-luis-barragan", "i": 4,
+      "label": { "name": "The stair", "meta": "Timber steps on a white wall" },
+      "talk": [ { "who": "friend", "text": "Wait, there's no handrail?" },
+                { "who": "guide", "text": "None! Just timber steps floating off a plain white wall." } ] },
+    { "type": "end", "line": "315 courtyard buildings on the site", "accent": ["315"], "dur": 3 }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Is that a house, or a paint swatch? 🎨\n\nLuis Barragán's house in Mexico City (1948) is a blank wall to the street, with color, light and gardens hidden inside.\n\nExplore it and 315 more courtyard buildings → link in bio\nWould you paint your house this bold?\n\n#architecture #luisbarragan #mexicocity #color #designinspiration"
+}

@@ -45,7 +45,10 @@ ref_text = open(ref_txt).read().strip() if use_ref else ''
 
 spoken = lambda t: re.sub(r'\s+', ' ', re.sub(r'\([^)]*\)', ' ', t)).strip()   # drop (laughs) etc.
 # Whisper writes "2,000" where the script says "two thousand": compare both as words
-words_for_numbers = lambda t: re.sub(r'\d[\d,]*', lambda m: ' ' + num2words(int(m.group().replace(',', '') or 0)) + ' ', t)
+def _num(m):
+    n = int(m.group().replace(',', '') or 0)
+    return ' ' + (num2words(n, to='year') if 1100 <= n <= 2099 and ',' not in m.group() else num2words(n)) + ' '   # "1948" is said "nineteen forty-eight"
+words_for_numbers = lambda t: re.sub(r'\d[\d,]*', _num, t)
 norm = lambda t: re.sub(r'[^a-z]', '', words_for_numbers(t).lower().replace('.com', 'dotcom'))
 
 # Chunks: whole scenes, packed up to MAX_CHARS, so a cut never splits an exchange.

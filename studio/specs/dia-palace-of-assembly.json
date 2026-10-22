@@ -1,0 +1,29 @@
+{
+  "id": "dia-palace-of-assembly",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "photo", "b": "palace-of-assembly", "i": 0, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
+      "talk": [ { "who": "friend", "text": "Wait. Why does that roof curve up at the end?" } ] },
+    { "type": "photo", "b": "palace-of-assembly", "i": 1, "move": "out",
+      "talk": [ { "who": "guide", "text": "That's the Palace of Assembly in Chandigarh, India, designed by Le Corbusier in nineteen sixty-two." } ] },
+    { "type": "photo", "b": "palace-of-assembly", "i": 2, "move": "left",
+      "label": { "name": "The portico", "meta": "Built for the Punjab sun" },
+      "talk": [ { "who": "friend", "text": "And why is the entrance so huge and deep?" },
+                { "who": "guide", "text": "It's a portico, a giant covered porch, to shade people from the Punjab sun." } ] },
+    { "type": "photo", "b": "palace-of-assembly", "i": 3, "move": "up",
+      "label": { "name": "Brise-soleil", "meta": "Concrete sun-breakers" },
+      "talk": [ { "who": "friend", "text": "What are those concrete grids?" },
+                { "who": "guide", "text": "Brise-soleil, French for sun-breaker. Screens that block the sun." } ] },
+    { "type": "photo", "b": "palace-of-assembly", "i": 7,
+      "label": { "name": "The door", "meta": "Colour against raw concrete" },
+      "talk": [ { "who": "friend", "text": "Wait, why is that door so colorful?" },
+                { "who": "guide", "text": "It's painted bright, a bold contrast with the raw concrete around it." } ] },
+    { "type": "end", "line": "63 buildings with brise-soleil on the site", "accent": ["63"], "dur": 3 }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Why does that roof curve up at the end? 🏛️\n\nLe Corbusier's Palace of Assembly in Chandigarh (1962) is a parliament built for the Punjab sun, with a giant portico, concrete sun-breakers and a hyperboloid chamber.\n\nExplore it and 63 more buildings with brise-soleil → link in bio\nWould you want to work in a building like this?\n\n#architecture #lecorbusier #chandigarh #brutalism #designinspiration"
+}

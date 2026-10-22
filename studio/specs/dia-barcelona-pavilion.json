@@ -1,0 +1,29 @@
+{
+  "id": "dia-barcelona-pavilion",
+  "pillar": "talk",
+  "format": "talk",
+  "tts": "dia",
+  "friend": "female",
+  "coverAt": 1.4,
+  "scenes": [
+    { "type": "photo", "b": "barcelona-pavilion", "i": 2, "fill": true, "move": "in", "voDelay": 0.05, "label": false,
+      "talk": [ { "who": "friend", "text": "Wait. Is that roof actually floating?" } ] },
+    { "type": "photo", "b": "barcelona-pavilion", "i": 3, "move": "out",
+      "talk": [ { "who": "guide", "text": "Almost! It's the Barcelona Pavilion, designed by Mies van der Rohe and Lilly Reich in nineteen twenty-nine." } ] },
+    { "type": "photo", "b": "barcelona-pavilion", "i": 5, "move": "left",
+      "label": { "name": "Free-standing walls", "meta": "Space that flows instead of rooms" },
+      "talk": [ { "who": "friend", "text": "Where are all the rooms?" },
+                { "who": "guide", "text": "There aren't any. Free-standing walls guide you through, and the space just flows." } ] },
+    { "type": "photo", "b": "barcelona-pavilion", "i": 7, "move": "up",
+      "label": { "name": "The stone wall", "meta": "The pattern is the decoration" },
+      "talk": [ { "who": "friend", "text": "What's that glowing orange wall?" },
+                { "who": "guide", "text": "Polished stone. The pattern is the decoration." } ] },
+    { "type": "photo", "b": "barcelona-pavilion", "i": 6,
+      "label": { "name": "The pool", "meta": "Still water, sharp edges" },
+      "talk": [ { "who": "friend", "text": "Wait, is that a pool?" },
+                { "who": "guide", "text": "A reflecting pool. The walls double themselves in the still water." } ] },
+    { "type": "end", "line": "410 steel and glass buildings on the site", "accent": ["410"], "dur": 3 }
+  ],
+  "outro": "No way. Where do I find more like this?",
+  "caption": "Is that roof actually floating? ☁️\n\nMies van der Rohe and Lilly Reich's Barcelona Pavilion (1929) trades rooms for free-standing walls, so the space just flows.\n\nExplore it and 410 more steel and glass buildings → link in bio\nCould you live in a house with no rooms?\n\n#architecture #miesvanderohe #barcelonapavilion #modernism #designinspiration"
+}

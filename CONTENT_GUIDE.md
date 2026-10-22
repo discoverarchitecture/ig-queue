@@ -92,8 +92,10 @@ sign-off, the "Photos:" credits and the site tagline to the caption — never wr
 
 **Feature reel (19:00 ET slot)** — a screen recording of the site, silent, 12–16 s. Copy `specs/013-site-filter-by-idea.json` (filter by idea) or
 `specs/005-site-surprise-me.json` (Surprise me) and change the ideas/ids/numbers; counts on screen must be real site counts (`node suggest.mjs` prints them).
-Folder tag `site`; render with `node render.mjs specs/<id>.json`; queue with `ship.mjs` (it only knows `dia-` talk reels — for a feature reel copy
-`out/<id>/{reel.mp4,cover.jpg,caption.txt}` into `~/FindGreatArchitecture/queue/<next-number>-site-<slug>/` through a `.tmp-` folder and rename it).
+Give the spec `"pillar": "site"` and an id WITHOUT the `dia-` prefix (e.g. `search-an-architect`); render with `node render.mjs specs/<id>.json` (≈ 1 min, no Dia);
+queue with `node ship.mjs <id> --sync` — it names the folder `NNN-site-<id>`. Clips available (`record.mjs`): `surprise`, `search` (type a name), `idea` (tap an idea chip), `wall`, `play`.
+Used so far: Surprise me, Guess the building, filter by idea, search an architect — next ideas: `wall` scroll with a "2,600+ buildings" claim only if the site count still says so,
+`idea` with other chips (Brick, Water, Courtyard…), `search` with building names.
 
 ## 2. Format
 
