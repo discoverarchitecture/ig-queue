@@ -504,7 +504,13 @@
       "mediaId": "18115896551043448",
       "permalink": "https://www.instagram.com/reel/DezeokqDQ3L/",
       "publishedAt": "2026-10-22T17:06:08+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "K5Zzb8CqgZ4",
+        "url": "https://www.youtube.com/shorts/K5Zzb8CqgZ4",
+        "privacy": "public",
+        "uploadedAt": "2026-10-22T17:06:24.774Z"
+      }
     },
     "018-talk-barcelona-pavilion": {
       "status": "approved",
