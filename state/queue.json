@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-10-20T23:23:36Z",
-    "lastCommentId": 6304041473,
+    "lastCommentAt": "2026-10-22T12:24:41Z",
+    "lastCommentId": 6340667837,
     "lastPillar": "detail"
   },
   "last": {
@@ -499,7 +499,15 @@
       "batch": "2026-10-20",
       "slot": "2026-10-22T17:00:00.000Z",
       "decidedAt": "2026-10-22T12:24:37.465Z"
+    },
+    "018-talk-barcelona-pavilion": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "Is that roof actually floating? ☁️\n\nMies van der Rohe and Lilly Reich's Barcelona Pavilion (1929) trades rooms for free-standing walls, so the space just flows.\n\nExplore it and 410 more steel and glass buildings → link in bio\nCould you live in a house with no rooms?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #miesvanderohe #barcelonapavilion #modernism #designinspiration\n\nPhotos: Barcelona Pavilion – Ardfern (CC BY-SA 3.0); Barcelona Pavilion – thierrytutin (CC BY 2.0)",
+      "captionSha": "669b7e865c154c40c723c9e720d4acc9af542e21"
     }
   },
-  "pool": []
+  "pool": [
+    "018-talk-barcelona-pavilion"
+  ]
 }
