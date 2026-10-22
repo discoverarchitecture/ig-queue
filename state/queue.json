@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-10-22T12:24:41Z",
-    "lastCommentId": 6340667837,
+    "lastCommentAt": "2026-10-22T12:40:02Z",
+    "lastCommentId": 6340970661,
     "lastPillar": "detail"
   },
   "last": {
@@ -508,7 +508,15 @@
       "batch": "2026-10-20",
       "slot": "2026-10-22T23:00:00.000Z",
       "decidedAt": "2026-10-22T12:39:58.368Z"
+    },
+    "019-talk-casa-luis-barragan": {
+      "status": "pending",
+      "hasCover": true,
+      "caption": "Is that a house, or a paint swatch? 🎨\n\nLuis Barragán's house in Mexico City (1948) is a blank wall to the street, with color, light and gardens hidden inside.\n\nExplore it and 315 more courtyard buildings → link in bio\nWould you paint your house this bold?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #luisbarragan #mexicocity #color #designinspiration\n\nPhotos: Casa Luis Barragán – Francesco Bandarin (CC BY-SA 3.0 igo); Casa Luis Barragán – Daniel Case (CC BY-SA 3.0)",
+      "captionSha": "c8d511b907de6d6745403c98ffb624f3e6ac0b15"
     }
   },
-  "pool": []
+  "pool": [
+    "019-talk-casa-luis-barragan"
+  ]
 }
