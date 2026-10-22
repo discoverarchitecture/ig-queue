@@ -492,7 +492,7 @@
       }
     },
     "017-talk-chand-baori": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. How deep is that hole? 🕳️\n\nChand Baori in Abhaneri, India (c. 800) is a stepwell thirteen storeys deep, built by unknown hands as a climate machine.\n\nExplore it and 280+ more buildings with water → link in bio\nWould you walk down all thirteen storeys?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #stepwell #chandbaori #ancientarchitecture #designinspiration\n\nPhotos: Chand Baori – Shikhers (CC BY-SA 4.0); Chand Baori – Gerd Eichmann (CC BY-SA 4.0)",
       "captionSha": "2b2fc5e8cbf056f221d225e4c98864dca73b5dba",
@@ -500,7 +500,11 @@
       "slot": "2026-10-22T17:00:00.000Z",
       "decidedAt": "2026-10-22T12:24:37.465Z",
       "attempts": 1,
-      "container": "18129657427744346"
+      "container": "18129657427744346",
+      "mediaId": "18115896551043448",
+      "permalink": "https://www.instagram.com/reel/DezeokqDQ3L/",
+      "publishedAt": "2026-10-22T17:06:08+0000",
+      "error": null
     },
     "018-talk-barcelona-pavilion": {
       "status": "approved",
