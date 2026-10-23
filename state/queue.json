@@ -152,6 +152,50 @@
         }
       ],
       "remindedAt": null
+    },
+    {
+      "id": "2026-10-23",
+      "index": 3,
+      "created": "2026-10-23T12:50:35.530Z",
+      "slots": [
+        {
+          "at": "2026-10-24T13:00:00.000Z",
+          "post": "022-talk-phillips-exeter-library"
+        },
+        {
+          "at": "2026-10-24T17:00:00.000Z",
+          "post": "023-talk-fau-usp-building"
+        },
+        {
+          "at": "2026-10-24T23:00:00.000Z",
+          "post": "024-site-idea-brick-water-colour"
+        },
+        {
+          "at": "2026-10-25T13:00:00.000Z",
+          "post": "026-talk-boston-city-hall"
+        },
+        {
+          "at": "2026-10-25T17:00:00.000Z",
+          "post": "027-talk-barbican-estate"
+        },
+        {
+          "at": "2026-10-25T23:00:00.000Z",
+          "post": "025-site-wall-scroll"
+        },
+        {
+          "at": "2026-10-26T13:00:00.000Z",
+          "post": "029-talk-villa-tugendhat"
+        },
+        {
+          "at": "2026-10-26T17:00:00.000Z",
+          "post": "030-talk-yale-art-and-architecture"
+        },
+        {
+          "at": "2026-10-26T23:00:00.000Z",
+          "post": "028-site-search-a-city"
+        }
+      ],
+      "remindedAt": null
     }
   ],
   "posts": {
@@ -561,69 +605,86 @@
       "decidedAt": "2026-10-22T12:56:17.218Z"
     },
     "022-talk-phillips-exeter-library": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Is that a giant circle cut into the wall? ⭕\n\nLouis Kahn's Phillips Exeter Academy Library (1971) wraps its books around a central atrium framed by huge circles.\n\nExplore it and 394 more buildings lit from above → link in bio\nWould you want to study in here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #louiskahn #library #brick #designinspiration\n\nPhotos: Phillips Exeter Academy Library – Pablo Sanchez from Prague, Czech Republic (CC BY 2.0); Phillips Exeter Academy Library – Gunnar Klack (CC BY-SA 4.0); Phillips Exeter Academy Library – Cysj1024 (CC BY-SA 4.0)",
-      "captionSha": "479e4e20db640200856b87cb7358a15b573f239a"
+      "captionSha": "479e4e20db640200856b87cb7358a15b573f239a",
+      "batch": "2026-10-23",
+      "slot": "2026-10-24T13:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "023-talk-fau-usp-building": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Is that really a school? 🏫\n\nVilanova Artigas's FAU-USP building in São Paulo (1969) puts an architecture school under one great concrete roof, joined by ramps and open to the city.\n\nExplore it and 512 more exposed concrete buildings → link in bio\nWould you want to study here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #brutalism #saopaulo #exposedconcrete #designinspiration\n\nPhotos: FAU-USP Building – Photograph by Mike Peel ( www.mikepeel.net ). (CC BY-SA 4.0); FAU-USP Building – Arte Fora do Museu (CC BY 2.0); FAU-USP Building – Matheus Carvalho Teixeira (CC BY-SA 4.0)",
-      "captionSha": "5810d84426415bf6a47bd8b5dd82991fe97e24e5"
+      "captionSha": "5810d84426415bf6a47bd8b5dd82991fe97e24e5",
+      "batch": "2026-10-23",
+      "slot": "2026-10-24T17:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "024-site-idea-brick-water-colour": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Brick, water or colour: which wall do you want to see? 🧱\n\nTap one idea and the whole wall filters to hundreds of buildings that share it.\n\nTry it free → link in bio\nTell us which idea we should pull up next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #designresearch #architecturelovers #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
-      "captionSha": "758a6afab69e51d3e9c209032a9bd6b6b1fef1e7"
+      "captionSha": "758a6afab69e51d3e9c209032a9bd6b6b1fef1e7",
+      "batch": "2026-10-23",
+      "slot": "2026-10-24T23:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "025-site-wall-scroll": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "How many of these buildings can you name? 🧱\n\nOne wall, 3,900+ great buildings. Scroll it, tap any photo, and see the big idea behind it.\n\nScroll it free → link in bio\nDrop the first building you recognised.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architecturelovers #designinspiration #buildings\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
-      "captionSha": "344a7cd533181bf11e2e874618880de915885f74"
+      "captionSha": "344a7cd533181bf11e2e874618880de915885f74",
+      "batch": "2026-10-23",
+      "slot": "2026-10-25T23:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "026-talk-boston-city-hall": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Is that building upside down? 🔄\n\nBoston City Hall (1968) by Kallmann McKinnell & Knowles is an inverted ziggurat, its shape showing the city government's functions from the outside.\n\nExplore it and 530+ more buildings with public space → link in bio\nWould you want to work here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #brutalism #boston #bostoncityhall #designinspiration\n\nPhotos: Boston City Hall – 4300streetcar (CC BY 4.0); Boston City Hall – NewtonCourt (CC BY-SA 4.0)",
-      "captionSha": "7400a9a4eba030ea4870056550c5ba3a0a2552cf"
+      "captionSha": "7400a9a4eba030ea4870056550c5ba3a0a2552cf",
+      "batch": "2026-10-23",
+      "slot": "2026-10-25T13:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "027-talk-barbican-estate": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Is that a lake in front of a housing block? 🏙️\n\nThe Barbican in London (1982) by Chamberlin, Powell and Bon is a walkway city of housing, an arts centre, a lake and a conservatory, all above the street.\n\nExplore it and 70+ more megastructures → link in bio\nWould you want to live here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #barbican #brutalism #london #designinspiration\n\nPhotos: Barbican Estate – Tilman2007 (CC BY-SA 4.0); Barbican Estate – Colin (CC BY-SA 4.0)",
-      "captionSha": "d12edbffffb096d650c479e09dae87d24d7b80db"
+      "captionSha": "d12edbffffb096d650c479e09dae87d24d7b80db",
+      "batch": "2026-10-23",
+      "slot": "2026-10-25T17:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "028-site-search-a-city": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Which city's architecture should we pull up next? 🌍\n\nType any city — Tokyo, Lisbon, Chicago — and the whole wall filters to the great buildings there.\n\nTry it free → link in bio\nDrop a city below and we'll search it next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architecturetravel #cityarchitecture #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
-      "captionSha": "2475ac7805c68f9119b77153b838025ae08b24b6"
+      "captionSha": "2475ac7805c68f9119b77153b838025ae08b24b6",
+      "batch": "2026-10-23",
+      "slot": "2026-10-26T23:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "029-talk-villa-tugendhat": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Is that whole wall made of glass? 🪟\n\nMies van der Rohe's Villa Tugendhat in Brno (1930) is a family home with an open plan and glass walls that drop away to the garden.\n\nExplore it and 100+ more buildings with a free plan → link in bio\nWould you live in a glass house?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #miesvanderohe #villatugendhat #modernism #designinspiration\n\nPhotos: Villa Tugendhat – JensKunstfreund (CC BY-SA 4.0); Villa Tugendhat – Petr1987 (CC BY-SA 4.0)",
-      "captionSha": "28a12710111e695a44a6fde9f9e7dbc0e7beb263"
+      "captionSha": "28a12710111e695a44a6fde9f9e7dbc0e7beb263",
+      "batch": "2026-10-23",
+      "slot": "2026-10-26T13:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "030-talk-yale-art-and-architecture": {
-      "status": "pending",
+      "status": "approved",
       "hasCover": true,
       "caption": "Wait. Why does that concrete have stripes? 🏛️\n\nPaul Rudolph's Art and Architecture Building at Yale (1963) is a design studio built in section, with dozens of interlocking levels and corduroy concrete.\n\nExplore it and 190+ more buildings with striking sections → link in bio\nWould you want to work in a studio like this?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #paulrudolph #brutalism #yale #designinspiration\n\nPhotos: Yale Art and Architecture Building – Peter Christian Riemann (CC BY-SA 4.0); Yale Art and Architecture Building – Ɱ (CC BY-SA 4.0); Yale Art and Architecture Building – Seth Tisue (CC BY-SA 2.0); Yale Art and Architecture Building – Sage Ross (CC BY-SA 3.0); Yale Art and Architecture Building – RukshanV (CC BY-SA 4.0)",
-      "captionSha": "3b5b851343a2c5d8557e113ae98aed0636ab4542"
+      "captionSha": "3b5b851343a2c5d8557e113ae98aed0636ab4542",
+      "batch": "2026-10-23",
+      "slot": "2026-10-26T17:00:00.000Z",
+      "decidedAt": "2026-10-23T12:50:35.530Z"
     }
   },
-  "pool": [
-    "022-talk-phillips-exeter-library",
-    "023-talk-fau-usp-building",
-    "024-site-idea-brick-water-colour",
-    "025-site-wall-scroll",
-    "026-talk-boston-city-hall",
-    "027-talk-barbican-estate",
-    "028-site-search-a-city",
-    "029-talk-villa-tugendhat",
-    "030-talk-yale-art-and-architecture"
-  ]
+  "pool": []
 }
