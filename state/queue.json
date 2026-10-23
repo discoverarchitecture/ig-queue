@@ -632,7 +632,13 @@
       "mediaId": "18058281149796136",
       "permalink": "https://www.instagram.com/reel/De2yqgFivye/",
       "publishedAt": "2026-10-23T23:58:41+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "NV64lyixYYc",
+        "url": "https://www.youtube.com/shorts/NV64lyixYYc",
+        "privacy": "public",
+        "uploadedAt": "2026-10-23T23:58:52.492Z"
+      }
     },
     "022-talk-phillips-exeter-library": {
       "status": "approved",
