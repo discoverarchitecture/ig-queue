@@ -611,7 +611,13 @@
       "mediaId": "18083557622363270",
       "permalink": "https://www.instagram.com/reel/De2Io_LjCJr/",
       "publishedAt": "2026-10-23T17:51:29+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "Yiu1-O_6HIQ",
+        "url": "https://www.youtube.com/shorts/Yiu1-O_6HIQ",
+        "privacy": "public",
+        "uploadedAt": "2026-10-23T17:51:40.323Z"
+      }
     },
     "021-site-search-an-architect": {
       "status": "approved",
