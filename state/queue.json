@@ -590,7 +590,13 @@
       "mediaId": "18133845412683236",
       "permalink": "https://www.instagram.com/reel/De1tXXLjq2V/",
       "publishedAt": "2026-10-23T13:53:21+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "4JSvCEqZxg8",
+        "url": "https://www.youtube.com/shorts/4JSvCEqZxg8",
+        "privacy": "public",
+        "uploadedAt": "2026-10-23T13:53:32.627Z"
+      }
     },
     "020-talk-palace-of-assembly": {
       "status": "approved",
