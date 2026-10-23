@@ -599,7 +599,7 @@
       }
     },
     "020-talk-palace-of-assembly": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Why does that roof curve up at the end? 🏛️\n\nLe Corbusier's Palace of Assembly in Chandigarh (1962) is a parliament built for the Punjab sun, with a giant portico, concrete sun-breakers and a hyperboloid chamber.\n\nExplore it and 63 more buildings with brise-soleil → link in bio\nWould you want to work in a building like this?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #lecorbusier #chandigarh #brutalism #designinspiration\n\nPhotos: Palace of Assembly – UnpetitproleX (CC BY-SA 4.0); Palace of Assembly – duncid (CC BY-SA 2.0); Palace of Assembly – Tanweer Morshed (CC BY-SA 4.0); Palace of Assembly – Aleksandr Zykov from Russia (CC BY-SA 2.0); Palace of Assembly – Eduardo Guiot (CC BY 2.0)",
       "captionSha": "26b161f219fea6dd84289031e307f544c712a0db",
@@ -607,7 +607,11 @@
       "slot": "2026-10-23T17:00:00.000Z",
       "decidedAt": "2026-10-22T12:54:01.528Z",
       "attempts": 1,
-      "container": "18129954991744346"
+      "container": "18129954991744346",
+      "mediaId": "18083557622363270",
+      "permalink": "https://www.instagram.com/reel/De2Io_LjCJr/",
+      "publishedAt": "2026-10-23T17:51:29+0000",
+      "error": null
     },
     "021-site-search-an-architect": {
       "status": "approved",
