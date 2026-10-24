@@ -674,7 +674,13 @@
       "mediaId": "18140338441617649",
       "permalink": "https://www.instagram.com/reel/De4sCh0jGaC/",
       "publishedAt": "2026-10-24T17:39:19+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "keLMTHyR_H8",
+        "url": "https://www.youtube.com/shorts/keLMTHyR_H8",
+        "privacy": "public",
+        "uploadedAt": "2026-10-24T17:39:31.611Z"
+      }
     },
     "024-site-idea-brick-water-colour": {
       "status": "approved",
