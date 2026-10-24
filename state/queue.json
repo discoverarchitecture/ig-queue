@@ -653,7 +653,13 @@
       "mediaId": "18098805545428650",
       "permalink": "https://www.instagram.com/reel/De4OOBfATlF/",
       "publishedAt": "2026-10-24T13:19:06+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "tJ99dtgOzQM",
+        "url": "https://www.youtube.com/shorts/tJ99dtgOzQM",
+        "privacy": "public",
+        "uploadedAt": "2026-10-24T13:19:17.380Z"
+      }
     },
     "023-talk-fau-usp-building": {
       "status": "approved",
