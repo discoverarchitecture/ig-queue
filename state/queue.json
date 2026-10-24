@@ -641,13 +641,15 @@
       }
     },
     "022-talk-phillips-exeter-library": {
-      "status": "approved",
+      "status": "publishing",
       "hasCover": true,
       "caption": "Wait. Is that a giant circle cut into the wall? ⭕\n\nLouis Kahn's Phillips Exeter Academy Library (1971) wraps its books around a central atrium framed by huge circles.\n\nExplore it and 394 more buildings lit from above → link in bio\nWould you want to study in here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #louiskahn #library #brick #designinspiration\n\nPhotos: Phillips Exeter Academy Library – Pablo Sanchez from Prague, Czech Republic (CC BY 2.0); Phillips Exeter Academy Library – Gunnar Klack (CC BY-SA 4.0); Phillips Exeter Academy Library – Cysj1024 (CC BY-SA 4.0)",
       "captionSha": "479e4e20db640200856b87cb7358a15b573f239a",
       "batch": "2026-10-23",
       "slot": "2026-10-24T13:00:00.000Z",
-      "decidedAt": "2026-10-23T12:50:35.530Z"
+      "decidedAt": "2026-10-23T12:50:35.530Z",
+      "attempts": 1,
+      "container": null
     },
     "023-talk-fau-usp-building": {
       "status": "approved",
