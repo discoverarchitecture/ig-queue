@@ -662,7 +662,7 @@
       }
     },
     "023-talk-fau-usp-building": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. Is that really a school? 🏫\n\nVilanova Artigas's FAU-USP building in São Paulo (1969) puts an architecture school under one great concrete roof, joined by ramps and open to the city.\n\nExplore it and 512 more exposed concrete buildings → link in bio\nWould you want to study here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #brutalism #saopaulo #exposedconcrete #designinspiration\n\nPhotos: FAU-USP Building – Photograph by Mike Peel ( www.mikepeel.net ). (CC BY-SA 4.0); FAU-USP Building – Arte Fora do Museu (CC BY 2.0); FAU-USP Building – Matheus Carvalho Teixeira (CC BY-SA 4.0)",
       "captionSha": "5810d84426415bf6a47bd8b5dd82991fe97e24e5",
@@ -670,7 +670,11 @@
       "slot": "2026-10-24T17:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130264474744346"
+      "container": "18130264474744346",
+      "mediaId": "18140338441617649",
+      "permalink": "https://www.instagram.com/reel/De4sCh0jGaC/",
+      "publishedAt": "2026-10-24T17:39:19+0000",
+      "error": null
     },
     "024-site-idea-brick-water-colour": {
       "status": "approved",
