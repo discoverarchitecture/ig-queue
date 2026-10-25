@@ -746,7 +746,13 @@
       "mediaId": "18236906605321102",
       "permalink": "https://www.instagram.com/reel/De7RV52ia4T/",
       "publishedAt": "2026-10-25T17:43:48+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "s27JnZC4rKA",
+        "url": "https://www.youtube.com/shorts/s27JnZC4rKA",
+        "privacy": "public",
+        "uploadedAt": "2026-10-25T17:44:01.344Z"
+      }
     },
     "028-site-search-a-city": {
       "status": "approved",
