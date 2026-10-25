@@ -713,7 +713,7 @@
       "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "026-talk-boston-city-hall": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. Is that building upside down? 🔄\n\nBoston City Hall (1968) by Kallmann McKinnell & Knowles is an inverted ziggurat, its shape showing the city government's functions from the outside.\n\nExplore it and 530+ more buildings with public space → link in bio\nWould you want to work here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #brutalism #boston #bostoncityhall #designinspiration\n\nPhotos: Boston City Hall – 4300streetcar (CC BY 4.0); Boston City Hall – NewtonCourt (CC BY-SA 4.0)",
       "captionSha": "7400a9a4eba030ea4870056550c5ba3a0a2552cf",
@@ -721,7 +721,11 @@
       "slot": "2026-10-25T13:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130515982744346"
+      "container": "18130515982744346",
+      "mediaId": "17988322049880457",
+      "permalink": "https://www.instagram.com/reel/De66OUTiFrn/",
+      "publishedAt": "2026-10-25T14:22:11+0000",
+      "error": null
     },
     "027-talk-barbican-estate": {
       "status": "approved",
