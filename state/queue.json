@@ -725,7 +725,13 @@
       "mediaId": "17988322049880457",
       "permalink": "https://www.instagram.com/reel/De66OUTiFrn/",
       "publishedAt": "2026-10-25T14:22:11+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "dEJ5gd71oAo",
+        "url": "https://www.youtube.com/shorts/dEJ5gd71oAo",
+        "privacy": "public",
+        "uploadedAt": "2026-10-25T14:22:23.827Z"
+      }
     },
     "027-talk-barbican-estate": {
       "status": "approved",
