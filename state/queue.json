@@ -704,7 +704,7 @@
       }
     },
     "025-site-wall-scroll": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "How many of these buildings can you name? 🧱\n\nOne wall, 3,900+ great buildings. Scroll it, tap any photo, and see the big idea behind it.\n\nScroll it free → link in bio\nDrop the first building you recognised.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architecturelovers #designinspiration #buildings\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "344a7cd533181bf11e2e874618880de915885f74",
@@ -712,7 +712,11 @@
       "slot": "2026-10-25T23:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130647334744346"
+      "container": "18130647334744346",
+      "mediaId": "18141660133619591",
+      "permalink": "https://www.instagram.com/reel/De722fcCWfu/",
+      "publishedAt": "2026-10-25T23:11:30+0000",
+      "error": null
     },
     "026-talk-boston-city-hall": {
       "status": "published",
