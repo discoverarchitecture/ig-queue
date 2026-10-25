@@ -716,7 +716,13 @@
       "mediaId": "18141660133619591",
       "permalink": "https://www.instagram.com/reel/De722fcCWfu/",
       "publishedAt": "2026-10-25T23:11:30+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "UDP4pQ1jsyo",
+        "url": "https://www.youtube.com/shorts/UDP4pQ1jsyo",
+        "privacy": "public",
+        "uploadedAt": "2026-10-25T23:11:43.175Z"
+      }
     },
     "026-talk-boston-city-hall": {
       "status": "published",
