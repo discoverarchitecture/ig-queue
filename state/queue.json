@@ -695,7 +695,13 @@
       "mediaId": "17926465836201018",
       "permalink": "https://www.instagram.com/reel/De5ZgqLCS23/",
       "publishedAt": "2026-10-25T00:16:39+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "Ikqgvux1lfk",
+        "url": "https://www.youtube.com/shorts/Ikqgvux1lfk",
+        "privacy": "public",
+        "uploadedAt": "2026-10-25T00:16:48.120Z"
+      }
     },
     "025-site-wall-scroll": {
       "status": "approved",
