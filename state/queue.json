@@ -734,7 +734,7 @@
       }
     },
     "027-talk-barbican-estate": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. Is that a lake in front of a housing block? 🏙️\n\nThe Barbican in London (1982) by Chamberlin, Powell and Bon is a walkway city of housing, an arts centre, a lake and a conservatory, all above the street.\n\nExplore it and 70+ more megastructures → link in bio\nWould you want to live here?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #barbican #brutalism #london #designinspiration\n\nPhotos: Barbican Estate – Tilman2007 (CC BY-SA 4.0); Barbican Estate – Colin (CC BY-SA 4.0)",
       "captionSha": "d12edbffffb096d650c479e09dae87d24d7b80db",
@@ -742,7 +742,11 @@
       "slot": "2026-10-25T17:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130574680744346"
+      "container": "18130574680744346",
+      "mediaId": "18236906605321102",
+      "permalink": "https://www.instagram.com/reel/De7RV52ia4T/",
+      "publishedAt": "2026-10-25T17:43:48+0000",
+      "error": null
     },
     "028-site-search-a-city": {
       "status": "approved",
