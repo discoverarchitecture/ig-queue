@@ -683,7 +683,7 @@
       }
     },
     "024-site-idea-brick-water-colour": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Brick, water or colour: which wall do you want to see? 🧱\n\nTap one idea and the whole wall filters to hundreds of buildings that share it.\n\nTry it free → link in bio\nTell us which idea we should pull up next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #designresearch #architecturelovers #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "758a6afab69e51d3e9c209032a9bd6b6b1fef1e7",
@@ -691,7 +691,11 @@
       "slot": "2026-10-24T23:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130340167744346"
+      "container": "18130340167744346",
+      "mediaId": "17926465836201018",
+      "permalink": "https://www.instagram.com/reel/De5ZgqLCS23/",
+      "publishedAt": "2026-10-25T00:16:39+0000",
+      "error": null
     },
     "025-site-wall-scroll": {
       "status": "approved",
