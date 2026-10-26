@@ -841,7 +841,7 @@
       }
     },
     "030-talk-yale-art-and-architecture": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. Why does that concrete have stripes? 🏛️\n\nPaul Rudolph's Art and Architecture Building at Yale (1963) is a design studio built in section, with dozens of interlocking levels and corduroy concrete.\n\nExplore it and 190+ more buildings with striking sections → link in bio\nWould you want to work in a studio like this?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #paulrudolph #brutalism #yale #designinspiration\n\nPhotos: Yale Art and Architecture Building – Peter Christian Riemann (CC BY-SA 4.0); Yale Art and Architecture Building – Ɱ (CC BY-SA 4.0); Yale Art and Architecture Building – Seth Tisue (CC BY-SA 2.0); Yale Art and Architecture Building – Sage Ross (CC BY-SA 3.0); Yale Art and Architecture Building – RukshanV (CC BY-SA 4.0)",
       "captionSha": "3b5b851343a2c5d8557e113ae98aed0636ab4542",
@@ -849,7 +849,11 @@
       "slot": "2026-10-26T17:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130904122744346"
+      "container": "18130904122744346",
+      "mediaId": "18048243425821559",
+      "permalink": "https://www.instagram.com/reel/De922CRj0iu/",
+      "publishedAt": "2026-10-26T17:49:53+0000",
+      "error": null
     }
   },
   "pool": []
