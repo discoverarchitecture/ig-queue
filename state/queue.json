@@ -832,7 +832,13 @@
       "mediaId": "18176234089452190",
       "permalink": "https://www.instagram.com/reel/De9kV7qALWU/",
       "publishedAt": "2026-10-26T15:08:16+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "zlVeDKb-OBY",
+        "url": "https://www.youtube.com/shorts/zlVeDKb-OBY",
+        "privacy": "public",
+        "uploadedAt": "2026-10-26T15:08:31.385Z"
+      }
     },
     "030-talk-yale-art-and-architecture": {
       "status": "approved",
