@@ -820,7 +820,7 @@
       "decidedAt": "2026-10-23T12:50:35.530Z"
     },
     "029-talk-villa-tugendhat": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Wait. Is that whole wall made of glass? 🪟\n\nMies van der Rohe's Villa Tugendhat in Brno (1930) is a family home with an open plan and glass walls that drop away to the garden.\n\nExplore it and 100+ more buildings with a free plan → link in bio\nWould you live in a glass house?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #miesvanderohe #villatugendhat #modernism #designinspiration\n\nPhotos: Villa Tugendhat – JensKunstfreund (CC BY-SA 4.0); Villa Tugendhat – Petr1987 (CC BY-SA 4.0)",
       "captionSha": "28a12710111e695a44a6fde9f9e7dbc0e7beb263",
@@ -828,7 +828,11 @@
       "slot": "2026-10-26T13:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130864126744346"
+      "container": "18130864126744346",
+      "mediaId": "18176234089452190",
+      "permalink": "https://www.instagram.com/reel/De9kV7qALWU/",
+      "publishedAt": "2026-10-26T15:08:16+0000",
+      "error": null
     },
     "030-talk-yale-art-and-architecture": {
       "status": "approved",
