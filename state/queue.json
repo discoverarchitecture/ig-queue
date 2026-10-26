@@ -853,7 +853,13 @@
       "mediaId": "18048243425821559",
       "permalink": "https://www.instagram.com/reel/De922CRj0iu/",
       "publishedAt": "2026-10-26T17:49:53+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "aHEAftE8lug",
+        "url": "https://www.youtube.com/shorts/aHEAftE8lug",
+        "privacy": "public",
+        "uploadedAt": "2026-10-26T17:50:06.411Z"
+      }
     }
   },
   "pool": []
