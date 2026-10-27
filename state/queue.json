@@ -811,7 +811,7 @@
       }
     },
     "028-site-search-a-city": {
-      "status": "publishing",
+      "status": "published",
       "hasCover": true,
       "caption": "Which city's architecture should we pull up next? 🌍\n\nType any city — Tokyo, Lisbon, Chicago — and the whole wall filters to the great buildings there.\n\nTry it free → link in bio\nDrop a city below and we'll search it next.\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecture #architecturestudent #architecturetravel #cityarchitecture #designinspiration\n\nPhotos: building photos shown are credited on each building's page on findgreatarchitecture.com.",
       "captionSha": "2475ac7805c68f9119b77153b838025ae08b24b6",
@@ -819,7 +819,11 @@
       "slot": "2026-10-26T23:00:00.000Z",
       "decidedAt": "2026-10-23T12:50:35.530Z",
       "attempts": 1,
-      "container": "18130973944744346"
+      "container": "18130973944744346",
+      "mediaId": "18115700777035843",
+      "permalink": "https://www.instagram.com/reel/De-jx2tFEXd/",
+      "publishedAt": "2026-10-27T00:22:35+0000",
+      "error": null
     },
     "029-talk-villa-tugendhat": {
       "status": "published",
