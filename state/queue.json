@@ -823,7 +823,13 @@
       "mediaId": "18115700777035843",
       "permalink": "https://www.instagram.com/reel/De-jx2tFEXd/",
       "publishedAt": "2026-10-27T00:22:35+0000",
-      "error": null
+      "error": null,
+      "youtube": {
+        "id": "4-X8jfl3bvc",
+        "url": "https://www.youtube.com/shorts/4-X8jfl3bvc",
+        "privacy": "public",
+        "uploadedAt": "2026-10-27T00:22:46.129Z"
+      }
     },
     "029-talk-villa-tugendhat": {
       "status": "published",
