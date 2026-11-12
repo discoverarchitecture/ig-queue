@@ -13,6 +13,8 @@ html,body { width:1080px; height:1920px; overflow:hidden; background:var(--stage
 .bg { position:absolute; inset:-60px; background-size:cover; background-position:center; filter:blur(38px) brightness(.55) saturate(1.1); }
 .ph { position:absolute; left:0; top:0; width:1080px; height:1920px; object-fit:cover; transform-origin:50% 50%; will-change:transform; }
 .card .ph { height:auto; top:50%; }
+/* fit:"contain" — the whole picture (e.g. an A1 board) inside the iPhone-safe width, over its own blurred copy */
+.contain .ph { left:97px; width:886px; height:auto; top:var(--top, 200px); border-radius:6px; box-shadow:0 18px 60px rgba(0,0,0,.45); }
 .shade { position:absolute; inset:0; background:linear-gradient(rgba(0,0,0,.55) 0, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 56%, rgba(0,0,0,.6) 100%); }
 /* Safe zone: nothing important above 220px or below 1500px (Instagram UI). */
 .title { position:absolute; left:140px; right:140px; top:250px; font:900 132px/.86 var(--display); text-transform:uppercase; color:#fff;
@@ -131,7 +133,8 @@ async function load(spec) {
   await Promise.all([...document.querySelectorAll('video')].map((v) => v.readyState >= 2 ? 0 : new Promise((r) => { v.onloadeddata = r; v.onerror = r; })));
   for (const { s, el } of scenes) {
     const im = el.querySelector('.ph');
-    if (im && im.naturalWidth > im.naturalHeight * 0.8 && !s.fill) el.classList.add('card');
+    if (im && s.fit === 'contain') { el.classList.add('contain'); if (s.top != null) el.style.setProperty('--top', s.top + 'px'); }
+    else if (im && im.naturalWidth > im.naturalHeight * 0.8 && !s.fill) el.classList.add('card');
     const pill = el.querySelector('.pill');
   if (pill) { el.style.visibility = 'visible'; let fs = 72; while (pill.scrollWidth > 800 && fs > 40) { fs -= 4; pill.style.fontSize = fs + 'px'; } el.style.visibility = ''; }
   // Titles: keep clear of the counter badge and fit in two lines.
@@ -170,7 +173,13 @@ function renderPhoto({ s, el }, local) {
     const [a, b] = s.move === 'out' ? [1.14, 1.0] : [1.0, 1.12];
     const z = a + (b - a) * easeInOut(p);
     const pan = s.move === 'left' ? `translateX(${(0.5 - p) * 4}%)` : s.move === 'up' ? `translateY(${(0.5 - p) * 4}%)` : '';
-    im.style.transform = (card ? 'translateY(-50%) ' : '') + `${pan} scale(${z})`;
+    // focus:{x,y,z} — centre the point (x%, y%) of the frame (a part of a board) at zoom z, drifting gently in or out
+    const f = s.focus, fz = f ? f.z * z : z;
+    // a contained picture is not centred in the frame: add the shift that brings its centre to the frame's centre
+    const ox = f ? (540 - (im.offsetLeft + im.offsetWidth / 2)) / im.offsetWidth * 100 : 0;
+    const oy = f ? ((f.cy ?? 960) - (im.offsetTop + im.offsetHeight / 2)) / im.offsetHeight * 100 : 0; // cy: frame height to centre on
+    const ft = f ? `translate(${ox + (50 - f.x) * fz}%, ${oy + (50 - f.y) * fz}%) ` : '';
+    im.style.transform = (card ? 'translateY(-50%) ' : '') + `${pan} ${ft}scale(${fz})`;
     rise(el.querySelector('.label'), local, .25);
     const cr = el.querySelector('.credit'); if (cr) cr.style.opacity = easeOut((local - .4) / .3);
   }

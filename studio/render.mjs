@@ -113,7 +113,14 @@ async function localImage(url) {
 }
 
 for (const s of scenes) {
-  if (s.b) {
+  // Studio FGA reels: a local picture (path relative to studio/), credited in the caption by `credit`
+  if (s.src) {
+    const f = path.resolve(HERE, s.src);
+    if (!fs.existsSync(f)) throw new Error(`missing picture: ${s.src}`);
+    s.img = pathToFileURL(f).href;
+    if (s.credit) s.creditFull = s.credit;
+    if (s.label === false) delete s.label;
+  } else if (s.b) {
     const b = B[s.b];
     if (!b) throw new Error(`unknown building id: ${s.b}`);
     const im = pickImage(b, s.i);

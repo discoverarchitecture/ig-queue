@@ -1,0 +1,130 @@
+{
+ "id": "dia-studio-law-garden-board",
+ "pillar": "site",
+ "format": "talk",
+ "tts": "dia",
+ "kind": "studio",
+ "friend": "female",
+ "coverAt": 4.2,
+ "scenes": [
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/sheets-scatter.jpg",
+   "fill": true,
+   "move": "in",
+   "voDelay": 0.05,
+   "label": false,
+   "credit": "Law Garden community centre – the student's own drawings and models, used with permission",
+   "talk": [
+    {
+     "who": "friend",
+     "text": "Wait. Can six loose sheets really become one jury board?"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "top": 300,
+   "move": "in",
+   "label": false,
+   "credit": "Law Garden community centre – the student's own drawings and models, used with permission",
+   "talk": [
+    {
+     "who": "guide",
+     "text": "This one did. A student's community centre for the Law Garden vendors, laid out on one A1 board with Studio FGA."
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/sheet-2.jpg",
+   "fit": "contain",
+   "top": 560,
+   "move": "in",
+   "label": {
+    "name": "Before",
+    "meta": "The student's own sheet"
+   },
+   "talk": [
+    {
+     "who": "friend",
+     "text": "And that page of plain text about the intent?"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "move": "in",
+   "focus": {
+    "x": 50,
+    "y": 20,
+    "z": 1.1,
+    "cy": 820
+   },
+   "label": {
+    "name": "After",
+    "meta": "Title and concept up top"
+   },
+   "talk": [
+    {
+     "who": "guide",
+     "text": "It became the title and one line of concept at the top, so the jury gets your idea first."
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/sheet-6.jpg",
+   "fit": "contain",
+   "top": 520,
+   "move": "in",
+   "label": {
+    "name": "Before",
+    "meta": "The student's own sheet"
+   },
+   "talk": [
+    {
+     "who": "friend",
+     "text": "Hold on. And that grey ground floor plan, what happened to it?"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "move": "in",
+   "focus": {
+    "x": 66,
+    "y": 74,
+    "z": 1.95,
+    "cy": 800
+   },
+   "label": {
+    "name": "After",
+    "meta": "Labels · north arrow · scale bar"
+   },
+   "talk": [
+    {
+     "who": "guide",
+     "text": "Same drawing, now with every room labelled, plus a north arrow and a scale bar."
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "line": "Your jury board, from $6.49",
+   "accent": [
+    "649"
+   ],
+   "cta": "Link in bio",
+   "dur": 3
+  }
+ ],
+ "outro": "Okay, I need this. Where do I make my own?",
+ "caption": "Six loose sheets → one A1 jury board. Which version would you pin up? 📌\n\nA student's community centre for the Law Garden vendors in Ahmedabad, laid out with Studio FGA and shared with the student's permission.\n\nUpload your drawings, get a jury-ready A1 board and a slide deck. From $6.49. Not jury-ready? One free redo or your money back within 7 days.\n\nMake yours → link in bio (findgreatarchitecture.com/studio)\nWhat's the hardest part of laying out your board?\n\n#architecturestudent #architecturejury #presentationboard #architecturedesign #architecture"
+}

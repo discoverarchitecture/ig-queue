@@ -15,8 +15,15 @@ const words = (t) => t.replace(/\([^)]*\)/g, ' ').trim().split(/\s+/).filter(Boo
 const norm = (t) => t.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean);
 
 // ---- header ---------------------------------------------------------------
-if (spec.format !== 'talk' || spec.pillar !== 'talk' || spec.tts !== 'dia') err('header must have "format":"talk", "pillar":"talk", "tts":"dia"');
-if (!/^dia-[a-z0-9-]+$/.test(spec.id || '')) err('"id" must look like dia-<building-slug>');
+// "kind": "studio" = a Studio FGA reel: local pictures (`src`, with a `credit`), one line per picture allowed, posted in the site slot
+const STUDIO = spec.kind === 'studio';
+if (STUDIO) {
+  if (spec.format !== 'talk' || spec.pillar !== 'site' || spec.tts !== 'dia') err('a studio reel needs "format":"talk", "pillar":"site", "tts":"dia"');
+  if (!/^dia-studio-[a-z0-9-]+$/.test(spec.id || '')) err('"id" must look like dia-studio-<slug>');
+} else {
+  if (spec.format !== 'talk' || spec.pillar !== 'talk' || spec.tts !== 'dia') err('header must have "format":"talk", "pillar":"talk", "tts":"dia"');
+  if (!/^dia-[a-z0-9-]+$/.test(spec.id || '')) err('"id" must look like dia-<building-slug>');
+}
 if (spec.friend && !['male', 'female'].includes(spec.friend)) err('"friend" must be "male" or "female" (or leave it out)');
 if (spec.voiceSpeed) warn('"voiceSpeed" is ignored by Dia — remove it');
 if (typeof spec.coverAt !== 'number') warn('add "coverAt": 1.4 (seconds into the reel for the cover frame)');
@@ -26,12 +33,21 @@ const photos = scenes.filter((s) => s.type === 'photo');
 const end = scenes.at(-1);
 if (scenes.some((s) => s.type !== 'photo' && s.type !== 'end')) err('Walk & Talk uses only "photo" scenes and one final "end" scene');
 if (!end || end.type !== 'end') err('the last scene must be {"type":"end","line":"…","accent":[…],"dur":3}');
-if (photos.length < 4 || photos.length > 5) err(`use 4–5 photo scenes (one question per photo); found ${photos.length}`);
+if (STUDIO ? photos.length < 4 || photos.length > 8 : photos.length < 4 || photos.length > 5) err(`use ${STUDIO ? '4–8' : '4–5'} photo scenes; found ${photos.length}`);
+if (STUDIO && !photos.some((s) => s.credit)) err('studio reel: give at least one picture a "credit" (it becomes the caption\'s Photos: line)');
 
 // ---- the lines ------------------------------------------------------------
 const lines = [];
 photos.forEach((s, i) => {
   const where = `scene ${i + 1}`;
+  if (STUDIO) {
+    if (!s.src || !fs.existsSync(path.resolve(HERE, s.src))) err(`${where}: "src" missing or not found (path from studio/)`);
+    if (/studio\/references\//.test(s.src || '')) err(`${where}: never use reference boards (other people's work)`);
+    if (!Array.isArray(s.talk) || !s.talk.length) { err(`${where}: needs "talk":[{who,text}]`); return; }
+    s.talk.forEach((l) => lines.push({ ...l, scene: i }));
+    if (i === 0 && (s.talk.length !== 1 || s.talk[0].who !== 'friend' || s.label !== false)) err('scene 1 must be ONE friend line (the hook) with "label": false');
+    return;
+  }
   const b = B[s.b];
   if (!b) { err(`${where}: unknown building "${s.b}" (ids are in cache/buildings.json)`); return; }
   const im = b.images[s.i];
@@ -97,7 +113,7 @@ if (chars < 330 || chars > 560) warn(`${chars} spoken characters: aim for 330–
 if (lines.filter((l) => l.who === 'friend').length < 3) warn('fewer than 3 friend questions — one per photo');
 
 // ---- picture = words: facts must come from the site's own record -------------
-const mainB = B[photos[0]?.b];
+const mainB = STUDIO ? null : B[photos[0]?.b];
 if (mainB) {
   const body = lines.map((l) => l.text).join(' ');
   const years = [...body.matchAll(/\b(1[0-9]{3}|20[0-9]{2})\b/g)].map((m) => m[1]);

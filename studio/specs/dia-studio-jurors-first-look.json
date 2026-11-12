@@ -1,0 +1,125 @@
+{
+ "id": "dia-studio-jurors-first-look",
+ "pillar": "site",
+ "format": "talk",
+ "tts": "dia",
+ "kind": "studio",
+ "friend": "male",
+ "coverAt": 1.4,
+ "scenes": [
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-hero.jpg",
+   "fill": true,
+   "move": "in",
+   "voDelay": 0.05,
+   "label": false,
+   "credit": "Law Garden community centre – the student's own drawings and models, used with permission",
+   "talk": [
+    {
+     "who": "friend",
+     "text": "What does a jury look at before you even say a word?"
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "move": "in",
+   "focus": {
+    "x": 50,
+    "y": 20,
+    "z": 1.1,
+    "cy": 820
+   },
+   "label": {
+    "name": "1 · One clear idea",
+    "meta": "Title area and hero image"
+   },
+   "talk": [
+    {
+     "who": "guide",
+     "text": "Your title and hero image. They want one clear idea behind most of your decisions."
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "move": "in",
+   "focus": {
+    "x": 34,
+    "y": 91,
+    "z": 2.1,
+    "cy": 820
+   },
+   "label": {
+    "name": "2 · Proof",
+    "meta": "A drawing that shows the idea"
+   },
+   "talk": [
+    {
+     "who": "friend",
+     "text": "Okay, but what if my render already looks amazing?"
+    },
+    {
+     "who": "guide",
+     "text": "Not quite. They want the drawing that proves the idea, like this section under the fabric roof."
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/law-garden-board.jpg",
+   "fit": "contain",
+   "move": "in",
+   "focus": {
+    "x": 50,
+    "y": 80,
+    "z": 1.4,
+    "cy": 820
+   },
+   "label": {
+    "name": "3 · Agreement",
+    "meta": "Plan and section tell one story"
+   },
+   "talk": [
+    {
+     "who": "friend",
+     "text": "What gives away an unresolved project?"
+    },
+    {
+     "who": "guide",
+     "text": "Drawings that disagree. Jurors follow a stair in the plan, then look for it in the section."
+    }
+   ]
+  },
+  {
+   "type": "photo",
+   "src": "assets/studio-sample/guide-jurors-phone-2-top.jpg",
+   "fit": "contain",
+   "top": 180,
+   "move": "in",
+   "label": false,
+   "talk": [
+    {
+     "who": "guide",
+     "text": "Before your jury, write your idea in one sentence, then find five decisions it explains. Our free guide has the rest."
+    }
+   ]
+  },
+  {
+   "type": "end",
+   "line": "Free jury guides on the site",
+   "accent": [
+    "Free"
+   ],
+   "cta": "Link in bio",
+   "dur": 3
+  }
+ ],
+ "outro": "Nice. And where is that guide?",
+ "caption": "What does a jury look at before you say a word? 👀\n\nThree quiet questions: Is there one clear idea? Do the drawings prove it? Do the plan, section and views agree?\n\nBoard shown: a student's community centre for the Law Garden vendors, made with Studio FGA and shared with the student's permission.\n\nThe full checklist is a free guide → link in bio (findgreatarchitecture.com/studio)\nWhich question would your project fail first?\n\n#architecturestudent #architecturejury #architecturedesign #presentationboard #architecture"
+}
