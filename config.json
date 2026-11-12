@@ -31,5 +31,5 @@
   "inboxEveryHours": 2,
   "analyticsEveryHours": 24,
   "tokenRefreshEveryDays": 7,
-  "autoApprove": true
+  "autoApprove": false
 }
