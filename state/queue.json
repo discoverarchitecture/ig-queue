@@ -454,7 +454,8 @@
         },
         {
           "at": "2026-11-13T18:00:00.000Z",
-          "post": "031-site-studio-law-garden-board"
+          "post": null,
+          "note": "missed — not approved in time"
         },
         {
           "at": "2026-11-14T00:00:00.000Z",
@@ -1140,12 +1141,12 @@
       }
     },
     "031-site-studio-law-garden-board": {
-      "status": "scheduled",
+      "status": "pending",
       "hasCover": true,
       "caption": "Six loose sheets → one A1 jury board. Which version would you pin up? 📌\n\nA student's community centre for the Law Garden vendors in Ahmedabad, laid out with Studio FGA and shared with the student's permission.\n\nUpload your drawings, get a jury-ready A1 board and a slide deck. From $6.49. Not jury-ready? One free redo or your money back within 7 days.\n\nMake yours → link in bio (findgreatarchitecture.com/studio)\nWhat's the hardest part of laying out your board?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecturestudent #architecturejury #presentationboard #architecturedesign #architecture\n\nPhotos: Law Garden community centre – the student's own drawings and models, used with permission",
       "captionSha": "1172c3cf6549927082bc6225f84022fec14c14b7",
-      "batch": "2026-11-10",
-      "slot": "2026-11-13T18:00:00.000Z",
+      "batch": null,
+      "slot": null,
       "captionOverride": null,
       "decidedAt": null,
       "attempts": 0,
