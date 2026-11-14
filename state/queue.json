@@ -459,7 +459,8 @@
         },
         {
           "at": "2026-11-14T00:00:00.000Z",
-          "post": "032-site-studio-jurors-first-look"
+          "post": null,
+          "note": "missed — not approved in time"
         }
       ],
       "remindedAt": "2026-11-12T17:52:00.592Z"
@@ -1154,12 +1155,12 @@
       "container": null
     },
     "032-site-studio-jurors-first-look": {
-      "status": "scheduled",
+      "status": "pending",
       "hasCover": true,
       "caption": "What does a jury look at before you say a word? 👀\n\nThree quiet questions: Is there one clear idea? Do the drawings prove it? Do the plan, section and views agree?\n\nBoard shown: a student's community centre for the Law Garden vendors, made with Studio FGA and shared with the student's permission.\n\nThe full checklist is a free guide → link in bio (findgreatarchitecture.com/studio)\nWhich question would your project fail first?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecturestudent #architecturejury #architecturedesign #presentationboard #architecture\n\nPhotos: Law Garden community centre – the student's own drawings and models, used with permission",
       "captionSha": "6d33a127f8aea9ef665ded488167890381b37123",
-      "batch": "2026-11-10",
-      "slot": "2026-11-14T00:00:00.000Z",
+      "batch": null,
+      "slot": null,
       "captionOverride": null,
       "decidedAt": null,
       "attempts": 0,
