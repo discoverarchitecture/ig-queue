@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-11-14T10:11:42Z",
-    "lastCommentId": 6875719667,
+    "lastCommentAt": "2026-11-14T14:30:31Z",
+    "lastCommentId": 6878843544,
     "lastPillar": "detail"
   },
   "last": {
@@ -1169,5 +1169,7 @@
       "container": null
     }
   },
-  "pool": []
+  "pool": [
+    "031-site-studio-law-garden-board"
+  ]
 }
