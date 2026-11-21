@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-11-21T01:15:43Z",
-    "lastCommentId": 7054946362,
+    "lastCommentAt": "2026-11-21T20:02:09Z",
+    "lastCommentId": 7068456026,
     "lastPillar": "detail"
   },
   "last": {
@@ -1279,5 +1279,8 @@
       "container": null
     }
   },
-  "pool": []
+  "pool": [
+    "031-site-studio-law-garden-board",
+    "032-site-studio-jurors-first-look"
+  ]
 }
