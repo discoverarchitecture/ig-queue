@@ -2,8 +2,8 @@
   "version": 1,
   "meta": {
     "notifyIssue": 1,
-    "lastCommentAt": "2026-11-24T16:12:43Z",
-    "lastCommentId": 7137296155,
+    "lastCommentAt": "2026-11-24T18:49:41Z",
+    "lastCommentId": 7141207818,
     "lastPillar": "detail"
   },
   "last": {
@@ -1329,5 +1329,7 @@
       "container": null
     }
   },
-  "pool": []
+  "pool": [
+    "032-site-studio-jurors-first-look"
+  ]
 }
