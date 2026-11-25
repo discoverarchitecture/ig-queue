@@ -680,11 +680,11 @@
       "slots": [
         {
           "at": "2026-11-26T14:00:00.000Z",
-          "post": null
+          "post": "031-site-studio-law-garden-board"
         },
         {
           "at": "2026-11-26T18:00:00.000Z",
-          "post": null
+          "post": "032-site-studio-jurors-first-look"
         },
         {
           "at": "2026-11-27T00:00:00.000Z",
@@ -1350,12 +1350,12 @@
       }
     },
     "031-site-studio-law-garden-board": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "Six loose sheets → one A1 jury board. Which version would you pin up? 📌\n\nA student's community centre for the Law Garden vendors in Ahmedabad, laid out with Studio FGA and shared with the student's permission.\n\nUpload your drawings, get a jury-ready A1 board and a slide deck. From $6.49. Not jury-ready? One free redo or your money back within 7 days.\n\nMake yours → link in bio (findgreatarchitecture.com/studio)\nWhat's the hardest part of laying out your board?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecturestudent #architecturejury #presentationboard #architecturedesign #architecture\n\nPhotos: Law Garden community centre – the student's own drawings and models, used with permission",
       "captionSha": "1172c3cf6549927082bc6225f84022fec14c14b7",
-      "batch": null,
-      "slot": null,
+      "batch": "2026-11-25",
+      "slot": "2026-11-26T14:00:00.000Z",
       "captionOverride": null,
       "decidedAt": null,
       "attempts": 0,
@@ -1363,12 +1363,12 @@
       "container": null
     },
     "032-site-studio-jurors-first-look": {
-      "status": "pending",
+      "status": "scheduled",
       "hasCover": true,
       "caption": "What does a jury look at before you say a word? 👀\n\nThree quiet questions: Is there one clear idea? Do the drawings prove it? Do the plan, section and views agree?\n\nBoard shown: a student's community centre for the Law Garden vendors, made with Studio FGA and shared with the student's permission.\n\nThe full checklist is a free guide → link in bio (findgreatarchitecture.com/studio)\nWhich question would your project fail first?\n\nfindgreatarchitecture.com — a website built by architects, for architects.\n\n#architecturestudent #architecturejury #architecturedesign #presentationboard #architecture\n\nPhotos: Law Garden community centre – the student's own drawings and models, used with permission",
       "captionSha": "6d33a127f8aea9ef665ded488167890381b37123",
-      "batch": null,
-      "slot": null,
+      "batch": "2026-11-25",
+      "slot": "2026-11-26T18:00:00.000Z",
       "captionOverride": null,
       "decidedAt": null,
       "attempts": 0,
@@ -1376,8 +1376,5 @@
       "container": null
     }
   },
-  "pool": [
-    "031-site-studio-law-garden-board",
-    "032-site-studio-jurors-first-look"
-  ]
+  "pool": []
 }
